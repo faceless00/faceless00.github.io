@@ -1,0 +1,18 @@
+#headPart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 1rem;
+}
+#headPart::before {
+  content: "";
+  display: inline-block;
+  background-image: url("/images/tag.svg");
+  background-size: 2rem 2rem;
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1rem;
+}
+#headPart > h2 {
+  display: inline-block;
+}
