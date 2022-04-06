@@ -16,3 +16,7 @@ function reverseIcon() {
     console.log("wrong!!");
   }
 }
+
+function handleEmailClick() {
+  console.log("zz");
+}

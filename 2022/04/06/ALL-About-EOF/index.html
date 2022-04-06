@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=" ">
+<head>
+  <meta charset="utf-8" />
+<link rel="icon" href="/images/rev_sheep.png " />
+<title>saltedPuddin</title>
+<meta name="referrer" content="no-referrer" />
+
+  
+<link rel="stylesheet" href="/css/layout.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+<div class="topBar">
+  <img class="icon" src="/images/rev_sheep.png " />
+  <div class="menu">
+     
+    <a href="/ ">home</a>
+     
+    <a href="/archives ">archives</a>
+     
+    <a href="/categories ">categories</a>
+     
+    <a href="/aboutme ">aboutme</a>
+     
+    <a href="/diary ">diary</a>
+    
+  </div>
+</div>
+<div class="blank"></div>
+  <div class="wrapper">
+    
+<link rel="stylesheet" href="/css/post.css">
+
+
+<script src="/js/post.js"></script>
+
+
+<div id="post">
+  <aside id="navigator">
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li></ol>
+  </aside>
+  <div id="content">
+    <div id="postHead">
+      <h1>ALL About EOF</h1>
+      <div class="postDate">
+        <img class="dateIcon" src="/images/clockicon.svg" />
+        --2022.4.6
+      </div>
+        
+        <div class="postCategory">
+            <a href="/categories/translation/">translation</a>
+        </div>
+         
+    </div>
+    <div id="postBody">
+      <h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>C&#x2F;C++的初学者在 <code>reddit</code> 和 <code>stack overflow</code> 之类的网站发布的所有问题中,最常见的困惑是当程序中需要读取用户的输入或者读取文件时，对<code>end of file</code>条件的处理.(这篇文章写于2012年，10年后还是这样🤭)<br>据我估计，超过95%的问题都表现出对<code>end-of-file</code>这个概念的完全误解.<br>本文试图解释与这个令人困惑的话题的所有相关问题,尤其是对于使用<code>windows</code>和<code>Unix-like</code>(比如我即将用作例子的Linux)的<code>C C++</code>程序员</p>
+<h1 id="The-myth-of-the-EOF-character"><a href="#The-myth-of-the-EOF-character" class="headerlink" title="The myth of the EOF character"></a>The myth of the EOF character</h1><p>许多初学者面对的第一个<code>end-of-file</code>问题是关于<code>EOF</code>字符,尽管实际上并没有这样的一个字符,但是人们认为有(不幸的是，译者初学C时也以为有这么个b字符👿).无论windows或者linux操作系统都没有这种概念:用一个标记字符来表示文件的结束</p>
+<p>如果你用<code>Notepad</code>，<code>Vim</code>或者其他文本编辑器创建一个文本文件，文件本身并不会包含一个特殊字符来标志文件结束.Windows和Linux的文件系统都可以知道文件的确切字节长度,因此绝无必要用一个特殊字符标志文件结束.</p>
+<p>既然Windows和Linux都不使用<code>EOF</code>字符，那么<code>EOF</code>这个概念从何而来?</p>
+<p>well,在很久很久以前(上世纪70年代),有一个叫做<code>CP/M</code>的操作系统(为了丝滑的使用终端)，<code>CP/M</code>可以在<code>Zilog Z80,Intel 8080</code>之类的8位处理器上运行.<code>CP/M</code>的文件系统并不知道一个文件的字节长度，它只知道文件占据了多少个<code>block</code>(<code>注: block是文件系统层面上的概念，存储设备本身没有这一概念，因为存储设备的基本读写单位是扇区，但是扇区太小了，所以文件系统将block作为I/O操作的基本单位，通常block的大小4k，对应8个扇区</code>).这意味着如果一个文件的内容为<code>hello world</code>，<code>CP/M</code>不知道这个文件的大小为11字节-它只知道该文件占了一个长度至少为128字节的<code>block</code>.因为人们通常都想知道文件看起来多大，而不是占据了多少个<code>block</code>，因此需要一个<code>end-of-file</code>字符.<code>CP/M</code>重新使用了<code>ASCII</code>字符集的<code>Control-Z</code>字符(十进制为26,十六进制为<code>0x1A</code>，最初的用途随着时间流逝已经消失了,<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/7a655058ef48072a96caf0ff5c62377e.png" alt="image-20220406161103269">)用于这个目的-当<code>CP/M</code>系统上的程序读取到<code>Control-Z</code>字符时，通常会认为读取到了文件末尾…</p>
+<p>没有任何规定强迫程序去做这件事;处理二进制数据的程序需要其他一些手段来确认是否已经读取到了文件末尾，并且操作系统本身不会特别处理<code>Control-Z</code>字符</p>
+<blockquote>
+<p>注:很几把绕的一句话,让我来粗暴的解释一下</p>
+<p>因为<code>CP/M</code>的文件系统只知道文件占据的<code>block</code>数，所以提供的<code>I/O</code>接口也必定是按<code>block</code>读写，但是文件的实际大小并不一定是<code>block</code>的整数倍，最后一块<code>block</code>的内容可能只占了一部分</p>
+<p>程序需要知道文件在哪结束，但是系统只支持读取<code>block</code>，那只能人为地在文件末尾加一个文件结束的标志，最后大家决定用<code>Control-Z</code>来标志文件结束，也就是<code>EOF</code>字符，当程序读取到<code>EOF</code>，一般就认为读取完了</p>
+<p>不过这只是程序层面的规定，对于操作系统本身，不会读到<code>EOF</code>字符就认为文件结束了,它只会按<code>block</code>读取</p>
+</blockquote>
+<p>当<code>MS-DOS</code>出现时，兼容<code>CP/M</code>系统非常重要(<code>CP/M</code>一度非常流行)，鉴于许多初版<code>MS-DOS</code>程序仅仅是<code>CP/M</code>上的程序的暴力移植，通过机器码转码器(这mechanical translators实在不知道咋翻译，通俗的讲就是将一种机器语言翻译成另一种机器语言)把<code>Z80/8080</code>机器码转码为<code>8086</code>机器码.因为这些程序<strong>没有被重写</strong>，所以仍然把<code>Control-Z</code>字符当作文件的结束标志，直到今天还是这样.事实上，对<code>Control-Z</code>的处理被内置到了<code>Microsoft C Runtime Library</code>(微软为自家操作系统上的C语言程序提供的函数库),当以文本模式打开文件时.</p>
+<p>有必要再重申一次，<code>windows</code>系统本身不在乎<code>Control-Z</code>字符，这一行为完全取决于MS库，并且非常不幸的是几乎所有软件都引用了这个库.此外，这一问题仅会发生在windows上，Linux及其他类Unix系统从不以任何形式将<code>Control-Z</code>或其他任何字符作为文件结束的标志.</p>
+<blockquote>
+<p>注:解释一下，<code>MCR</code>库提供了文件<code>I/O</code>接口，而大部分win程序进行<code>I/O</code>操作时都会调用这个接口，读取文件的行为由库中的函数定义，并且程序不需要自行判断文件读取结束(毕竟我微软的操作系统更先进一些)</p>
+<p>win系统本身也不会特殊处理<code>Control-Z</code>，也不需要处理，因为它知道文件的实际长度，唯一有可能处理<code>Control-Z</code>字符的是<code>MCR</code>库，当然它也不一定把它视作<code>EOF</code></p>
+</blockquote>
+    </div>
+  </div>
+</article> 
+  </div>
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+
+<div id="footer"></div>
+ 
+</body>
