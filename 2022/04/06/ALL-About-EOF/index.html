@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <link rel="icon" href="/images/rev_sheep.png " />
-<title>saltedPuddin</title>
+<title>almostSalted</title>
 <meta name="referrer" content="no-referrer" />
 
   
@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -65,7 +65,7 @@
 <p>well,在很久很久以前(上世纪70年代),有一个叫做<code>CP/M</code>的操作系统(为了丝滑的使用终端)，<code>CP/M</code>可以在<code>Zilog Z80,Intel 8080</code>之类的8位处理器上运行.<code>CP/M</code>的文件系统并不知道一个文件的字节长度，它只知道文件占据了多少个<code>block</code>(<code>注: block是文件系统层面上的概念，存储设备本身没有这一概念，因为存储设备的基本读写单位是扇区，但是扇区太小了，所以文件系统将block作为I/O操作的基本单位，通常block的大小4k，对应8个扇区</code>).这意味着如果一个文件的内容为<code>hello world</code>，<code>CP/M</code>不知道这个文件的大小为11字节-它只知道该文件占了一个长度至少为128字节的<code>block</code>.因为人们通常都想知道文件看起来多大，而不是占据了多少个<code>block</code>，因此需要一个<code>end-of-file</code>字符.<code>CP/M</code>重新使用了<code>ASCII</code>字符集的<code>Control-Z</code>字符(十进制为26,十六进制为<code>0x1A</code>，最初的用途随着时间流逝已经消失了,<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/7a655058ef48072a96caf0ff5c62377e.png" alt="image-20220406161103269">)用于这个目的-当<code>CP/M</code>系统上的程序读取到<code>Control-Z</code>字符时，通常会认为读取到了文件末尾…</p>
 <p>没有任何规定强迫程序去做这件事;处理二进制数据的程序需要其他一些手段来确认是否已经读取到了文件末尾，并且操作系统本身不会特别处理<code>Control-Z</code>字符</p>
 <blockquote>
-<p>注:很几把绕的一句话,让我来粗暴的解释一下</p>
+<p>注:很抽象的一句话,让我来粗暴的解释一下</p>
 <p>因为<code>CP/M</code>的文件系统只知道文件占据的<code>block</code>数，所以提供的<code>I/O</code>接口也必定是按<code>block</code>读写，但是文件的实际大小并不一定是<code>block</code>的整数倍，最后一块<code>block</code>的内容可能只占了一部分</p>
 <p>程序需要知道文件在哪结束，但是系统只支持读取<code>block</code>，那只能人为地在文件末尾加一个文件结束的标志，最后大家决定用<code>Control-Z</code>来标志文件结束，也就是<code>EOF</code>字符，当程序读取到<code>EOF</code>，一般就认为读取完了</p>
 <p>不过这只是程序层面的规定，对于操作系统本身，不会读到<code>EOF</code>字符就认为文件结束了,它只会按<code>block</code>读取</p>
@@ -74,8 +74,43 @@
 <p>有必要再重申一次，<code>windows</code>系统本身不在乎<code>Control-Z</code>字符，这一行为完全取决于MS库，并且非常不幸的是几乎所有软件都引用了这个库.此外，这一问题仅会发生在windows上，Linux及其他类Unix系统从不以任何形式将<code>Control-Z</code>或其他任何字符作为文件结束的标志.</p>
 <blockquote>
 <p>注:解释一下，<code>MCR</code>库提供了文件<code>I/O</code>接口，而大部分win程序进行<code>I/O</code>操作时都会调用这个接口，读取文件的行为由库中的函数定义，并且程序不需要自行判断文件读取结束(毕竟我微软的操作系统更先进一些)</p>
-<p>win系统本身也不会特殊处理<code>Control-Z</code>，也不需要处理，因为它知道文件的实际长度，唯一有可能处理<code>Control-Z</code>字符的是<code>MCR</code>库，当然它也不一定把它视作<code>EOF</code></p>
+<p>win系统本身也不会特殊处理<code>Control-Z</code>，也不需要处理，因为它知道文件的实际长度，唯一有可能处理<code>Control-Z</code>字符的是<code>MCR</code>库，当然它也不一定把它视作<code>EOF</code>，我实在是懒得去看<code>MCR</code>的源码，有兄弟看了记得告诉我一声</p>
 </blockquote>
+<h1 id="Some-demo-code"><a href="#Some-demo-code" class="headerlink" title="Some demo code"></a>Some demo code</h1><p>用下面的代码可以证明<code>MS</code>库的这个意料之外的特性.首先，写一个程序，在程序中向文本文件写入<code>Control-Z</code>字符</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ofstream <span class="title">ofs</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    ofs&lt;&lt;<span class="string">&quot;第一行 1\n&quot;</span>;</span><br><span class="line">    ofs&lt;&lt;<span class="built_in">char</span>(<span class="number">26</span>);	<span class="comment">//control-z的ascii码是0x1A,十进制是26</span></span><br><span class="line">    ofs&lt;&lt;<span class="string">&quot;第二行 2\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不论在windows或Linux上运行这个程序，都会创建一个文本文件，在文件的两行之间夹着一个<code>Control-Z</code>字符</p>
+<blockquote>
+<p>line1</p>
+<p>0x1A(实际上是看不到的，因为这不是个可见字符)line2</p>
+</blockquote>
+<p>在win或Linux平台上，<code>Control-Z</code>字符作为输出时都没有特殊的含义.可以用命令行工具读取这个文件<code>a.txt</code></p>
+<blockquote>
+<p>Windows:</p>
+<p><code>c:\Users\Me type a.txt</code></p>
+<p>输出为:</p>
+<blockquote>
+<p>第一行 1</p>
+</blockquote>
+<p>注意只有第一行被打印出来了</p>
+<blockquote>
+<p>注:在2022的4月6日，译者重现了这段代码，惊喜的发现windows平台打印的是两行，可喜可贺，可喜可贺啊！巨硬，你还是有点可取之处的👍👍</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/ed24629fcb5daa7e658a5e5f5607456b.png" alt="image-20220406221531999"><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/f92d4395cb04c11e4b6f6451df398260.png" alt="image-20220406221552995"><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/9b2adbd4d133b7ddf951922efd96860b.png" alt="image-20220406221606880"></p>
+<p>不过让我们先假定没有打印出第二行</p>
+</blockquote>
+<p>Linux:</p>
+<p><code>~&gt; $ cat a.txt</code></p>
+<p>输出为:</p>
+<blockquote>
+<p>第一行 1</p>
+<p>?第二行 2</p>
+</blockquote>
+</blockquote>
+<p>两行都能打印出来，但是出现了一个奇怪的字符<code>?</code>,因为<code>cat</code>命令把<code>Control-Z</code>视作普通字符，但是<code>Control-Z</code>不是可打印字符，所以用别的字符替换了它，具体是什么样取决于你的终端，比如译者的就是:</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/4c2e29919d5eb6b2eb369fa0bfaaa523.png" alt="image-20220406221945054"></p>
+<p>这好像暗示windows知道<code>Control-Z</code>字符，但是那不重要，本质上是某些软件知道这个字符.如果用记事本打开这个文件:<img src="https://latedev.files.wordpress.com/2012/12/screenshot_myfile-txt-notepad_2012-12-04_12-43-56_thumb.gif?w=199&h=90" alt="img1"></p>
+<p>两行都被打印出来了，夹着一个<code>Control-Z</code>，显然记事本并把<code>Control-Z</code>当作<code>end-of-file</code>标志</p>
+<h1 id="Text-versus-binary-mode"><a href="#Text-versus-binary-mode" class="headerlink" title="Text versus binary mode"></a>Text versus binary mode</h1><p>果咩,未完待续…</p>
     </div>
   </div>
 </article> 
