@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#But-what-about-Control-D"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#But-what-about-Control-D"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-EOF-value-in-C-and-C"><span class="anchor-number">6.</span> <span class="anchor-text">The EOF value in C++ and C</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#The-eof-and-feof-functions"><span class="anchor-number">6.1.</span> <span class="anchor-text">The eof() and feof() functions</span></a></li></ol></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -114,7 +114,8 @@
 <p>一个经典的读取文本文件的<code>C++</code>范例:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">ifs</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ifs,line))&#123;</span><br><span class="line">        cout&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在win上运行这个文件，会看到<code>Control-Z</code>被当作<code>end-of-file</code>字符;输出是:</p>
+<p>在win上运行这个文件，会看到<code>Control-Z</code>被当作<code>end-of-file</code>字符</p>
+<p>输出是:</p>
 <p><code>第一行 1</code>(经译者测试，确实是这样，看来巨硬这么多年还是没更新<code>MCR</code>)</p>
 <p>但是如果以2进制模式打开文件的话:<code>ifstream ifs(&quot;a.txt&quot;,ios::binary)</code></p>
 <p>输出就是:</p>
@@ -131,7 +132,44 @@
 <li>如果文件中必须包含<code>Control-Z</code>，并且希望文件被正确读取，那么就以二进制模式打开文件</li>
 </ol>
 <p>正确读取表示用任何软件，即使你只在windows上编程(是家人就用linux)</p>
-<h1 id="But-what-about-Control-D"><a href="#But-what-about-Control-D" class="headerlink" title="But what about Control-D?"></a>But what about Control-D?</h1><p>一些Linux用户此刻可能回想,”但是我用来结束shell输入的<code>Control-D</code>字符又是怎么回事捏?难道<code>Control-D</code>不是一个<code>end-of-file</code>字符吗?”</p>
+<h1 id="But-what-about-Control-D"><a href="#But-what-about-Control-D" class="headerlink" title="But what about Control-D?"></a>But what about Control-D?</h1><p>一些Linux用户此刻可能会想,”但是我用来结束shell输入的<code>Control-D</code>字符又是怎么回事捏?难道<code>Control-D</code>不是一个<code>end-of-file</code>字符吗?”</p>
+<p>还真不是，就算输入了<code>Control-D</code>，linux也绝对不会注意到它.实际上在终端输入的<code>Control-D</code>仅仅是一个信号，用来结束shell的标准输入流(<code>注：关于linux信号系统，可以参考</code><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Signal_(IPC)">wiki</a>).在输入中实际上并没有<code>Control-D</code>这个字符.可以用<code>stty</code>命令把结束shell标准输入流从<code>Control-D</code>改成任何其他字符，但是控制字符本身不会被当作字符处理，插入到输入流中，并且就算被放入输入中，linux也不会把它当作<code>end-of-file</code>标志</p>
+<h1 id="The-EOF-value-in-C-and-C"><a href="#The-EOF-value-in-C-and-C" class="headerlink" title="The EOF value in C++ and C"></a>The EOF value in C++ and C</h1><p>更让人困惑的是,C++和C都定义了一个特殊的<code>EOF</code>变量，在C中，被定义在<code>&lt;stdio.h&gt;</code></p>
+<p><code>#define EOF (-1)</code>，在C++中也差不多.</p>
+<p>注意这里说的<code>EOF</code>变量和<code>Control-Z</code>没有任何关系.它的值不是<code>0x1A</code>并且它甚至不是一个字符，而是一个整型变量.<code>EOF</code>变量通常被用作函数的返回值，像这样:</p>
+<p><code>int getchar(void);</code></p>
+<p><code>getchar</code>函数的作用是从标准输入中读取单个字符，当输入结束时，返回值为<code>EOF</code>.正如上面所说，文件结尾可能以一个<code>Control-Z</code>字符来表示文件的结束，但是任何情况下都不会有<code>EOF</code>的值和<code>Control-Z</code>的值相等.实际上<code>getchar</code>返回的是整形，而不是一个字符型，整形和字符型的比较不总是正确的(注：char和int是不同类型，在比较时会进行隐式类型转换，通常是把<code>char</code>转换为<code>int</code>然后比较).</p>
+<p>用<code>getchar</code>函数读取标准输入的典型用法是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> c;</span><br><span class="line">    <span class="keyword">while</span> ((c=<span class="built_in">getchar</span>())!=EOF)</span><br><span class="line">    <span class="built_in">putchar</span>(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：输入的是<code>char</code>，返回的是转换为<code>int</code>的字符(高位全部填充为0)，而<code>putchar</code>又会经过一次类型转换，把<code>getchar</code>的返回值转换为<code>char</code>，缩减型转换或截断高位，但是可打印的<code>ascii</code>最高不会超过一个字节，所以不会造成影响</p>
+<p>至于为什么返回的是<code>int</code>，是因为需要用返回值与<code>EOF</code>比较来判断输入是否结束</p>
+<p>至于为什么-1打不出来，因为<code>-1=0xFFFF FFFF</code>，从char转为int的过程是高位填0,所以输入不会和<code>EOF</code>冲突</p>
+</blockquote>
+<h2 id="The-eof-and-feof-functions"><a href="#The-eof-and-feof-functions" class="headerlink" title="The eof() and feof() functions"></a>The eof() and feof() functions</h2><p>另一个令人困惑的部分是C和C++提供的用于检查输入流状态的函数.几乎所有初学者都被它们困扰过，所以预先声明它们做了什么以及它们不应该被如何使用是个好主意:</p>
+<blockquote>
+<p><code>eof() &amp; feof()</code>都会检查输入流是否发生了<code>end-of-file</code>状态.而<code>end-of-file</code>状态只会发生在读取操作后.</p>
+<p>在读取操作前就调用<code>eof</code>函数是错误的做法!不要把<code>eof</code>函数放在循环中.</p>
+</blockquote>
+<p>为了阐明这些，让我们写一个读取文件的函数，像这样:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">f1</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!f1.<span class="built_in">eof</span>())&#123;</span><br><span class="line">        string line;</span><br><span class="line">        <span class="built_in">getline</span>(f1,line);</span><br><span class="line">        cout&lt;&lt;++n&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码似乎很合理，但是别忘了 - 如果在读取操作之前就调用<code>eof</code>函数，是相当愚蠢的做法!</p>
+<p>在这个例子中我们确实在读取操作之前就调用了<code>eof()</code>.那么，为什么这是错误的，考虑<code>a.txt</code>为空的情况.尽管<code>a.txt</code>是一个空文件，但是第一次判断条件不会失败，因此还没有进行过读取操作.在我们读取之后，<code>end-of-file</code>条件会被出发，但是太晚了，然后我们的输出会是这样<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-07/b776b5f227731d2970b2eaa7857aa828.png" alt="image-20220407173701108">这一行在文件中实际上是不存在的.通过简单的逻辑推理，程序始终会输出多余的一行.</p>
+<blockquote>
+<p>注：首先，要知道<code>eof</code>在什么条件下会发生，通俗的讲，在读完文件的最后一个字节之后，<code>eof</code>的返回值仍为<code>false</code>，只有在<strong>读完之后再试图读取</strong>时，<code>eof</code>才会返回<code>true</code>，因此永远会多输出一行</p>
+<p>不过这是之前的说法了，在2022的四月7日，译者重现了这段代码，发现如果<code>a.txt</code>不是空文件的话，并不会输出多余的一行</p>
+<p>不过如果<code>a.txt</code>为空，还是会输出一行</p>
+<p>简单的推理可得，<code>eof</code>函数的判断条件有两个<code>read &amp;&amp; end</code>，如果没读过，那么一定会返回<code>false</code>，如果读完所有数据后，返回<code>false</code>，注意，是读取完数据，不是读取完数据后再读取一次</p>
+<p>而原作者想表达的大概是：即使<code>a.txt</code>不为空，还是会多输出一行，因为在读取到最后一行时，<code>eof</code>返回的还是<code>false</code>，只有再往后读取一行(实际上这行并不存在)后才会返回<code>true</code>退出循环，但这时已经进入循环了，所以会多输出一行</p>
+<p>简单来说就是:</p>
+<p>1读取最后有效的一行-&gt;<code>eof=false</code>-&gt;2进入下一次循环<code>getline</code>-&gt;<code>eof=true</code>-&gt;退出循环</p>
+<p>多输出的那一行是因为2</p>
+<p>可喜可贺的是如今这个问题已经被修复了~</p>
+</blockquote>
+<p>为了保证程序正确，你应该在读取操作之后调用<code>eof</code>函数，或者干脆不要用.如果你不希望遇到上面的问题，可以像这样写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(f1,line))&#123;</span><br><span class="line">    cout&lt;&lt;++n&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
   </div>
 </article> 
