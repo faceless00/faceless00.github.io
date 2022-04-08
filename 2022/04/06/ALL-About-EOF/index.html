@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#But-what-about-Control-D"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-EOF-value-in-C-and-C"><span class="anchor-number">6.</span> <span class="anchor-text">The EOF value in C++ and C</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#The-eof-and-feof-functions"><span class="anchor-number">6.1.</span> <span class="anchor-text">The eof() and feof() functions</span></a></li></ol></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#But-what-about-Control-D"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-EOF-value-in-C-and-C"><span class="anchor-number">6.</span> <span class="anchor-text">The EOF value in C++ and C</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#The-eof-and-feof-functions"><span class="anchor-number">6.1.</span> <span class="anchor-text">The eof() and feof() functions</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Summary"><span class="anchor-number">7.</span> <span class="anchor-text">Summary</span></a></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -170,6 +170,42 @@
 </blockquote>
 <p>为了保证程序正确，你应该在读取操作之后调用<code>eof</code>函数，或者干脆不要用.如果你不希望遇到上面的问题，可以像这样写:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(f1,line))&#123;</span><br><span class="line">    cout&lt;&lt;++n&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里将<code>getline()</code>的返回值转化为了<code>while</code>的条件，当输入流没有发生<code>end-of-file(或者别的错误)</code>条件，就会一直循环下去</p>
+<p>C语言也类似，不应该写出下面这样的代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    FILE * f1=fopen(<span class="string">&quot;a.txt&quot;</span>,<span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!feof(f1))&#123;</span><br><span class="line">        fgets(line,<span class="number">100</span>,f1);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %s&quot;</span>,++n,line);</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(f1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这会在打开一个空文件时多打印一行，你应该:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (fgets(line,<span class="number">100</span>,f1)!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(...)</span><br><span class="line">&#125;</span><br><span class="line">fclose(f1);</span><br></pre></td></tr></table></figure>
+
+<p>因此，显然<code>eof feof</code>都没什么用，那么为什么C&#x2F;C++标准库要提供它们?</p>
+<p>Well,在判断读取操作是产生其他错误还是<code>end-of-file</code>条件的情况下，他们很有用，如果想区分这两种情况的话:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">f1</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(f1,line))&#123;</span><br><span class="line">        cout&lt;&lt;++n&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (f1.<span class="built_in">eof</span>())&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;ok,file has read over&quot;</span>&lt;&lt;endl;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cout&lt;&lt;<span class="string">&quot;sth wrong happend and read is interrupted&quot;</span>&lt;&lt;endl;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>以上的内容好像让<code>EOF</code>问题变得很复杂，但实际上可以归纳为3点:</p>
+<blockquote>
+<ol>
+<li>没有<code>EOF</code>字符，除非在windows上以文本模式打开文件，或者你自己造了个(当然，2022的windows也不把<code>control-z</code>当作结束字符了)</li>
+<li>C&#x2F;C++的<code>EOF</code>符号不是<code>end-of-file</code>字符，它只是库函数在特定条件下的返回值</li>
+<li>不要在循环中用<code>eof() feof()</code></li>
+</ol>
+</blockquote>
+<p>如果牢记这些规则，你就可以避免被大多数与误解C++&#x2F;C中关于<code>end-of-file</code>条件的错误所困扰</p>
+<blockquote>
+<p>译者注:</p>
+<p>总的来说，<code>EOF</code>的起源是因为<code>CP/M</code>的文件系统不知道文件的具体长度，从而需要用户自行用一个特殊字符表示文件结束 - <code>Control-Z</code></p>
+<p>C&#x2F;C++的<code>EOF</code>宏变量值为<code>-1</code>，之所以为<code>-1</code>，是因为根据经典的<code>Unix</code>规范，程序正确运行后返回0,而错误一般返回<code>-1</code>，所以对于<code>getline()</code>这样的函数，如果读取完最后一行后再试图读取，显然会产生错误，因此是否读取完文件可以用</p>
+<p><code>if (getline(fs,line)!=EOF)</code>,其实就是<code>if (getline(fs,line)!=-1)</code>，用<code>EOF</code>更好记罢</p>
+<p>至于<code>feof() eof()</code>这样的函数，只是判断是否达成了<code>end-of-file</code>条件，就译者目前的试验经历来看(2022)，想达成该条件需要</p>
+<ol>
+<li>输入流至少进行一次读取</li>
+<li>读到最后一个字节(不是读完最后一个字节后再读取)</li>
+</ol>
+<p>而原作者之所以说不要把<code>eof</code>用作循环条件，其实是不要在读取操作之前调用<code>eof</code>，因为<code>eof</code>只有在试图读取不存在的字节后才会触发，当然，这个说法有时代的局限性，可能在10年前，就算文件非空，<code>eof</code>也只有在读完最后一个字节之后，再进行一次读取操作才会触发(最后一行的再下一行，实际上并不存在这一行)</p>
+</blockquote>
+<p>– 2022.4.8 11:49🐟🐟🐟</p>
     </div>
   </div>
 </article> 
