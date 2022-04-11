@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang=" ">
+<head>
+  <meta charset="utf-8" />
+<link rel="icon" href="/images/rev_sheep.png " />
+<title>almostSalted</title>
+<meta name="referrer" content="no-referrer" />
+
+  
+<link rel="stylesheet" href="/css/layout.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+<div class="topBar">
+  <img class="icon" src="/images/rev_sheep.png " />
+  <div class="menu">
+     
+    <a href="/ ">home</a>
+     
+    <a href="/archives ">archives</a>
+     
+    <a href="/categories ">categories</a>
+     
+    <a href="/aboutme ">aboutme</a>
+     
+    <a href="/diary ">diary</a>
+    
+  </div>
+</div>
+<div class="blank"></div>
+  <div class="wrapper">
+    
+<link rel="stylesheet" href="/css/post.css">
+
+
+<script src="/js/post.js"></script>
+
+
+<div id="post">
+  <aside id="navigator">
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Prerequisites"><span class="anchor-number">1.</span> <span class="anchor-text">Prerequisites</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#AVL%E6%A0%91"><span class="anchor-number">1.1.</span> <span class="anchor-text">AVL树</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Definition"><span class="anchor-number">1.1.1.</span> <span class="anchor-text">Definition</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#%E5%B9%B3%E8%A1%A1"><span class="anchor-number">1.1.2.</span> <span class="anchor-text">平衡</span></a></li></ol></li></ol></li></ol>
+  </aside>
+  <div id="content">
+    <div id="postHead">
+      <h1>简易sql</h1>
+      <div class="postDate">
+        <img class="dateIcon" src="/images/clockicon.svg" />
+        --2022.4.10
+      </div>
+        
+        <div class="postCategory">
+            <a href="/categories/original/">original</a>
+        </div>
+         
+    </div>
+    <div id="postBody">
+      <h1 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h1><p>数据库的实现绕不开<code>B Tree</code>，借此机会复习一下树</p>
+<h2 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><code>Adelson-Velsky &amp; Landis</code>树，也叫平衡二叉树，简略的说就是<code>BST</code>和高度平衡的二叉树的融合</p>
+<blockquote>
+<p><code>BST</code>，二叉搜索树，可以看作是以树结构存储的升序数组</p>
+<p>高度平衡的二叉树，任意节点的左右子树高度差<code>&lt;=1</code>，比如这棵就是<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/01a11ac9dc0c3bc1f67c7403cb1523d3.png" alt="image-20220410171609821"></p>
+</blockquote>
+<p><code>AVL</code>的递归定义为:</p>
+<ol>
+<li>是<code>BST</code>，且左右子树高度差的绝对值<code>&lt;=1</code></li>
+<li>子树也是<code>AVL</code></li>
+</ol>
+<blockquote>
+<p><code>balance factor</code>:平衡因子，因为<code>AVL</code>是高度平衡的，所以需要一个指标判断是否平衡，在失衡后触发平衡操作</p>
+<p><code>BL=abs(h(n-&gt;left)-h(n-&gt;right))</code>，即左右子树的高度差</p>
+<p>基于平衡因子，<code>AVL</code>的第二条定义可以为:任意节点的平衡因子的绝对值<code>&lt;=1</code></p>
+<p>树的高度定义:</p>
+<blockquote>
+<p>从根节点到叶子节点的路径包含的节点数的最大值(包括根节点)</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">leetcode</a>，虽然求得是最大深度，不过深度和高度其实差不多</p>
+<p>后序遍历:<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/2ce9c3e7010ec20c30d927cd2d5e5975.png" alt="image-20220410173756581"></p>
+<p>先序遍历:<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/c853a40ef29f606d41b721cd861de3f6.png" alt="image-20220410174114294"></p>
+</blockquote>
+</blockquote>
+<p>插入和删除节点之后，要更新高度，要更新高度的节点为操作节点的所有祖先节点</p>
+<h3 id="平衡"><a href="#平衡" class="headerlink" title="平衡"></a>平衡</h3><p>平衡是自底而上的，即从离操作节点最近的失衡的祖先节点开始，平衡有两种操作，左旋和右旋</p>
+<p>右旋:</p>
+<blockquote>
+<p><code>c.balanceFactor &gt; 1</code></p>
+<p><img src="https://pic3.zhimg.com/80/v2-eee97a3e3e45d8cb6668841f6b44191a_720w.jpg" alt="img"></p>
+<p><code>C</code>节点及其子节点都是<code>&gt;=</code>B的，所以可以接到B的右子树，如果节点B有右子树，通常的策略是先断开B的右子树，将C接到B的右边，然后把右子树接到C的左边</p>
+</blockquote>
+<p>同理，左旋和右旋基本是对称的操作</p>
+    </div>
+  </div>
+</article> 
+  </div>
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+
+<div id="footer"></div>
+ 
+</body>
