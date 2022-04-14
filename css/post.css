@@ -98,8 +98,8 @@ aside .anchor-item a,
 #postBody p a,
 #postBody li a {
   text-decoration: none;
-  background: rgba(106,82,85,0.84);
-  color: #cad965;
+  background: rgba(72,68,59,0.529);
+  color: var(--main-color);
   padding: 3px;
   margin: 2px;
   border-radius: 5px;
@@ -109,5 +109,6 @@ aside .anchor-item a,
 #postBody p a:hover,
 #postBody li a:hover {
   opacity: 1;
+  text-decoration: underline;
   transition: opacity 0.5s;
 }

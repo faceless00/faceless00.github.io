@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#%E7%BD%91%E7%BB%9C%E5%8C%BF%E5%90%8D%E6%8C%87%E5%8D%97"><span class="anchor-number">1.</span> <span class="anchor-text">网络匿名指南</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Contents"><span class="anchor-number">2.</span> <span class="anchor-text">Contents</span></a></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#%E7%BD%91%E7%BB%9C%E5%8C%BF%E5%90%8D%E6%8C%87%E5%8D%97"><span class="anchor-number">1.</span> <span class="anchor-text">网络匿名指南</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#%E7%9B%AE%E5%BD%95"><span class="anchor-number">2.</span> <span class="anchor-text">目录</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Pre-requisites-and-limitations"><span class="anchor-number">3.</span> <span class="anchor-text">Pre-requisites and limitations</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Pre-requisites"><span class="anchor-number">3.1.</span> <span class="anchor-text">Pre-requisites</span></a></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Limitations"><span class="anchor-number">3.2.</span> <span class="anchor-text">Limitations</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Introduction"><span class="anchor-number">4.</span> <span class="anchor-text">Introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some"><span class="anchor-number">5.</span> <span class="anchor-text">Understanding some basics of how some information can lead back to you and how to mitigate some</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Your-Network"><span class="anchor-number">5.1.</span> <span class="anchor-text">Your Network</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Your-IP-address"><span class="anchor-number">5.1.1.</span> <span class="anchor-text">Your IP address</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Your-DNS-and-IP-requests"><span class="anchor-number">5.1.2.</span> <span class="anchor-text">Your DNS and IP requests</span></a></li></ol></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Appendix-B3-Threat-modeling-resources"><span class="anchor-number">6.</span> <span class="anchor-text">Appendix B3: Threat modeling resources</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#References"><span class="anchor-number">7.</span> <span class="anchor-text">References</span></a></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -60,7 +60,7 @@
     <div id="postBody">
       <p>Welcome.</p>
 <p>本指南旨在提供对多种在线追踪技术，在线身份验证技术的介绍，以及创建并维护网络匿名身份的详细指导.</p>
-<p>是为活动家，记者，科学家，律师，泄密者以及在任何地方都受到压迫，审查，骚扰的好人而写.</p>
+<p>是为活动家，记者，科学家，律师，举报者以及在任何地方都受到压迫，审查，骚扰的好人而写.</p>
 <p>本指南是一个开源的非营利性计划，根据 <strong>Creative Commons Attribution-NonCommercial 4.0 International</strong>(<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">cc-by-nc-4.0</a>)，<strong>不受任何商业&#x2F;政府机构赞助&#x2F;认可</strong>.这意味着你可以免费将本指南用于<strong>除了商业用途</strong>外的任何目的.</p>
 <p>如果你想要捐助此项目，点击此<a target="_blank" rel="noopener" href="https://anonymousplanet-ng.org/donations.html">链接</a>，该页面还包含此项目的目标.所有的捐款将在本项目的范围内严格使用.所有的捐赠和支出被记录在捐款页面上.</p>
 <h1 id="网络匿名指南"><a href="#网络匿名指南" class="headerlink" title="网络匿名指南"></a>网络匿名指南</h1><p>(或者”关于我如何开始担心并且爱上 <del>隐私</del> 匿名”)</p>
@@ -85,51 +85,179 @@
 </ol>
 <p>阅读本指南时访问各种外部链接的注意事项:</p>
 <ol>
-<li>旁边有一个<code>Archive.org</code>链接的 <strong>文档&#x2F;文件</strong>，用于通过<code>Archive.org</code>访问内容，以增加隐私和防止内容丢失.一些在<code>archive.org</code>上的链接尚未存档或已经过期，在这种情况下，我建议你在可能的情况下请求新的保存</li>
-<li><code>YouTube视频</code>旁边有一个 <code>Invidious</code> 链接，用于通过一个 invidious 实例获取内容(本例中是托管在荷兰的<a target="_blank" rel="noopener" href="https://yewtu.be/">yewtu.be</a>)，以增强隐私.建议尽可能使用这些链接.查看<a target="_blank" rel="noopener" href="https://github.com/iv-org/invidious">gayhub</a>或<a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/iv-org/invidious">archive.org</a>以获取更多信息</li>
-<li><code>Twitter</code>链接旁边有一个<code>[Nitter]</code>链接，通过 Nitter 实例获取内容(本例中是<a target="_blank" rel="noopener" href="https://nitter.net/">nitter.net</a>)以增强隐私.建议尽可能使用这些链接.查看<a target="_blank" rel="noopener" href="https://github.com/zedeus/nitter">gayhub</a>或<a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/zedeus/nitter">archive.org</a>以获取更多信息</li>
-<li><code>wikipedia</code>链接旁边有一个<code>[wikiless]</code>链接，通过 wikiless 实例(本例中是 <a href="Wikiless.org">Wikiless.org</a>)访问内容，以增强隐私.建议尽可能的使用这些链接.查看<a target="_blank" rel="noopener" href="https://codeberg.org/orenom/wikiless">wikiless</a> <a target="_blank" rel="noopener" href="https://web.archive.org/web/https://codeberg.org/orenom/wikiless">archive.org</a>以获取更多信息</li>
-<li><code>Medium</code>链接旁边有一个<code>[Scribe.rip]</code>链接，通过 Scribe.rip 实例访问内容，以增强隐私.建议尽可能的使用这些链接.查看<a target="_blank" rel="noopener" href="https://scribe.rip/">scribe.rip</a> <a target="_blank" rel="noopener" href="https://web.archive.org/web/https://scribe.rip/">archive.org</a>以获取更多信息</li>
+<li>旁边有一个<code>[Archive.org]</code>链接的 <strong>文档&#x2F;文件</strong>，用于通过<code>Archive.org</code>访问内容，以增加隐私和防止内容丢失.一些在<code>archive.org</code>上的链接尚未存档或已经过期，在这种情况下，我建议你在可能的情况下请求新的保存</li>
+<li><code>YouTube视频</code>旁边有一个 <code>Invidious</code> 链接，用于通过一个 invidious 实例获取内容(本例中是托管在荷兰的<a target="_blank" rel="noopener" href="https://yewtu.be/">yewtu.be</a>)，以增强隐私.建议尽可能使用这些链接.查看<a target="_blank" rel="noopener" href="https://github.com/iv-org/invidious">gayhub</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/iv-org/invidious">[Archive.org]</a></sup>以获取更多信息</li>
+<li><code>Twitter</code>链接旁边有一个<code>[Nitter]</code>链接，通过 Nitter 实例获取内容(本例中是<a target="_blank" rel="noopener" href="https://nitter.net/">nitter.net</a>)以增强隐私.建议尽可能使用这些链接.查看<a target="_blank" rel="noopener" href="https://github.com/zedeus/nitter">gayhub</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/zedeus/nitter">[Archive.org]</a></sup>以获取更多信息</li>
+<li><code>wikipedia</code>链接旁边有一个<code>[wikiless]</code>链接，通过 wikiless 实例(本例中是 <a href="Wikiless.org">Wikiless.org</a>)访问内容，以增强隐私.建议尽可能的使用这些链接.查看<a target="_blank" rel="noopener" href="https://codeberg.org/orenom/wikiless">wikiless</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://codeberg.org/orenom/wikiless">[Archive.org]</a></sup>以获取更多信息</li>
+<li><code>Medium</code>链接旁边有一个<code>[Scribe.rip]</code>链接，通过 Scribe.rip 实例访问内容，以增强隐私.建议尽可能的使用这些链接.查看<a target="_blank" rel="noopener" href="https://scribe.rip/">scribe.rip</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://scribe.rip/">[archive.org]</a></sup>以获取更多信息</li>
 <li>如果你以PDF或ODT的格式阅读本指南，你会注意到大量 <strong>&#96;&#96;&#96;</strong> 代替双引号 <strong>“”</strong>.这些三引号用来将内容转换成 markdown&#x2F;html 格式的代码块</li>
 </ol>
-<p>如果你不想麻烦并且使用下列浏览器之一，只需要下载扩展:<a target="_blank" rel="noopener" href="https://github.com/SimonBrazell/privacy-redirect">privacy-redirect</a></p>
+<p>如果你不想麻烦并且使用下列浏览器之一，只需要下载扩展:<a target="_blank" rel="noopener" href="https://github.com/SimonBrazell/privacy-redirect">privacy-redirect</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/SimonBrazell/privacy-redirect">[archive.org]</a></sup></p>
 <ol>
 <li>Firefox:<a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/privacy-redirect">https://addons.mozilla.org/en-US/firefox/addon/privacy-redirect</a></li>
-<li>基于Chromium的浏览器(Chrome,Brave,Edge):<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/privacy-redirect/pmcmeagblkinmogikoikkdjiligflglb">privacy-redirect</a></li>
+<li>基于Chromium的浏览器(Chrome,Brave,Edge):<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/privacy-redirect/pmcmeagblkinmogikoikkdjiligflglb">privacy-redirect</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/SimonBrazell/privacy-redirect">[archive.org]</a></sup></li>
 </ol>
-<p><strong>如果你因为付费的原因难以获取本指南引用的任意一篇学术文章，请随意使用<code>Sci-Hub</code>(<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sci-Hub">wiki</a> <a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Sci-Hub">wikiless</a> <a target="_blank" rel="noopener" href="https://web.archive.org/web/https://en.wikipedia.org/wiki/Sci-Hub">archive.org</a>)或者<code>LibGen</code>(<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Library_Genesis">https://en.wikipedia.org/wiki/Library_Genesis</a> <a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Library_Genesis">wikiless</a>)寻找并阅读它们.因为科学应该是免费的.此外，如果你遇到了资源付费的问题，考虑使用<a target="_blank" rel="noopener" href="https://12ft.io/">12ft.io</a>.</strong></p>
+<p><strong>如果你因为付费的原因难以获取本指南引用的任意一篇学术文章，请随意使用<code>Sci-Hub</code>(<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sci-Hub">wiki</a><sup><a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Sci-Hub">[wikiless]</a></sup><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://en.wikipedia.org/wiki/Sci-Hub">[archive.org]</a></sup>)或者<code>LibGen</code>(<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Library_Genesis">https://en.wikipedia.org/wiki/Library_Genesis</a> <sup><a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Library_Genesis">[wikiless]</a></sup>)寻找并阅读它们.因为科学应该是免费的.此外，如果你遇到了资源付费的问题，考虑使用<a target="_blank" rel="noopener" href="https://12ft.io/">https://12ft.io</a>.</strong></p>
 <p>最后请注意本指南确实提及甚至推荐各类商业服务(比如 VPNs,CNDs,e-mail providers,hosting providers…)，<strong>但是没有被其中的任何人以任何方式认可或赞助，没有任意服务提供者的推荐链接，也没有商业联系.本项目 100% 无利润并且只依靠捐款.</strong></p>
-<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><ul>
-<li><a href="#Pre-requisites-and-limitations">Pre-requisites and limitations:</a><ul>
-<li><a href="#Pre-requisites">Pre-requisites</a></li>
-<li><a href="#Limitations">Limitations</a></li>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#Pre-requisites-and-limitations">前提条件以及限制</a><ul>
+<li><a href="#Pre-requisites">前提条件</a></li>
+<li><a href="#Limitations">限制</a></li>
 </ul>
 </li>
-<li><a href="#Introduction">Introduction</a></li>
-<li><a href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some">Understanding some basics of how some information can lead back to you and how ti mitigate some:</a><ul>
-<li><a href="#Your-Network">Your Network</a><ul>
-<li><a href="#Your-IP-address">Your IP address</a></li>
-<li><a href="#Your-DNS-and-IP-requests">Your DNS and IP requests</a></li>
-<li><a href="#Your-RFID-enabled-devices">Your RFID enabled devices</a></li>
-<li><a href="#The-Wi-Fi-and-Bluetooth-devices-around-you">The Wi-Fi and Bluetooh devices around you</a></li>
-<li><a href="#Malicious-x2F-Rogue-Wi-Fi-Access-Points">Malicious&#x2F;Rogue Wi-Fi Access Points</a></li>
-<li><a href="#Your-Anonymized-Tor-x2F-VPN-traffic">Your Anonymized Tor&#x2F;VPN traffic</a></li>
-<li><a href="#Some-Devices-can-be-tracked-even-when-offline">Some Devices can be tracked even when offline</a></li>
+<li><a href="#Introduction">介绍</a></li>
+<li><a href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some">了解一些基础知识:信息如何能导向你，以及如何缓解这种情况</a><ul>
+<li><a href="#Your-Network">网络</a><ul>
+<li><a href="#Your-IP-address">IP地址</a></li>
+<li><a href="#Your-DNS-and-IP-requests">DNS和IP请求</a></li>
+<li><a href="#Your-RFID-enabled-devices">允许RFID的设备</a></li>
+<li><a href="#The-Wi-Fi-and-Bluetooth-devices-around-you">身边的Wi-Fi和蓝牙设备</a></li>
+<li><a href="#Malicious-x2F-Rogue-Wi-Fi-Access-Points">恶意的&#x2F;钓鱼 Wi-Fi</a></li>
+<li><a href="#Your-Anonymized-Tor-x2F-VPN-traffic">匿名的Tor&#x2F;VPN流量</a></li>
+<li><a href="#Some-Devices-can-be-tracked-even-when-offline">一些设备甚至在离线时也能被追踪</a></li>
 </ul>
 </li>
-<li><a href="#Your-Hardware-Identifiers">Your Hardware Identifiers:</a><ul>
-<li><a href="#Your-IMEI-and-IMSI-and-by-extension-your-phone-number">Your IMEI and IMSI (and by extension,your phone number)</a></li>
-<li><a href="#Your-Wi-Fi-or-Enternet-MAC-address">Your Wi-Fi or Enternet MAC address</a></li>
-<li><a href="#Your-Bluetooth-MAC-address">Your Bluetooth MAC address</a></li>
+<li><a href="#Your-Hardware-Identifiers">你的硬件身份标识</a><ul>
+<li><a href="#Your-IMEI-and-IMSI-and-by-extension-your-phone-number">IMEI&amp;IMSI(以及手机号码)</a></li>
+<li><a href="#Your-Wi-Fi-or-Enternet-MAC-address">Wi-Fi或以太网的MAC地址</a></li>
+<li><a href="#Your-Bluetooth-MAC-address">蓝牙的MAC地址</a></li>
 </ul>
 </li>
-<li><a href="#Your-CPU">Your CPU</a></li>
-<li><a href="#Your-Operating-Systems-and-Apps-telemetry-services">Your Operating Systems and Apps telemetry services</a></li>
-<li><a href="#Your-Smart-devices-in-general">Your Smart devices in general</a></li>
-<li><a href="#Yourself">Yourself:</a></li>
+<li><a href="#Your-CPU">CPU</a></li>
+<li><a href="#Your-Operating-Systems-and-Apps-telemetry-services">操作系统和应用遥测服务</a></li>
+<li><a href="#Your-Smart-devices-in-general">一般意义上的智能设备</a></li>
+<li><a href="#Yourself">你自己</a></li>
+<li>暂时先写这么多</li>
 </ul>
 </li>
 </ul>
+<h1 id="Pre-requisites-and-limitations"><a href="#Pre-requisites-and-limitations" class="headerlink" title="Pre-requisites and limitations"></a>Pre-requisites and limitations</h1><h2 id="Pre-requisites"><a href="#Pre-requisites" class="headerlink" title="Pre-requisites"></a>Pre-requisites</h2><ul>
+<li>会英语(这里是中文)</li>
+<li>成为德国的永久居民，德国法院已支持在网络平台上不使用真实姓名的合法性(§13 VI of the German Telemedia Act of 2007 <sup><a href="#fn:1">1</a></sup> <sup><a href="#fn:2">2</a></sup>).<strong>或者，成为任意其他国家的居民，在那里你可以自己确认并验证本篇指南的合法性.</strong></li>
+<li>本指南会假定你已经可以使用一些个人(理想情况下不是一个 工作&#x2F;共享 的设备)电脑(Windows&#x2F;Linux&#x2F;macOS)并且大致了解它如何工作.</li>
+<li>耐心，因为这个过程可能花费几周时间才能完成，如果你想要阅读完所有内容.</li>
+<li>你有一些空闲时间来专注于这个过程(或者很多时间，取决于你选择的路线).</li>
+<li>做好阅读很多参考的准备(一定要阅读它们)，指南(不要跳过它们)，以及完全遵循许多 how-to 指南(也不要跳过它们).</li>
+<li>不要干坏事(这次是真的)<sup><a href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h2><p>本指南不是为了:</p>
+<ul>
+<li>创建任意形式的机器账户(机器人).</li>
+<li>创建冒名顶替别人的帐号(例如身份盗用)</li>
+<li>帮助恶意行为者进行不道德，犯罪或非法活动(比如网络钓鱼，追踪，反侦察，信息混淆，骚扰，霸凌…)</li>
+<li>被未成年人使用(译者注：年满十八岁者，请在家长陪同下观看🏩)</li>
+</ul>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><strong>TLDR:”一场奇怪的游戏.唯一的胜利方法就是不玩.”</strong></p>
+<p>用假名或艺术作品&#x2F;商标名创建一个社交帐号很容易.在大多数情况下，足够保护你的身份作为下一个George Orwell.有很多人在 Facebook&#x2F;Instagram&#x2F;Twitter&#x2F;Linkedln&#x2F;TikTok&#x2F;Snapchat&#x2F;Reddit…上使用假名.但是其中的大多数都不是匿名的，可以很容易的被当地警察机构，OSINT<sup><a href="fn:5">5</a></sup>(Open-Source Inteligence)社区的人以及 4chan<sup><a hfre="fn:7">7</a></sup> 的trolls<sup><a href="fn:6">6</a></sup>(钓鱼，引战一类的贴子)追踪到真实身份.</p>
+<p>这是件好事，因为大多数罪犯&#x2F;引战者都不精通技术，所以通常很容易被识别.但同时这也是一件糟糕的事情，因为大多数政治立场不同的人，人权活动者以及举报者同样很容易被追踪.</p>
+<p>本指南旨在提供对诸多反匿名技术，追踪技术，身份识别技术的介绍，以及可选的对于创建和维护 <strong>合理且真正的</strong> 网络匿名身份(包括安全的社交媒体帐号)的指导.这包括主流平台，而不仅仅只是那些隐私友好型平台.</p>
+<p>重要的是理解本指南的目的是匿名，而不仅仅是隐私，即使对匿名不感兴趣，你在这里找到的大部分指南也会帮助你增强隐私和安全性.用于隐私，安全，匿名的工具和技术有很多重叠，但在一些点上它们有所区别:</p>
+<ul>
+<li><strong>隐私是关于人们知道你是谁但是不知道你在干什么.</strong></li>
+<li><strong>匿名是关于人们知道你在干什么，但是不知道你是谁<sup><a href="ft:8">8</a></sup>.</strong></li>
+</ul>
+<p><img src="https://anonymousplanet-ng.org/media/image1.jpeg" alt="img"></p>
+<p>(插图来源 <sup><a href="ft:9">9</a></sup>)</p>
+<p>如果NSA,the FSB,Mark Zuckberberg,或者the Mossad决定找到你，这篇指南会使你幸免吗？很可能不会…Mossad将会做”Mossad things”<sup><a href="ft:10">10</a></sup>并且无论你多努力躲藏都可能会找到你 <sup><a href="ft:11">11</a></sup>.</p>
+<p>你必须在更进一步之前考虑你的风险模型 <sup><a href="ft:12">12</a></sup>.</p>
+<p><img src="https://anonymousplanet-ng.org/media/image2.jpeg" alt="img"></p>
+<p>(Illustration by Randall Munroe, xkcd.com, licensed under CC BY-NC 2.5)</p>
+<p>这篇指南会保护你的隐私不被OSINT机构比如Belingcat<sup><a href="ft:13">13</a></sup>,4chan的人肉搜索<sup><a href="ft:14">14</a></sup>以及其他无法访问NSA工具箱的人窃取吗？很可能，尽管对于4chan我不是很确定.</p>
+<p>本指南基础的简化威胁模型：</p>
+<p><img src="https://anonymousplanet-ng.org/media/image3.jpeg" alt="img"></p>
+<p>(Note that the “magical amulets&#x2F;submarine&#x2F;fake your own death” jokes are  quoted from the excellent article “This World of Ours” by James Mickens, 2014above<sup><a href="ft:10">10</a></sup>)</p>
+<p>免责生命：除了笑话(以及魔法护符…).当然，也有高深的方法来减轻来自技术先进且熟练的对手的攻击，但那些不在本指南讨论范围内.理解这篇指南的威胁模型的局限性非常重要.因此，本指南不会加倍篇幅以描述高深的缓解措施，因为这非常复杂并且需要极高的知识和能力水平，而这些能力不是这篇指南的受众可能具备的.</p>
+<p>EFF提供了一些你需要根据你的活动考虑的安全场景.然而其中的一些提示可能不在这篇指南的范围内(更与隐私而不是匿名相关)，不过仍值得当作例子一读.请看 <a target="_blank" rel="noopener" href="https://ssd.eff.org/en/module-categories/security-scenarios">https://ssd.eff.org/en/module-categories/security-scenarios</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://ssd.eff.org/en/module-categories/security-scenarios">[archive.org]</a></sup>.</p>
+<p>如果你想更深入了解威胁模型，请看<a href="#Appendix-B3-Threat-modeling-resources">Appendix B3: Threat modeling resources</a></p>
+<p>你可能认为本指南没有合法用途，不过其实有很多<sup><a href="ft:16">16</a></sup> <sup><a href="ft:17">17</a></sup> <sup><a href="ft:17">17</a></sup> <sup><a href="ft:18">18</a></sup> <sup><a href="ft:19">19</a></sup> <sup><a href="ft:20">20</a></sup> <sup><a href="ft:21">21</a></sup> <sup><a href="ft:22">22</a></sup>，比如:</p>
+<ul>
+<li>逃避网络审查 <sup><a href="ft:23">23</a></sup></li>
+<li>规避网络迫害</li>
+<li>规避网络跟踪，人肉以及骚扰</li>
+<li>规避政府非法网络监视</li>
+<li>网络匿名举报</li>
+<li>网络匿名行动</li>
+<li>网络匿名新闻</li>
+<li>网络匿名合法行动</li>
+<li>网络匿名学术活动(例如获得被封锁的科研资料).请参阅下面的注释.</li>
+<li>…</li>
+</ul>
+<p>本指南是为那些 <strong>目的正当的个体</strong> 而写，他们可能没有足够的知识考虑网络匿名和隐私这样复杂的事物.</p>
+<p>最后，使用本指南的风险自负.这里的任何事都不是合法建议，在使用前你应该验证是否符合当地法律(IANAL <sup><a href="ft:24">24</a></sup>).你自己要”信任但是验证”所有信息(更好的是，”从不信任，永远验证”).我强烈建议你提醒自己，并且如有疑问，不要犹豫用外部资源检查这篇指南的任何信息.请一定要向我报告你发现的任何错误，因为我乐意接受批评.即使严厉但是合理的批评也乐意接受，并会导致做出尽可能快的必要纠正.</p>
+<h1 id="Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some"><a href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some" class="headerlink" title="Understanding some basics of how some information can lead back to you and how to mitigate some"></a>Understanding some basics of how some information can lead back to you and how to mitigate some</h1><p>除了浏览器cookies和广告外，有很多方法追踪到你，你的邮箱以及你的电话号码.并且如果你认为只有Mossad 或 NSA&#x2F;FSB可以找到你，你想多了.</p>
+<p>首先，你可以考虑用这些关于隐私和安全的资源学习更多基础</p>
+<ul>
+<li><strong>The New Oil</strong>:<a target="_blank" rel="noopener" href="https://theneoil.org/">https://theneoil.org</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://thenewoil.org/">[archive.org]</a></sup></li>
+<li><strong>Techlore videos</strong>:<a target="_blank" rel="noopener" href="https://www.youtube.com/c/Techlore">https://www.youtube.com/c/Techlore</a> <sup><a target="_blank" rel="noopener" href="https://yewtu.be/c/Techlore">[invidious]</a></sup></li>
+<li>Privacy Guides:<a target="_blank" rel="noopener" href="https://privacyguides.org/">https://privacyguides.org/</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://privacyguides.org/">[archive.org]</a></sup></li>
+<li><strong>Privacy Tools</strong>:<a target="_blank" rel="noopener" href="https://privacytools.io/">https://privacytools.io/</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://privacytools.io/">[archive.org]</a></sup></li>
+<li>注意这些网站可能包含 子公司&#x2F;赞助 内容以及商品推销.本指南不拥护且不被任何商业实体以任何方式赞助.</li>
+</ul>
+<p>如果你跳过这些，你真的应该考虑看Techlore Go Incognito项目(<a target="_blank" rel="noopener" href="https://github.com/techlore-official/go-incognito">https://github.com/techlore-official/go-incognito</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://github.com/techlore-official/go-incognito">[archive.org]</a></sup>)的youtube视频系列作为入门介绍，在你更进一步之前:<a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL3KeV6Ui_4CayDGHw64OFXEPHgXLkrtJO">https://www.youtube.com/playlist?list=PL3KeV6Ui_4CayDGHw64OFXEPHgXLkrtJO</a> <sup><a target="_blank" rel="noopener" href="https://yewtu.be/playlist?list=PL3KeV6Ui_4CayDGHw64OFXEPHgXLkrtJO">[invidious]</a></sup>.本指南会包含这个播放列表中的视频的许多话题，以更多细节和参考，以及一些额外的不被这个系列包含的主题.看完它们只会花你2-3个小时.</p>
+<p><strong>蒽，这里有一份不那么枯燥的列表，一些关于你可能被追踪以及被反匿名的途径：</strong></p>
+<h2 id="Your-Network"><a href="#Your-Network" class="headerlink" title="Your Network"></a>Your Network</h2><h3 id="Your-IP-address"><a href="#Your-IP-address" class="headerlink" title="Your IP address"></a>Your IP address</h3><p><strong>免责声明：整篇段落是关于你的公网IP而不是你的局域网IP.</strong></p>
+<blockquote>
+<p>注：局域网IP,通常是由DHCP协议动态分配的IP,每次开机一般都不同.</p>
+</blockquote>
+<p>IP<sup><a href="#ft:27">27</a></sup>地址是最为熟知且明显的追踪你的方法.这里的IP是源IP，用以连接互联网.这个IP通常由ISP(互联网服务提供者)(XsDL,手机,网线，咖啡馆，就把，朋友或者你的邻居).大多数国家都有数据保留政策<sup><a href="ft:28">28</a></sup>，要求将某人在某个时间&#x2F;日期使用什么IP的日记保存长达数年甚至无限期.你的ISP可以告诉第三方机构你在具体的时间使用的具体的时间，尽管距离那时好几年.如果IP(原始IP)在任何时候以任何原因泄露，就可以直接用来追查你.在许多国家，如果你不提供某种形式的身份识别(地址，身份证，真实姓名，邮箱…)给提供商将不能访问互联网.(对于译者所处的国家，我甚至不知道哪些信息被顺便提供了…)</p>
+<p>不用多说，大多数平台(比如社交平台)还会保存(有时甚至是无限期)你注册和登陆他们服务时的IP地址.</p>
+<p>这里有一些网络资源，你可以立即用来查找关于你目前的 <strong>公网IP</strong> 的一些信息:</p>
+<ul>
+<li>查询IP:<ul>
+<li><a target="_blank" rel="noopener" href="https://resolve.rs/">https://resolve.rs/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dnsleaktest.com/">https://www.dnsleaktest.com/</a>(奖励，检查你的IP有没有DNS泄露)</li>
+</ul>
+</li>
+<li>找到你IP对应的地址或者任何IP对应的地址:<ul>
+<li><a target="_blank" rel="noopener" href="https://resolve.rs/ip/geolocation.html">https://resolve.rs/ip/geolocation.html</a></li>
+</ul>
+</li>
+<li>查询一个IP是否”可以”(在黑名单里)或者在公共资源里下载了一些”东西”:<ul>
+<li><a target="_blank" rel="noopener" href="https://mxtoolbox.com/blacklists.aspx">https://mxtoolbox.com/blacklists.aspx</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/search">https://www.virustotal.com/gui/home/search</a></li>
+<li><a target="_blank" rel="noopener" href="https://iknowwhatyoudownload.com/">https://iknowwhatyoudownload.com/</a> (对这个持保留态度，它可能不会展示任何有意思的事情并且数据源有限.这更像是娱乐而不是严肃的事情.)</li>
+</ul>
+</li>
+<li>一个IP的注册信息 (很可能是你的ISP的信息，ISP很可能知道该IP在任意时间被谁在使用)<ul>
+<li><a target="_blank" rel="noopener" href="https://whois.domaintools.com/">https://whois.domaintools.com/</a></li>
+</ul>
+</li>
+<li>检查一个IP的公开服务或者公开设备(尤其是泄露的智能设备):<ul>
+<li><a target="_blank" rel="noopener" href="https://www.shodan.io/host/185.220.101.134">https://www.shodan.io/host/185.220.101.134</a> (把IP换成别的IP,示例的IP是Tor的退出码)</li>
+</ul>
+</li>
+<li>许多检查你IP的工具,比如黑名单检测器之类的:<ul>
+<li><a target="_blank" rel="noopener" href="https://browserleaks.com/ip">https://browserleaks.com/ip</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.whatismyip.com/">https://www.whatismyip.com/</a></li>
+</ul>
+</li>
+<li>你想知道自己是否通过Tor连接吗？<ul>
+<li><a target="_blank" rel="noopener" href="https://check.torproject.org/">https://check.torproject.org/</a></li>
+</ul>
+</li>
+</ul>
+<p>因为某些原因，我们需要混淆并隐藏原始IP(与身份证关联的那个)或者通过多种方式组合来尽可能隐藏它：</p>
+<ul>
+<li>使用公共Wi-Fi服务(免费).</li>
+<li>使用Tor匿名网络<sup><a href="ft:29">29</a></sup> (免费).</li>
+<li>匿名地使用VPN<sup><a href="ft:30">30</a></sup> (匿名使用现金或者Monero)</li>
+</ul>
+<p>请注意，不幸的是，这些方案并不完美，还会导致一些性能问题<sup><a href="ft:31">31</a></sup>.</p>
+<p>本指南会在之后解释这些.</p>
+<h3 id="Your-DNS-and-IP-requests"><a href="#Your-DNS-and-IP-requests" class="headerlink" title="Your DNS and IP requests"></a>Your DNS and IP requests</h3><p>DNS的意思是”域名服务系统”<sup><a href="ft:32">32</a></sup>，还是浏览器(或者其他软件)用来查找某个服务的ip地址的协议.它是个庞大的”联系列表”(对老人来说是电话簿)，工作类似查询一个姓名然后它返回电话号码，不过DNS返回的是IP地址.</p>
+<p>浏览器每次想要获取某些服务比如通过<a href="http://www.google.com访问Google，你的浏览器(Chrome,Firefox,或者幽默一点，360安全浏览器，2345浏览器？)将会请求一次DNS服务以获取Google网络服务的IP地址">www.google.com访问Google，你的浏览器(Chrome,Firefox,或者幽默一点，360安全浏览器，2345浏览器？)将会请求一次DNS服务以获取Google网络服务的IP地址</a>.</p>
+<p>这个视频从视觉上解释了DNS，假如你已经晕了：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=vrxwXXytEuI">https://www.youtube.com/watch?v=vrxwXXytEuI</a><sup><a target="_blank" rel="noopener" href="https://yewtu.be/watch?v=vrxwXXytEuI">[invidious]</a></sup></p>
+<p>通常，DNS服务由你的ISP提供，并且由你连接的网络自动配置.DNS服务也可能被用于数据保留政策或者出于某些原因而保留记录(例如为了投放广告而收集数据).因此，ISP有能力通过检查那些记录知道你在网络上做的任何事，这些记录反过来又可以被提供给你的敌人.更方便的是，对于你的敌人来说，DNS锁定<sup><a href="ft:33">33</a></sup>也是执行审查或者家长控制最简单的方式.对于某些网站(例如重定向 thepiratebay.org(盗版资源网站)到一些政府网站)，ISP提供的DNS服务器将会给你一个不同的IP地址(而不是本来的IP).对于某些网站的锁定被全世界广泛使用<sup><a href="ft:34">34</a></sup>.</p>
+<p>使用私人DNS服务或者你自己的DNS服务可以缓解这些问题，但另一个问题是大多数这样的DNS请求默认仍用明文(未加密)传输.即使你在隐私窗口浏览<code>PornHub</code>，用HTTPS和私人DNS服务，浏览器仍有极高几率给一些DNS服务器发送未加密的明文DNS请求，询问<code>pornhub.com的IP地址是什么捏？</code>.</p>
+<p>因为请求未加密，ISP或者敌人仍可以监听(使用中间人攻击<sup><a href="ft:35">35</a></sup>)你的请求，知道并且很可能记录你正在查询的IP.即使使用私人DNS，ISP仍能篡改DNS响应.这使得用私人DNS服务毫无意义.</p>
+<p>作为奖励，许多设备和应用使用硬编码的DNS服务器来绕过你可以设置的任何系统设置(也就是说，你设置了DNS，但等于没设置).举个例子，多数(70%)智能电视和大部分(46%)游戏终端都是这样.对于这些设备来说，你可能不得不强迫它们<sup><a href="ft:37">37</a></sup>停止使用硬编码DNS服务，而这可能会让它们运行错误.</p>
+<h1 id="Appendix-B3-Threat-modeling-resources"><a href="#Appendix-B3-Threat-modeling-resources" class="headerlink" title="Appendix B3: Threat modeling resources"></a>Appendix B3: Threat modeling resources</h1><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><p id="fn:1">德国电信媒体法的英语翻译版本 <a target="_blank" rel="noopener" href="https://www.huntonprivacyblog.com/wp-content/uploads/sites/28/2016/02/Telemedia_Act__TMA_.pdf">https://www.huntonprivacyblog.com/wp-content/uploads/sites/28/2016/02/Telemedia_Act__TMA_.pdf</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://www.huntonprivacyblog.com/wp-content/uploads/sites/28/2016/02/Telemedia_Act__TMA_.pdf">Archive.org</a></sup>.Section 13,Article 6,"The service provider must enable the use of Telemedia and payment for them to occur anonymously or via a pseudonym where this is technically possible and reasonable. The recipient of the service is to be informed about this possibility."</p>
+</li>
+<li><p id="fn:2">维基百科，德国的实名系统 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Real-name_system#Germany">wiki</a><sup><a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Real-name_system">[wikiless]</a></sup><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://en.wikipedia.org/wiki/Real-name_system">[archive.org]</a></sup></p>
+</li>
+<li><p id="fn:3">维基百科：不要做一个恶棍 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_be_evil">wiki</a><sup><a target="_blank" rel="noopener" href="https://wikiless.org/wiki/Don%27t_be_evil">[wikiless]</a></sup><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://en.wikipedia.org/wiki/Don%27t_be_evil">[archive.org]</a></sup></p></li>
+</ol>
     </div>
   </div>
 </article> 
