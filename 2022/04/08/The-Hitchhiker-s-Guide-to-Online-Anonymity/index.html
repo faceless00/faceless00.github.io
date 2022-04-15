@@ -270,7 +270,10 @@
 <li>…</li>
 </ul>
 <p>一些国家，比如俄罗斯<sup><a href="#ft:47">47</a></sup>和中国<sup><a href="#ft:48">48</a></sup>可能(尽管文章没有验证)在网络层锁定ECH&#x2F;eSNI握手，以监管和阻止网络审查被绕过.这意味着如果你不允许他们看到你在干什么，就不能和服务建立HTTPS连接.</p>
-<p>问题不止于此.HTTPS的TLS验证中有一部分叫做OCSP<sup><a href="#ft:49">49</a></sup>，基于Firefox的浏览器使用该协议会以你访问的网站证书的串行数字的形式泄露元数据.然后你的对手就可以轻松找到你正在访问的网站，通过匹配证书数字<sup><a href="#ft:50">50</a></sup>.这个问题可以通过使用OCSP stapling<sup><a href="#ft:51">51</a></sup>缓解.不幸的是，尽管Firefox&#x2F;Tor浏览器默认启用该设置，不过没有强制，而且还需要你所访问的网站支持才行，显然不是所有网站都支持.另外，基于Chromium的浏览器使用CRLSets<sup><a href="#ft:51">51</a></sup><sup><a href="#ft:52">52</a></sup>，这是一套不同的系统，可以说更好一点.</p>
+<p>问题不止于此.HTTPS的TLS验证中有一部分叫做OCSP<sup><a href="#ft:49">49</a></sup>，基于Firefox的浏览器使用该协议会以你访问的网站证书的串行数字的形式泄露元数据.然后你的对手就可以轻松找到你正在访问的网站，通过匹配证书数字<sup><a href="#ft:50">50</a></sup>.这个问题可以通过使用OCSP stapling<sup><a href="#ft:51">51</a></sup>缓解.不幸的是，尽管Firefox&#x2F;Tor浏览器默认启用该设置，不过没有强制，而且还需要你所访问的网站支持才行，显然不是所有网站都支持.另外，基于Chromium的浏览器使用CRLSets<sup><a href="#ft:52">52</a></sup> <sup><a href="#ft:53">53</a></sup>，这是一套不同的系统，可以说更好一点.</p>
+<p>这份列表展示了各种浏览器如何处理OCSP:<a target="_blank" rel="noopener" href="https://www.ssl.com/blogs/how-do-browsers-handle-revoked-ssl-tls-certificates/">https://www.ssl.com/blogs/how-do-browsers-handle-revoked-ssl-tls-certificates/</a> <sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://www.ssl.com/blogs/how-do-browsers-handle-revoked-ssl-tls-certificates/">[archive.org]</a></sup></p>
+<p>这是一张关于使用基于Firefox的浏览器可能遇到的问题的图：</p>
+<p><img src="https://anonymousplanet-ng.org/media/image5.jpeg" alt="img"></p>
 <h1 id="Appendix-B3-Threat-modeling-resources"><a href="#Appendix-B3-Threat-modeling-resources" class="headerlink" title="Appendix B3: Threat modeling resources"></a>Appendix B3: Threat modeling resources</h1><p>这里有些关于威胁模型的资源，如果你想深入了解的话.</p>
 <ul>
 <li>(我个人最喜欢的)LINDDUN <a target="_blank" rel="noopener" href="https://www.linddun.org/">https://www.linddun.org/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://www.linddun.org/">[archive.org]</a></sup></li>
