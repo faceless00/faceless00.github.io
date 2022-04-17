@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Introduction"><span class="anchor-number">1.</span> <span class="anchor-text">Introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#OSI-Model"><span class="anchor-number">2.</span> <span class="anchor-text">OSI Model</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#TCP"><span class="anchor-number">3.</span> <span class="anchor-text">TCP</span></a></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Introduction"><span class="anchor-number">1.</span> <span class="anchor-text">Introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#OSI-Model"><span class="anchor-number">2.</span> <span class="anchor-text">OSI Model</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#TCP"><span class="anchor-number">3.</span> <span class="anchor-text">TCP</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-Establishment"><span class="anchor-number">3.1.</span> <span class="anchor-text">Connect Establishment</span></a></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Data-Transfer"><span class="anchor-number">3.2.</span> <span class="anchor-text">Data Transfer</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Retransmission"><span class="anchor-number">3.2.1.</span> <span class="anchor-text">Retransmission</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Example"><span class="anchor-number">3.2.2.</span> <span class="anchor-text">Example</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#checksum"><span class="anchor-number">3.2.3.</span> <span class="anchor-text">checksum</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Sweetie"><span class="anchor-number">3.2.4.</span> <span class="anchor-text">Sweetie</span></a></li></ol></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-termination"><span class="anchor-number">3.3.</span> <span class="anchor-text">Connect termination</span></a></li></ol></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -58,14 +58,14 @@
          
     </div>
     <div id="postBody">
-      <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在我翻译文章的时候，总是遭到网络协议的粗暴的性对待，我想是时候了结了!</p>
-<h1 id="OSI-Model"><a href="#OSI-Model" class="headerlink" title="OSI Model"></a>OSI Model</h1><p>cloudflare这篇文章写的还行，<a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/">link</a></p>
+      <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在我翻译文章的时候,总是遭到网络协议的粗暴的性对待,我想是时候了结了!</p>
+<h1 id="OSI-Model"><a href="#OSI-Model" class="headerlink" title="OSI Model"></a>OSI Model</h1><p>cloudflare这篇文章写的还行,<a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/">link</a></p>
 <p><img src="https://www.cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg" alt="img"></p>
-<p>不过其实没必要分那么细，通常来说分为4层就够了：</p>
+<p>不过其实没必要分那么细,通常来说分为4层就够了：</p>
 <p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-16/c778b922229a4ab74029c487883dd4f5.png" alt="image-20220416200112258"></p>
-<p>自下而上的看，首先是<code>DATALINK Layer</code></p>
+<p>自下而上的看,首先是<code>DATALINK Layer</code></p>
 <blockquote>
-<p>简要来讲，作用有2：</p>
+<p>简要来讲,作用有2：</p>
 <ol>
 <li>数据传播的形式是电平,所以需要把高低电平转换为2进制数据</li>
 <li>规定数据的传输形式,数据的基本单位是帧(frame),以MAC地址区分不同的设备,有线传输的协议是以太网<code>Ethernet</code>,无线传输的协议是<code>Wi-Fi</code></li>
@@ -74,34 +74,225 @@
 </blockquote>
 <p><code>Network Layer</code>网络层:</p>
 <blockquote>
-<p>网络层主机的标识符为IP,至于为什么不用MAC地址，是因为MAC地址只是一个唯一的序列，但是IP地址是根据区域划分的</p>
-<p>IP地址的格式:<code>123.123.234.234</code>，4段，每段的范围 <code>0-255</code>，因为每段只能占一个字节</p>
+<p>网络层主机的标识符为IP,至于为什么不用MAC地址,是因为MAC地址只是一个唯一的序列,但是IP地址是根据区域划分的</p>
+<p>IP地址的格式:<code>123.123.234.234</code>,4段,每段的范围 <code>0-255</code>,因为每段只能占一个字节</p>
 <p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-16/12125dc6ef80cb229b0708ba29f622f2.png" alt="image-20220416203247277"></p>
-<p>一个IP地址分为这两部分,网络号用来标识主机位于的子网，主机号是局域网内设备的标识</p>
-<p>而数据传输，也叫路由，是将数据从一个区域传输到另一个区域，也就是从一个子网传输到另一个子网</p>
-<p>至于为什么要分两部分，举个相似的例子:身份证，身份证前6位是地区编号，网络号也起着相似的作用</p>
-<p>计算网络号的方式是 <code>IP &amp; netmask</code>，netmask是子网掩码</p>
+<p>一个IP地址分为这两部分,网络号用来标识主机位于的子网,主机号是局域网内设备的标识</p>
+<p>而数据传输,也叫路由,是将数据从一个区域传输到另一个区域,也就是从一个子网传输到另一个子网</p>
+<p>至于为什么要分两部分,举个相似的例子:身份证,身份证前6位是地区编号,网络号也起着相似的作用</p>
+<p>计算网络号的方式是 <code>IP &amp; netmask</code>,netmask是子网掩码</p>
 </blockquote>
 <p><code>transport layout</code> 传输层:</p>
 <blockquote>
-<p>网络层实现主机与主机之间的通信，但是一个主机可能运行不止一个进程，所以使用端口来区分不同进程的数据包</p>
-<p>比如说，你在运行一个QQ,QQ占用的端口是4000,那么地址为<code>192.168.111.1:4000</code>就是发送给QQ的数据包</p>
+<p>网络层实现主机与主机之间的通信,但是一个主机可能运行不止一个进程,所以使用端口来区分不同进程的数据包</p>
+<p>比如说,你在运行一个QQ,QQ占用的端口是4000,那么地址为<code>192.168.111.1:4000</code>就是发送给QQ的数据包</p>
 <p>传输层主要有两个协议,TCP&#x2F;UDP</p>
-<p>TCP用于可靠的传输数据，首先在传输方与接收方之间建立连接，把数据拆分为多个数据包，然后按顺序传输数据，如果过程有丢包还要重传</p>
-<p>UDP只发送数据包，不管数据包是否到达目的地，LOL用的就是UDP</p>
+<p>TCP用于可靠的传输数据,首先在传输方与接收方之间建立连接,把数据拆分为多个数据包,然后按顺序传输数据,如果过程有丢包还要重传</p>
+<p>UDP只发送数据包,不管数据包是否到达目的地,LOL用的就是UDP</p>
 </blockquote>
 <p><code>application layout</code> 应用层</p>
 <blockquote>
-<p>TCP&#x2F;IP协议簇已经实现了进程与进程之间的可靠通信，而应用层就是在这之上，规定一些具有特定结构的数据的传输协议</p>
-<p>对于传输层来说，数据就只是二进制流，但是在应用层，数据被协议赋予了特定的意义，比如说HTTP把数据分为<code>head &amp; body</code>，<code>head</code>用来存储一些额外的信息，比如域名，cookie之类的，而<code>body</code>就是真正需要的数据了</p>
+<p>TCP&#x2F;IP协议簇已经实现了进程与进程之间的可靠通信,而应用层就是在这之上,规定一些具有特定结构的数据的传输协议</p>
+<p>对于传输层来说,数据就只是二进制流,但是在应用层,数据被协议赋予了特定的意义,比如说HTTP把数据分为<code>head &amp; body</code>,<code>head</code>用来存储一些额外的信息,比如域名,cookie之类的,而<code>body</code>就是真正需要的数据了</p>
 <p><code>HTTP HTTPS TLS SMTP</code>等都是应用层协议</p>
 </blockquote>
 <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p>推荐一个网站:<a target="_blank" rel="noopener" href="https://tls.ulfheim.net/">link</a></p>
-<p>tcp,全称 <code>Transmission Control Protocol</code>，传输控制协议.</p>
+<p>tcp,全称 <code>Transmission Control Protocol</code>,传输控制协议.</p>
 <p>wiki:</p>
 <blockquote>
-<p>在因特网协议族（Internet protocol suite）中，TCP层是位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE">IP</a>层之上，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>之下的中间层。不同主机的应用层之间经常需要可靠的、像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AE%A1%E9%81%93_(Unix)">管道</a>一样的连接，但是IP层不提供这样的流机制，而是提供不可靠的包交换。</p>
+<p>在因特网协议族(Internet protocol suite)中,TCP层是位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE">IP</a>层之上,<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>之下的中间层.不同主机的应用层之间经常需要可靠的、像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AE%A1%E9%81%93_(Unix)">管道</a>一样的连接,但是IP层不提供这样的流机制,而是提供不可靠的包交换.</p>
 </blockquote>
+<h2 id="Connect-Establishment"><a href="#Connect-Establishment" class="headerlink" title="Connect Establishment"></a>Connect Establishment</h2><style>
+    .wikitable{
+        margin: 0 auto;
+        text-align:center;
+        border: 1px solid #a2a9b1;
+        border-collapse: collapse; 
+        line-height: 1.6em;
+    }
+    .wikitable th{
+        border: 1px solid #a2a9b1;
+        padding: 0.2em;
+    }
+    .wikitable td{
+        border: 1px solid #a2a9b1;
+        padding: 0.2em 0.4em;
+    }
+</style>
+<p>TCP头部结构:</p>
+<table class="wikitable">
+<caption>TCP表头
+</caption>
+<tbody><tr>
+<th style="border-bottom:none; border-right:none;">偏移
+</th>
+<th style="border-left:none;"><a href="/wiki/%E4%BD%8D%E5%85%83%E7%BB%84" class="mw-redirect" title="比特组">字节</a>
+</th>
+<th colspan="8">0
+</th>
+<th colspan="8">1
+</th>
+<th colspan="8">2
+</th>
+<th colspan="8">3
+</th></tr>
+<tr>
+<th style="border-top: none">字节
+</th>
+<th><tt><a href="/wiki/%E4%BD%8D%E5%85%83" title="比特">比特</a></tt></th>
+<th><tt>&#160;0</tt></th>
+<th><tt>&#160;1</tt></th>
+<th><tt>&#160;2</tt></th>
+<th><tt>&#160;3</tt></th>
+<th><tt>&#160;4</tt></th>
+<th><tt>&#160;5</tt></th>
+<th><tt>&#160;6</tt></th>
+<th><tt>&#160;7</tt></th>
+<th><tt>&#160;8</tt></th>
+<th><tt>&#160;9</tt></th>
+<th><tt>10</tt></th>
+<th><tt>11</tt></th>
+<th><tt>12</tt></th>
+<th><tt>13</tt></th>
+<th><tt>14</tt></th>
+<th><tt>15</tt></th>
+<th><tt>16</tt></th>
+<th><tt>17</tt></th>
+<th><tt>18</tt></th>
+<th><tt>19</tt></th>
+<th><tt>20</tt></th>
+<th><tt>21</tt></th>
+<th><tt>22</tt></th>
+<th><tt>23</tt></th>
+<th><tt>24</tt></th>
+<th><tt>25</tt></th>
+<th><tt>26</tt></th>
+<th><tt>27</tt></th>
+<th><tt>28</tt></th>
+<th><tt>29</tt></th>
+<th><tt>30</tt></th>
+<th><tt>31</tt>
+</th></tr>
+<tr>
+<th>0
+</th>
+<th><tt> 0</tt>
+</th>
+<td colspan="16">来源连接端口</td>
+<td colspan="16">目的连接端口
+</td></tr>
+<tr>
+<th>4
+</th>
+<th><tt>32</tt>
+</th>
+<td colspan="32">序列号码
+</td></tr>
+<tr>
+<th>8
+</th>
+<th><tt>64</tt>
+</th>
+<td colspan="32">确认号码(当<tt>ACK</tt>设置)
+</td></tr>
+<tr>
+<th>12
+</th>
+<th><tt>96</tt>
+</th>
+<td colspan="4">资料偏移</td>
+<td colspan="3">保留<br /><tt><b>0 0 0</b></tt></td>
+<td><tt>N<br />S</tt></td>
+<td><tt>C<br />W<br />R</tt></td>
+<td><tt>E<br />C<br />E</tt></td>
+<td><tt>U<br />R<br />G</tt></td>
+<td><tt>A<br />C<br />K</tt></td>
+<td><tt>P<br />S<br />H</tt></td>
+<td><tt>R<br />S<br />T</tt></td>
+<td><tt>S<br />Y<br />N</tt></td>
+<td><tt>F<br />I<br />N</tt></td>
+<td colspan="16">窗口大小
+</td></tr>
+<tr>
+<th>16
+</th>
+<th><tt>128</tt>
+</th>
+<td colspan="16">Checksum 校验和</td>
+<td colspan="16">紧急指针(当<tt>URG</tt>设置)
+</td></tr>
+<tr>
+<th>20<br />...
+</th>
+<th><tt>160<br />...</tt>
+</th>
+<td colspan="32" style="background:grey;">选项(如果资料偏移 &gt; 5,需要在结尾添加0.)<br />...
+</td></tr></tbody></table>
+
+
+
+<p>虽然TCP连接是双向的,数据可以双向传输,不过根据实际情况,不妨把想要建立TCP连接的叫做cli,监听TCP连接的叫做ser</p>
+<p>创建连接的过程叫做<code>三次握手</code>,双方一共发送三个数据包.</p>
+<p><img src="https://raw.githubusercontent.com/HIT-Alibaba/interview/master/img/tcp-connection-made-three-way-handshake.png" alt="img"></p>
+<ol>
+<li>cli想要与ser建立连接,发送一个<code>SYN</code>数据包,数据包中包含一个由cli生成的<code>随机数A</code>,A是序号(请先忽略序号这个概念)</li>
+<li>ser接收<code>SYN</code>包,给cli发送<code>SYN/ACK</code>包,包含一个由ser生成的<code>随机数B</code>以及确认号<code>A+1</code></li>
+<li>cli接收<code>SYN/ACK</code>包,给ser发送<code>ACK</code>包,包含确认号<code>B+1</code></li>
+</ol>
+<p>建立连接的过程很可能不稳定,比如网络延迟之类的.如果在步骤2之后ser没有接收到cli发送的ACK包,这时处于一个中间态,既没有成功也没有失败(抄自维基百科),ser会假定之前发送的SYN&#x2F;ACK丢失了,于是重新发送 <code>SYN/ACK</code>包,如果接收到cli发送的<code>ACK</code>,辣么建立连接.</p>
+<p>但如果一直没有接收到cli的ACK,ser会在重复发送几次<code>ACK/SYN</code>数据包之后结束此次连接.在Linux中,一般最多重复5次,<strong>每次发送间隔翻倍</strong>,1s,2s,4s,8s,16s,总共浪费的时间为1+2+4+8+16+32(在最后一次发送包之后还要等待32s才确认超时)&#x3D;63s</p>
+<p>三次握手的目的是为了防止<strong>已经失效</strong>的建立连接的<code>ACK</code>报文(比如因为网络延迟,在cli接收不到应答之后关闭连接,这时cli已经不想建立连接了)被服务器接收然后建立连接,因为是三步验证,所以ser在接收到失效的ACK报文后发送的用于验证的<code>SYN/ACK</code>给cli,cli不会给ser发送<code>ACK</code>包确认建立连接,而ser在重复发送 <code>SYN/ACK</code>之后<strong>始终不会接收到<code>ACK</code>报文</strong>,然后ser关闭连接,此过程只有63s,不会浪费太多资源</p>
+<p>如果只有两次握手,即第三次的cli验证报文不需要发送就可以建立连接,那么假设昨天cli给ser发送了一个<code>SYN</code>数据包但是因为网络滞留了一天,所以今天才被ser接收到,<code>ser</code>随即发送<code>SYN/ACK</code>数据包,并且认为连接已经确定,<strong>但cli忽视<code>SYN/ACK</code>包,也不会发送数据给ser</strong>,但是ser这时候<strong>一直在等待cli发送数据</strong>,这样就会浪费资源,而在三次握手的情况下,此连接会因为cli一直没有响应而在63s后被ser断开.</p>
+<blockquote>
+<p>举一个简单的例子：</p>
+<p>A给B打电话,但是B今天不在家所以一直没接听,所以A给B留了个语音留言(SYN滞留).第二天B接听了A的语音留言,回拨给A,但是此时A不会接B的电话,因为A今天不想与B通话,B在电话无人接听之后又打了几次,最后结束通话.</p>
+</blockquote>
+<p>那么,cli何以肯定ser发送过来的<code>SYN/ACK</code>无效呢？这就要用到序号<code>SN(sequence number)</code>与确认号<code>ACKN(acknowledge number)</code>了,还记得在过程12生成的随机数A和B吗?简单来说，因为<code>SYN/ACK</code>包的<strong>确认号</strong>是无效的，cli拒绝建立连接.</p>
+<h2 id="Data-Transfer"><a href="#Data-Transfer" class="headerlink" title="Data Transfer"></a>Data Transfer</h2><p>序号和确认号的概念对于某些笨蛋来说相当绕,但其实它们两个只是一个相对的概念,相对发送数据的主体.</p>
+<p>在tcp层面上,数据被叫做字节流<code>stream</code>,数据是按字节顺序传输的,对于流中的每一个字节,都有一个确定的序号,理解成数组下标就行了,只不过数组的起始下标不是0,而是一个随即数X</p>
+<p>序号是发送的字节流的起始字节的编号,确认号是对方发送的字节流的起始字节的编号.TCP接收者在接收到一定数量连续字节流后才发送确认.</p>
+<p>确认号的作用是告诉数据发送方上一个包已经收到，确认号实际上是希望接收的下一个数据包的序号.</p>
+<p>序号是32位无符号整形,范围<code>0-65536</code>,在增大到65536后会回绕到0.</p>
+<p>TPC使用序号并把数据分组,保证数据即使乱序传输仍能以正确顺序拼接数据块,也无需担心丢包问题(丢了再重传就是了).</p>
+<h3 id="Retransmission"><a href="#Retransmission" class="headerlink" title="Retransmission"></a>Retransmission</h3><p>基于重复累计ACK的重传</p>
+<blockquote>
+<p>wiki:</p>
+<p>如果一个包(不妨设它的序号是100,即该包始于第100字节)丢失,接收方就不能确认这个包及其以后的包,因为采用了累计ack.接收方在收到100以后的包时,发出对包含第99字节的包的确认.这种重复确认是包丢失的信号.发送方如果收到3次对同一个包的确认,就重传最后一个未被确认的包.阈值设为3被证实可以减少乱序包导致的无作用的重传(spurious retransmission)现象.<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE#%E9%80%89%E6%8B%A9%E6%80%A7%E7%A1%AE%E8%AE%A4">选择性确认</a>(SACK)的使用能明确反馈哪个包收到了,极大改善了TCP重传必要的包的能力.</p>
+</blockquote>
+<p>超时重传</p>
+<blockquote>
+<p>wiki:</p>
+<p>发送方使用一个保守估计的时间作为收到数据包的确认的超时上限.如果超过这个上限仍未收到确认包,发送方将重传这个数据包.每当发送方收到确认包后,会重置这个重传定时器.典型地,定时器的值设定为<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-17/72463a1f9a6b296417943ea10e8c0439.png" alt="image-20220417140717151"></p>
+<p>进一步,如果重传定时器被触发,仍然没有收到确认包,定时器的值将被设为前次值的二倍(直到特定阈值).</p>
+<blockquote>
+<p>细心的你一定发现了,之前说过三次握手过程中一直没有接收到cli的ACK包,ser重新发送SYN&#x2F;ACK的时间间隔将每次翻倍</p>
+</blockquote>
+<p>这是由于存在一类通过欺骗发送者使其重传多次,进而压垮接收者的攻击,而使用前述的定时器策略可以避免此类<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB">中间人攻击</a>方式的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB">拒绝服务攻击</a>.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>重点是：<strong>数据接收方</strong>每<strong>接收</strong>到一个数据包，就会向<strong>数据发送方</strong>发送一个<code>ACK</code>包表示自己接收到数据包了.但是如果有包丢失，即使接收到后续的包，<code>ACK</code>的确认号始终是丢失的包的序号.</p>
+<blockquote>
+<p>注意,<code>ACK</code>包长度为0,也就是说ACK不占用序号(毕竟它不被用来传输数据，只是告诉数据发送方接收到了数据包)</p>
+</blockquote>
+<p>wiki讲的很好,我就不重复造轮子了:</p>
+<ol>
+<li>发送方首先发送第一个包含<code>序号为1</code>(实际上是一个随机数，这里为了简化设为1)和<code>200字节</code>数据的TCP报文段给接收方.接收方以一个 <strong>没有数据的TCP报文段(也就是<code>ACK</code>包)</strong> 来回复(只含报头),用<code>确认号201</code>来表示已完全收到并请求下一个报文段(而201,也是下一个报文段的序号,上一个数据包的起始序号为1,长度200,序号范围为<code>1-200</code>).</li>
+<li>发送方然后发送第二个包含<code>序列号为201,长度为100字节</code>的数据的TCP报文段给接收方.正常情况下,接收方回复ACK包,用<code>确认号301(201+100)</code>来表示已完全收到并请求下一个报文段.发送接收这样继续下去.</li>
+<li>然而当这些数据包都是相连的情况下,接收方没有必要每一次都回应.比如,他收到第1到5条TCP报文段,只需回应第五条就行了.如果<code>第3条</code>TCP报文段被丢失了,就算尽管他收到了第4和5条,然而他<code>只能回应第2条</code>(接收第4,5条不会发送ACK包回应,因为数据流断开了),即<code>ACK包的确认号</code>始终是<code>301</code>.</li>
+<li>发送方在发送了第3条以后,没能收到回应,因此当时钟(timer)过时(expire)时,他重发第三条.(每次发送者发送一条TCP报文段后,都会再次启动一次时钟：RTT).</li>
+<li>这次第三条被成功接收,接收方可以直接确认第5条,因为4,5两条已收到.</li>
+</ol>
+<h3 id="checksum"><a href="#checksum" class="headerlink" title="checksum"></a>checksum</h3><p>checksum-校验和，可以校验一些简单的数据包传输错误.</p>
+<p>校验和计算设计TCP头部和数据段，还有伪头部(96位),伪头部是一个虚拟的数据结构，实际上TCP并不包含这一部分,伪头部包括源IP,目标IP,协议和TCP长度，要包含伪头部的原因是校验的时候可以检查数据包是否被正确路由</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PsuedoHeader</span>&#123;</span><br><span class="line">    <span class="type">uint32_t</span> source;</span><br><span class="line">    <span class="type">uint32_t</span> dest;</span><br><span class="line">    <span class="type">uint8_t</span> reserved;	<span class="comment">//保留字节，全部置0</span></span><br><span class="line">    <span class="type">uint8_t</span> protocol;</span><br><span class="line">    <span class="type">uint16_t</span> length;</span><br><span class="line">    </span><br><span class="line">&#125;;	<span class="comment">//一共12字节</span></span><br></pre></td></tr></table></figure>
+
+<p>校验和计算：将伪头部,TCP头部和数据部分求和，然后求<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E7%A0%81">反码</a>(1的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%B8%80%E8%A3%9C%E6%95%B8">补码</a>)</p>
+<p>校验和会被装入TCP头部,接收方接收到数据报文后会进行校验，校验不需要再重复求一边校验和了，只需要计算<code>PsuedoHeader+TCP_Header+data+checksum</code>，如果所有位都为1,说明数据没问题.</p>
+<h3 id="Sweetie"><a href="#Sweetie" class="headerlink" title="Sweetie"></a>Sweetie</h3><p>对于一些需要可靠传输的应用来说，TCP很有用，但是TCP并不适用与所有场合.</p>
+<p>举个简单的例子，网络游戏,比如LOL,用的是UDP,虽然UDP只管传不管到没到,但这对LOL来说是可以忍受的,丢包只会让画面有些卡顿</p>
+<p>但如果是TCP,首先TCP会将数据流分组,或者说缓存了一定大小的数据包才发送，这表示如果你按了个技能，这个数据太小导致TCP没有发送它而是和后续数据一块发,虽然可以通过<code>TCP_NODELAY</code>设置数据直接发送.</p>
+<p>但是还有一个问题,TCP丢包后会重发,这表示即使有那么一点点不关键的画面丢失了,TCP仍然会重新发包,然后接受端就得一直等丢失的包重传过来,1s,2s,4s…作为一个玩家，我显然是不会玩这么猪比的游戏的.</p>
+<p>这篇文章讲的还行:<a target="_blank" rel="noopener" href="http://foryoung365.github.io/development/2016/09/08/tcpvsudp">link</a></p>
+<h2 id="Connect-termination"><a href="#Connect-termination" class="headerlink" title="Connect termination"></a>Connect termination</h2>
     </div>
   </div>
 </article> 

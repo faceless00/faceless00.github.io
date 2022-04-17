@@ -43,7 +43,6 @@ aside .anchor-item a:hover {
   opacity: 1;
   transition: opacity, font-size 0.5s;
 }
-aside .anchor-item a,
 #content {
   max-width: 60%;
   margin: 5px auto 5px auto;
@@ -97,8 +96,7 @@ aside .anchor-item a,
 #postBody p a,
 #postBody li a {
   text-decoration: none;
-  background: rgba(72,68,59,0.529);
-  color: var(--main-color);
+  color: #75a1ea;
   padding: 3px;
   margin: 2px;
   border-radius: 5px;
