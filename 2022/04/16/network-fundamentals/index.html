@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Introduction"><span class="anchor-number">1.</span> <span class="anchor-text">Introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#OSI-Model"><span class="anchor-number">2.</span> <span class="anchor-text">OSI Model</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#TCP"><span class="anchor-number">3.</span> <span class="anchor-text">TCP</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-Establishment"><span class="anchor-number">3.1.</span> <span class="anchor-text">Connect Establishment</span></a></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Data-Transfer"><span class="anchor-number">3.2.</span> <span class="anchor-text">Data Transfer</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Retransmission"><span class="anchor-number">3.2.1.</span> <span class="anchor-text">Retransmission</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Example"><span class="anchor-number">3.2.2.</span> <span class="anchor-text">Example</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#checksum"><span class="anchor-number">3.2.3.</span> <span class="anchor-text">checksum</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Sweetie"><span class="anchor-number">3.2.4.</span> <span class="anchor-text">Sweetie</span></a></li></ol></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-termination"><span class="anchor-number">3.3.</span> <span class="anchor-text">Connect termination</span></a></li></ol></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Introduction"><span class="anchor-number">1.</span> <span class="anchor-text">Introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#OSI-Model"><span class="anchor-number">2.</span> <span class="anchor-text">OSI Model</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Enternet"><span class="anchor-number">3.</span> <span class="anchor-text">Enternet</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#IP"><span class="anchor-number">4.</span> <span class="anchor-text">IP</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#ARP"><span class="anchor-number">4.1.</span> <span class="anchor-text">ARP</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#TCP"><span class="anchor-number">5.</span> <span class="anchor-text">TCP</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-Establishment"><span class="anchor-number">5.1.</span> <span class="anchor-text">Connect Establishment</span></a></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Data-Transfer"><span class="anchor-number">5.2.</span> <span class="anchor-text">Data Transfer</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Retransmission"><span class="anchor-number">5.2.1.</span> <span class="anchor-text">Retransmission</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Example"><span class="anchor-number">5.2.2.</span> <span class="anchor-text">Example</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#checksum"><span class="anchor-number">5.2.3.</span> <span class="anchor-text">checksum</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Sweetie"><span class="anchor-number">5.2.4.</span> <span class="anchor-text">Sweetie</span></a></li></ol></li><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#Connect-Termination"><span class="anchor-number">5.3.</span> <span class="anchor-text">Connect Termination</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Life-of-a-Packet"><span class="anchor-number">6.</span> <span class="anchor-text">Life of a Packet</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#TLS"><span class="anchor-number">7.</span> <span class="anchor-text">TLS</span></a></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -96,8 +96,7 @@
 <p>对于传输层来说,数据就只是二进制流,但是在应用层,数据被协议赋予了特定的意义,比如说HTTP把数据分为<code>head &amp; body</code>,<code>head</code>用来存储一些额外的信息,比如域名,cookie之类的,而<code>body</code>就是真正需要的数据了</p>
 <p><code>HTTP HTTPS TLS SMTP</code>等都是应用层协议</p>
 </blockquote>
-<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p>推荐一个网站:<a target="_blank" rel="noopener" href="https://tls.ulfheim.net/">link</a></p>
-<p>tcp,全称 <code>Transmission Control Protocol</code>,传输控制协议.</p>
+<h1 id="Enternet"><a href="#Enternet" class="headerlink" title="Enternet"></a>Enternet</h1><h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h2><h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p>tcp,全称 <code>Transmission Control Protocol</code>,传输控制协议.</p>
 <p>wiki:</p>
 <blockquote>
 <p>在因特网协议族(Internet protocol suite)中,TCP层是位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE">IP</a>层之上,<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>之下的中间层.不同主机的应用层之间经常需要可靠的、像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AE%A1%E9%81%93_(Unix)">管道</a>一样的连接,但是IP层不提供这样的流机制,而是提供不可靠的包交换.</p>
@@ -200,7 +199,7 @@
 </th>
 <th><tt>96</tt>
 </th>
-<td colspan="4">资料偏移</td>
+<td colspan="4">资料偏移(TCP头部长度)</td>
 <td colspan="3">保留<br /><tt><b>0 0 0</b></tt></td>
 <td><tt>N<br />S</tt></td>
 <td><tt>C<br />W<br />R</tt></td>
@@ -231,9 +230,10 @@
 
 
 
+
 <p>虽然TCP连接是双向的,数据可以双向传输,不过根据实际情况,不妨把想要建立TCP连接的叫做cli,监听TCP连接的叫做ser</p>
 <p>创建连接的过程叫做<code>三次握手</code>,双方一共发送三个数据包.</p>
-<p><img src="https://raw.githubusercontent.com/HIT-Alibaba/interview/master/img/tcp-connection-made-three-way-handshake.png" alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6100773-0cf533a29cf7b09e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
 <ol>
 <li>cli想要与ser建立连接,发送一个<code>SYN</code>数据包,数据包中包含一个由cli生成的<code>随机数A</code>,A是序号(请先忽略序号这个概念)</li>
 <li>ser接收<code>SYN</code>包,给cli发送<code>SYN/ACK</code>包,包含一个由ser生成的<code>随机数B</code>以及确认号<code>A+1</code></li>
@@ -250,7 +250,7 @@
 <p>那么,cli何以肯定ser发送过来的<code>SYN/ACK</code>无效呢？这就要用到序号<code>SN(sequence number)</code>与确认号<code>ACKN(acknowledge number)</code>了,还记得在过程12生成的随机数A和B吗?简单来说，因为<code>SYN/ACK</code>包的<strong>确认号</strong>是无效的，cli拒绝建立连接.</p>
 <h2 id="Data-Transfer"><a href="#Data-Transfer" class="headerlink" title="Data Transfer"></a>Data Transfer</h2><p>序号和确认号的概念对于某些笨蛋来说相当绕,但其实它们两个只是一个相对的概念,相对发送数据的主体.</p>
 <p>在tcp层面上,数据被叫做字节流<code>stream</code>,数据是按字节顺序传输的,对于流中的每一个字节,都有一个确定的序号,理解成数组下标就行了,只不过数组的起始下标不是0,而是一个随即数X</p>
-<p>序号是发送的字节流的起始字节的编号,确认号是对方发送的字节流的起始字节的编号.TCP接收者在接收到一定数量连续字节流后才发送确认.</p>
+<p>序号是发送的字节流的起始字节的编号,确认号是对方发送的字节流的起始字节的编号.TCP接收者在接收到一定数量连续字节流# TLS后才发送确认.</p>
 <p>确认号的作用是告诉数据发送方上一个包已经收到，确认号实际上是希望接收的下一个数据包的序号.</p>
 <p>序号是32位无符号整形,范围<code>0-65536</code>,在增大到65536后会回绕到0.</p>
 <p>TPC使用序号并把数据分组,保证数据即使乱序传输仍能以正确顺序拼接数据块,也无需担心丢包问题(丢了再重传就是了).</p>
@@ -289,10 +289,46 @@
 <p>校验和会被装入TCP头部,接收方接收到数据报文后会进行校验，校验不需要再重复求一边校验和了，只需要计算<code>PsuedoHeader+TCP_Header+data+checksum</code>，如果所有位都为1,说明数据没问题.</p>
 <h3 id="Sweetie"><a href="#Sweetie" class="headerlink" title="Sweetie"></a>Sweetie</h3><p>对于一些需要可靠传输的应用来说，TCP很有用，但是TCP并不适用与所有场合.</p>
 <p>举个简单的例子，网络游戏,比如LOL,用的是UDP,虽然UDP只管传不管到没到,但这对LOL来说是可以忍受的,丢包只会让画面有些卡顿</p>
-<p>但如果是TCP,首先TCP会将数据流分组,或者说缓存了一定大小的数据包才发送，这表示如果你按了个技能，这个数据太小导致TCP没有发送它而是和后续数据一块发,虽然可以通过<code>TCP_NODELAY</code>设置数据直接发送.</p>
-<p>但是还有一个问题,TCP丢包后会重发,这表示即使有那么一点点不关键的画面丢失了,TCP仍然会重新发包,然后接受端就得一直等丢失的包重传过来,1s,2s,4s…作为一个玩家，我显然是不会玩这么猪比的游戏的.</p>
+<p>但如果是TCP,首先TCP会将数据流分组,或者说缓存了一定大小的数据包才发送，这表示如果你按了个技能，这个数据太小导致TCP没有发送它而是和后续数据一块发,这显然是不能接受的，因为网络游戏需要即时反馈,不过可以通过<code>TCP_NODELAY</code>设置成直接发送.</p>
+<p>但是还有一个问题,TCP丢包后会重发,这表示即使有那么一点点不关键的画面丢失了,TCP仍然会重新发包,然后接受端就得一直等丢失的包重传过来,1s,2s,4s… 作为一个玩家，我显然是不会玩这么猪比的游戏的,我宁愿接受UDP的漂移，也不要TCP的卡顿63s后的流畅画面</p>
 <p>这篇文章讲的还行:<a target="_blank" rel="noopener" href="http://foryoung365.github.io/development/2016/09/08/tcpvsudp">link</a></p>
-<h2 id="Connect-termination"><a href="#Connect-termination" class="headerlink" title="Connect termination"></a>Connect termination</h2>
+<h2 id="Connect-Termination"><a href="#Connect-Termination" class="headerlink" title="Connect Termination"></a>Connect Termination</h2><p>结束已经建立TCP连接，这个过程叫做4次挥手👋</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6100773-2aa2de2af9a76955.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>因为TCP的连接是双向的，所以任何一端在数据传输完毕后都可以请求关闭TCP连接.</p>
+<p>但一端的数据传输完毕另一端不一定结束，因此关闭过程需要保证如果被动关闭的那一端仍有数据要发送，主动关闭的一端仍有接收数据的能力.</p>
+<p>在下例中，cli主动请求关闭TCP连接,ser被动关闭</p>
+<ol>
+<li><p>cli发送<code>FIN</code>报文给ser,序号为<code>X</code>,此时cli停止发送数据,但仍能接收数据,进入<code>FIN_WAIT1</code>状态</p>
+</li>
+<li><p>ser接收<code>FIN</code>报文,发送<code>ACK</code>报文,序号为<code>Y</code>，确认号为<code>X+1</code>,ser进入<code>CLOSE_WAIT</code>状态，cli在接收<code>ACK</code>报文后进入<code>FIN_WAIT2</code>状态</p>
+</li>
+<li><p>在<code>CLOSE_WAIT</code>状态期间,ser仍能发送数据，在确认所有数据被cli接收之后,发送<code>FIN/ACK</code>报文,序号为<code>P</code>(在此期间可能发送了一些数据),确认号为<code>X+1</code>,ser进入<code>LAST_ACK</code>状态</p>
+</li>
+<li><p>cli接收<code>FIN/ACK</code>报文,发送<code>ACK</code>报文,序号为<code>X+1</code>,确认号为<code>P+1</code>,然后cli进入<code>TIME_WAIT</code>状态,该状态会持续<code>2MSL</code>(从发出<code>ACK</code>报文，到cli再接收到ser报文的时间,即一个报文来回一次的时间),如果在此期间cli没有接收到ser的报文，关闭连接.ser接收到<code>ACK</code>报文,关闭连接.</p>
+<blockquote>
+<p>之所以要等待<code>2MSL</code>时间:如果第4步cli发送的<code>ACK</code>包丢失了,ser会以为cli没接收到第3步的<code>FIN/ACK</code>报文，然后重新发送,cli在<code>2MSL</code>时间内接收到新的<code>FIN/ACK</code>报文，会重复第4步,重新计时.</p>
+<p>为什么一定要确保ser接收到<code>ACK</code>报文捏,因为此时ser处于<code>LAST_ACK</code>状态，需要接收到cli的<code>ACK</code>报文之后才结束连接.</p>
+</blockquote>
+</li>
+</ol>
+<p>TLDR:</p>
+<p>握手首先会释放一端到另一端的连接,然后主动释放的一端等待被动释放的一端传输完所有数据,之后双方互相确认,结束TCP连接.</p>
+<blockquote>
+<p>A:我说完了    <code>FIN</code>    <code>FIN_WAIT1</code></p>
+<p>B:蒽，我知道你说完了 <code>ACK</code> <code>CLOSE_WAIT</code>,但我还没说完</p>
+<p>B:…………………………………. <code>CLOSE_WAIT</code></p>
+<p>B:蒽，我也说完了    <code>FIN/ACK</code>    <code>LAST_ACK</code></p>
+<p>A:蒽，我知道你也说完了,但你个beyond最好是说完了    <code>ACK</code> <code>TIME_WAIT</code></p>
+<p>B:挂了</p>
+<p>A:等待<code>2MSL</code>    <code>TIME_WAIT</code></p>
+<p>A:蒽，这B雀食是说完了,挂了</p>
+</blockquote>
+<h1 id="Life-of-a-Packet"><a href="#Life-of-a-Packet" class="headerlink" title="Life of a Packet"></a>Life of a Packet</h1><p>纸上谈兵不行，让我们来具体的梳理一下一个数据包的传输过程.</p>
+<p>基于链路层，可以实现局域网内的数据传输.</p>
+<p>基于IP,可以实现不同局域网内的主机间的数据传输.</p>
+<p>基于TCP,可以实现不同局域网内的主机间的<strong>可靠</strong>数据传输.</p>
+<h1 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h1><p>推荐一个网站:<a target="_blank" rel="noopener" href="https://tls.ulfheim.net/">link</a></p>
+<p>TLS,Transport Layout Security,前身为SSL(Secure Socket Layout)</p>
     </div>
   </div>
 </article> 
