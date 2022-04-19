@@ -12,6 +12,7 @@
 aside {
   box-sizing: border-box;
   width: 15%;
+  max-height: 600px;
   margin-bottom: 1em;
   background: var(--navigator-background-color);
   color: #000;
