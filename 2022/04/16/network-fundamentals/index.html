@@ -120,7 +120,7 @@
 <h1 id="Ethernet"><a href="#Ethernet" class="headerlink" title="Ethernet"></a>Ethernet</h1><p>以太网主要用于局域网内传输数据,设备的唯一标识是MAC地址(48bit)</p>
 <p>在以太网协议中,数据的格式为帧(frame).</p>
 <p><code>Ethernet 2 Frame</code>(以太 II 帧,也称作DIX以太网):</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-18/554be2c16b9588ca7bb718926f8e0014.png" alt="image-20220418113445057" id="ethernet-frame" />(果咩，Enternet拼错了，是Ethernet)</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/0a8e062d03d5f4878f8071210b2b8b6b.png" alt="image-20220421212539089"></p>
 <p>type段占俩字节,实际上就只有两种:</p>
 <ul>
 <li><code>0x0080</code>,表示IPV4</li>
@@ -628,7 +628,7 @@
 <p>然后把数据包传递到IP层,前面说已经建立过tcp连接,所以肯定知道MAC了,那么通过查询ARP表是可以获取<code>google.com</code>的某台服务器的<code>MAC</code>地址的,辣么,封装成IP包:</p>
 <p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/4c7e00019d39e7e0a613a674d7443bb8.png" alt="image-20220419133341045"></p>
 <p>接下来就到数据链路层辣,数据链路层会将数据包封装成两个部分,定长为<code>14b</code>的头部和<code>44-1500b</code>的数据和<code>4b</code>的CRC校验码(校验码就是一种hash,用来检验数据包是否完好无损).因为这是个IP包而不是arp包,所以头部的<code>type=0x0080</code>,值得一提的是,http协议的默认端口就是80🐁🐁</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/15991d3d0348b78eec990fa62f9b9e13.png" alt="image-20220419134907965">(果咩，是Ethernet而不是Enternet)</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/7038e344471be3938b4ffca62165b957.png" alt="image-20220421212637694"></p>
 <p>好,自此数据封装结束,进入物理层,我们假定你有一个路由器并且已经连上网,那么,数据包会通过网卡发送给网关(也就是路由器的IP,不过这里其实是路由器的MAC).</p>
 <p>为什么要发送给网关捏?蒽,你的电脑没有路由功能,路由器有.</p>
 <p>路由器会检查该数据包是否属于该子网,如果不属于,就要路由,所谓路由,就是计算从一个子网到另一个子网的最佳路径,这里不做赘述,总之,路由器会将数据包转发到下一个路由器,直到到达目的IP的子网内.</p>
