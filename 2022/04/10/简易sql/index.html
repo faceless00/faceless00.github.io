@@ -46,7 +46,7 @@
   </aside>
   <div id="content">
     <div id="postHead">
-      <h1>简易sql</h1>
+      <h1>yourSql</h1>
       <div class="postDate">
         <img class="dateIcon" src="/images/clockicon.svg" />
         --2022.4.10
@@ -226,7 +226,34 @@
 
 
 
-<h2 id="Part3-An-In-Memory-Append-Only-Single-Table-Database"><a href="#Part3-An-In-Memory-Append-Only-Single-Table-Database" class="headerlink" title="Part3 - An In-Memory,Append-Only,Single-Table Database"></a>Part3 - An In-Memory,Append-Only,Single-Table Database</h2>
+<h2 id="Part3-An-In-Memory-Append-Only-Single-Table-Database"><a href="#Part3-An-In-Memory-Append-Only-Single-Table-Database" class="headerlink" title="Part3 - An In-Memory,Append-Only,Single-Table Database"></a>Part3 - An In-Memory,Append-Only,Single-Table Database</h2><p>我们先实现最基础的功能，并给数据库添加一些限制.目前来说，数据库将:</p>
+<ul>
+<li>支持两种操作: 插入一行然后打印所有行.</li>
+<li>只保存在内存中(而不是硬盘)</li>
+<li>支持单个，硬编码的表</li>
+</ul>
+<p>我们的硬编码表将会存储用户，看起来像这样:</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/4c36e008a593cad02a5f4052452488ab.png" alt="image-20220421000123610"></p>
+<p>这是一个简单的模板，但是支持多种数据类型和长度可变的字符串.</p>
+<p><code>insert</code>语句看起来像这样:</p>
+<p><code>insert 1 cstack foo@bar.com</code></p>
+<p>这意味着我们需要扩展<code>prepare_statement</code>函数以解析参数</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">if</span> (<span class="built_in">strncmp</span>(input_buffer-&gt;buffer, <span class="string">&quot;insert&quot;</span>, <span class="number">6</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">     statement-&gt;type = STATEMENT_INSERT;</span><br><span class="line">+    <span class="type">int</span> args_assigned = <span class="built_in">sscanf</span>(</span><br><span class="line">+        input_buffer-&gt;buffer, <span class="string">&quot;insert %d %s %s&quot;</span>, &amp;(statement-&gt;row_to_insert.id),</span><br><span class="line">+        statement-&gt;row_to_insert.username, statement-&gt;row_to_insert.email);</span><br><span class="line">+    <span class="keyword">if</span> (args_assigned &lt; <span class="number">3</span>) &#123;</span><br><span class="line">+      <span class="keyword">return</span> PREPARE_SYNTAX_ERROR;</span><br><span class="line">+    &#125;</span><br><span class="line">     <span class="keyword">return</span> PREPARE_SUCCESS;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (<span class="built_in">strcmp</span>(input_buffer-&gt;buffer, <span class="string">&quot;select&quot;</span>) == <span class="number">0</span>) &#123;</span><br></pre></td></tr></table></figure>
+
+<p>我们把解析得到的参数放进statement对象的新成员Row中.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">+<span class="meta">#<span class="keyword">define</span> COLUMN_USERNAME_SIZE 32</span></span><br><span class="line">+<span class="meta">#<span class="keyword">define</span> COLUMN_EMAIL_SIZE 255</span></span><br><span class="line">+<span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">+  <span class="type">uint32_t</span> id;</span><br><span class="line">+  <span class="type">char</span> username[COLUMN_USERNAME_SIZE];</span><br><span class="line">+  <span class="type">char</span> email[COLUMN_EMAIL_SIZE];</span><br><span class="line">+&#125; Row;</span><br><span class="line">+</span><br><span class="line"> <span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">   StatementType type;</span><br><span class="line">+  Row row_to_insert;  <span class="comment">// only used by insert statement</span></span><br><span class="line"> &#125; Statement;</span><br></pre></td></tr></table></figure>
+
+<p>现在我们需要把数据拷贝到表示表的数据结构中.SQLite使用<code>B-tree</code>以实现快速查找，插入和删除.我们一开始先用简单点的数据结构.类似一棵<code>B-tree</code>，它将行存进页中，但是页并不以树的形式组织，而是以列表的形式.</p>
+<p>这是我的想法:</p>
+<ul>
+<li>将行存储在叫做页的内存块</li>
+<li>每一页存储尽可能多的行</li>
+<li>每一页中行被序列化成紧凑的表现形式</li>
+<li>页只在需要的时候分配</li>
+<li>维护一个定长的存储指向页的指针的数组</li>
+</ul>
+<p>首先我们定义行的紧凑的表现形式:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">+<span class="meta">#<span class="keyword">define</span> size_of_attribute(Struct, Attribute) sizeof(((Struct*)0)-&gt;Attribute)</span></span><br><span class="line">+</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> ID_SIZE = <span class="built_in">size_of_attribute</span>(Row, id);</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> USERNAME_SIZE = <span class="built_in">size_of_attribute</span>(Row, username);</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> EMAIL_SIZE = <span class="built_in">size_of_attribute</span>(Row, email);</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> ID_OFFSET = <span class="number">0</span>;</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> USERNAME_OFFSET = ID_OFFSET + ID_SIZE;</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> EMAIL_OFFSET = USERNAME_OFFSET + USERNAME_SIZE;</span><br><span class="line">+<span class="type">const</span> <span class="type">uint32_t</span> ROW_SIZE = ID_SIZE + USERNAME_SIZE + EMAIL_SIZE;</span><br></pre></td></tr></table></figure>
     </div>
   </div>
 </article> 
