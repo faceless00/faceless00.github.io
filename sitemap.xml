@@ -106,13 +106,6 @@
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/tags/anonymity/</loc>
-    <lastmod>2022-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://faceless00.github.io/tags/draft/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -128,6 +121,13 @@
   
   <url>
     <loc>https://faceless00.github.io/tags/original/</loc>
+    <lastmod>2022-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://faceless00.github.io/tags/anonymity/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
