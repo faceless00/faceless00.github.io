@@ -225,7 +225,9 @@
 <p>然后我们可以新增一个检查重复键的测试:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">+  it <span class="string">&#x27;prints an error message if there is a duplicate id&#x27;</span> <span class="keyword">do</span></span><br><span class="line">+    script = [</span><br><span class="line">+      <span class="string">&quot;insert 1 user1 person1@example.com&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;insert 1 user1 person1@example.com&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;select&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;.exit&quot;</span>,</span><br><span class="line">+    ]</span><br><span class="line">+    result = <span class="built_in">run_script</span>(script)</span><br><span class="line">+    <span class="built_in">expect</span>(result).to <span class="built_in">match_array</span>([</span><br><span class="line">+      <span class="string">&quot;db &gt; Executed.&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;db &gt; Error: Duplicate key.&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;db &gt; (1, user1, person1@example.com)&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;Executed.&quot;</span>,</span><br><span class="line">+      <span class="string">&quot;db &gt; &quot;</span>,</span><br><span class="line">+    ])</span><br><span class="line">+  end</span><br></pre></td></tr></table></figure>
 
-<p>好辣!在下一章我们会:实施分裂叶子节点并且创建内部节点.</p>
+<p>好辣!在下一章我们将会 - 实施分裂叶子节点并且创建内部节点.</p>
+</br>
+
 <h2 id="Part-10-Splitting-a-Leaf-Node"><a href="#Part-10-Splitting-a-Leaf-Node" class="headerlink" title="Part 10 -Splitting a Leaf Node"></a>Part 10 -Splitting a Leaf Node</h2>
     </div>
   </div>
