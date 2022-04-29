@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://faceless00.github.io/diary/index.html</loc>
+    <loc>https://faceless00.github.io/2022/04/28/yourSql-2/</loc>
     
     <lastmod>2022-04-29</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/2022/04/28/yourSql-2/</loc>
+    <loc>https://faceless00.github.io/diary/index.html</loc>
     
     <lastmod>2022-04-29</lastmod>
     
@@ -106,6 +106,13 @@
   </url>
   
   <url>
+    <loc>https://faceless00.github.io/tags/anonymity/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://faceless00.github.io/tags/draft/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -128,13 +135,6 @@
   
   <url>
     <loc>https://faceless00.github.io/tags/essay/</loc>
-    <lastmod>2022-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://faceless00.github.io/tags/anonymity/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
