@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#the-myth-of-the-eof-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#but-what-about-control-d"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#the-eof-value-in-c-and-c"><span class="anchor-number">6.</span> <span class="anchor-text">The EOF value in C++ and C</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#the-eof-and-feof-functions"><span class="anchor-number">6.1.</span> <span class="anchor-text">The eof() and feof() functions</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#summary"><span class="anchor-number">7.</span> <span class="anchor-text">Summary</span></a></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#introduction"><span class="anchor-number">1.</span> <span class="anchor-text">introduction</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-myth-of-the-EOF-character"><span class="anchor-number">2.</span> <span class="anchor-text">The myth of the EOF character</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Some-demo-code"><span class="anchor-number">3.</span> <span class="anchor-text">Some demo code</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Text-versus-binary-mode"><span class="anchor-number">4.</span> <span class="anchor-text">Text versus binary mode</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#But-what-about-Control-D"><span class="anchor-number">5.</span> <span class="anchor-text">But what about Control-D?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#The-EOF-value-in-C-and-C"><span class="anchor-number">6.</span> <span class="anchor-text">The EOF value in C++ and C</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#The-eof-and-feof-functions"><span class="anchor-number">6.1.</span> <span class="anchor-text">The eof() and feof() functions</span></a></li></ol></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Summary"><span class="anchor-number">7.</span> <span class="anchor-text">Summary</span></a></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -58,13 +58,11 @@
          
     </div>
     <div id="postBody">
-      <h1 id="introduction">introduction</h1>
-<p>C/C++的初学者在 <code>reddit</code> 和 <code>stack overflow</code> 之类的网站发布的所有问题中,最常见的困惑是当程序中需要读取用户的输入或者读取文件时，对<code>end of file</code>条件的处理.(这篇文章写于 2012 年，10 年后还是这样 🤭) 据我估计，超过 95%的问题都表现出对<code>end-of-file</code>这个概念的完全误解. 本文试图解释与这个令人困惑的话题的所有相关问题,尤其是对于使用<code>windows</code>和<code>Unix-like</code>(比如我即将用作例子的 Linux)的<code>C C++</code>程序员</p>
-<h1 id="the-myth-of-the-eof-character">The myth of the EOF character</h1>
-<p>许多初学者面对的第一个<code>end-of-file</code>问题是关于<code>EOF</code>字符,尽管实际上并没有这样的一个字符,但是人们认为有(不幸的是，译者初学 C 时也以为有这么个 b 字符 👿).无论 windows 或者 linux 操作系统都没有这种概念:用一个标记字符来表示文件的结束</p>
+      <h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>C&#x2F;C++的初学者在 <code>reddit</code> 和 <code>stack overflow</code> 之类的网站发布的所有问题中,最常见的困惑是当程序中需要读取用户的输入或者读取文件时，对<code>end of file</code>条件的处理.(这篇文章写于 2012 年，10 年后还是这样 🤭)<br>据我估计，超过 95%的问题都表现出对<code>end-of-file</code>这个概念的完全误解.<br>本文试图解释与这个令人困惑的话题的所有相关问题,尤其是对于使用<code>windows</code>和<code>Unix-like</code>(比如我即将用作例子的 Linux)的<code>C C++</code>程序员</p>
+<h1 id="The-myth-of-the-EOF-character"><a href="#The-myth-of-the-EOF-character" class="headerlink" title="The myth of the EOF character"></a>The myth of the EOF character</h1><p>许多初学者面对的第一个<code>end-of-file</code>问题是关于<code>EOF</code>字符,尽管实际上并没有这样的一个字符,但是人们认为有(不幸的是，译者初学 C 时也以为有这么个 b 字符 👿).无论 windows 或者 linux 操作系统都没有这种概念:用一个标记字符来表示文件的结束</p>
 <p>如果你用<code>Notepad</code>，<code>Vim</code>或者其他文本编辑器创建一个文本文件，文件本身并不会包含一个特殊字符来标志文件结束.Windows 和 Linux 的文件系统都可以知道文件的确切字节长度,因此绝无必要用一个特殊字符标志文件结束.</p>
 <p>既然 Windows 和 Linux 都不使用<code>EOF</code>字符，那么<code>EOF</code>这个概念从何而来?</p>
-<p>well,在很久很久以前(上世纪 70 年代),有一个叫做<code>CP/M</code>的操作系统(为了丝滑的使用终端)，<code>CP/M</code>可以在<code>Zilog Z80,Intel 8080</code>之类的 8 位处理器上运行.<code>CP/M</code>的文件系统并不知道一个文件的字节长度，它只知道文件占据了多少个<code>block</code>(<code>注: block是文件系统层面上的概念，存储设备本身没有这一概念，因为存储设备的基本读写单位是扇区，但是扇区太小了，所以文件系统将block作为I/O操作的基本单位，通常block的大小4k，对应8个扇区</code>).这意味着如果一个文件的内容为<code>hello world</code>，<code>CP/M</code>不知道这个文件的大小为 11 字节-它只知道该文件占了一个长度至少为 128 字节的<code>block</code>.因为人们通常都想知道文件看起来多大，而不是占据了多少个<code>block</code>，因此需要一个<code>end-of-file</code>字符.<code>CP/M</code>重新使用了<code>ASCII</code>字符集的<code>Control-Z</code>字符(十进制为 26,十六进制为<code>0x1A</code>，最初的用途随着时间流逝已经消失了,<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/7a655058ef48072a96caf0ff5c62377e.png" alt="image-20220406161103269" />)用于这个目的-当<code>CP/M</code>系统上的程序读取到<code>Control-Z</code>字符时，通常会认为读取到了文件末尾...</p>
+<p>well,在很久很久以前(上世纪 70 年代),有一个叫做<code>CP/M</code>的操作系统(为了丝滑的使用终端)，<code>CP/M</code>可以在<code>Zilog Z80,Intel 8080</code>之类的 8 位处理器上运行.<code>CP/M</code>的文件系统并不知道一个文件的字节长度，它只知道文件占据了多少个<code>block</code>(<code>注: block是文件系统层面上的概念，存储设备本身没有这一概念，因为存储设备的基本读写单位是扇区，但是扇区太小了，所以文件系统将block作为I/O操作的基本单位，通常block的大小4k，对应8个扇区</code>).这意味着如果一个文件的内容为<code>hello world</code>，<code>CP/M</code>不知道这个文件的大小为 11 字节-它只知道该文件占了一个长度至少为 128 字节的<code>block</code>.因为人们通常都想知道文件看起来多大，而不是占据了多少个<code>block</code>，因此需要一个<code>end-of-file</code>字符.<code>CP/M</code>重新使用了<code>ASCII</code>字符集的<code>Control-Z</code>字符(十进制为 26,十六进制为<code>0x1A</code>，最初的用途随着时间流逝已经消失了,<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/7a655058ef48072a96caf0ff5c62377e.png" alt="image-20220406161103269">)用于这个目的-当<code>CP/M</code>系统上的程序读取到<code>Control-Z</code>字符时，通常会认为读取到了文件末尾…</p>
 <p>没有任何规定强迫程序去做这件事;处理二进制数据的程序需要其他一些手段来确认是否已经读取到了文件末尾，并且操作系统本身不会特别处理<code>Control-Z</code>字符</p>
 <blockquote>
 <p>注:很抽象的一句话,让我来粗暴的解释一下</p>
@@ -78,9 +76,9 @@
 <p>注:解释一下，<code>MCR</code>库提供了文件<code>I/O</code>接口，而大部分 win 程序进行<code>I/O</code>操作时都会调用这个接口，读取文件的行为由库中的函数定义，并且程序不需要自行判断文件读取结束(毕竟我微软的操作系统更先进一些)</p>
 <p>win 系统本身也不会特殊处理<code>Control-Z</code>，也不需要处理，因为它知道文件的实际长度，唯一有可能处理<code>Control-Z</code>字符的是<code>MCR</code>库，当然它也不一定把它视作<code>EOF</code>，我实在是懒得去看<code>MCR</code>的源码，有兄弟看了记得告诉我一声</p>
 </blockquote>
-<h1 id="some-demo-code">Some demo code</h1>
-<p>用下面的代码可以证明<code>MS</code>库的这个意料之外的特性.首先，写一个程序，在程序中向文本文件写入<code>Control-Z</code>字符</p>
+<h1 id="Some-demo-code"><a href="#Some-demo-code" class="headerlink" title="Some demo code"></a>Some demo code</h1><p>用下面的代码可以证明<code>MS</code>库的这个意料之外的特性.首先，写一个程序，在程序中向文本文件写入<code>Control-Z</code>字符</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ofstream <span class="title">ofs</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    ofs&lt;&lt;<span class="string">&quot;第一行 1\n&quot;</span>;</span><br><span class="line">    ofs&lt;&lt;<span class="built_in">char</span>(<span class="number">26</span>);	<span class="comment">//control-z的ascii码是0x1A,十进制是26</span></span><br><span class="line">    ofs&lt;&lt;<span class="string">&quot;第二行 2\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>不论在 windows 或 Linux 上运行这个程序，都会创建一个文本文件，在文件的两行之间夹着一个<code>Control-Z</code>字符</p>
 <blockquote>
 <p>line1</p>
@@ -97,7 +95,7 @@
 <p>注意只有第一行被打印出来了</p>
 <blockquote>
 <p>注:在 2022 的 4 月 6 日，译者重现了这段代码，惊喜的发现 windows 平台打印的是两行，可喜可贺，可喜可贺啊！巨硬，你还是有点可取之处的 👍👍</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/ed24629fcb5daa7e658a5e5f5607456b.png" alt="image-20220406221531999" /><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/f92d4395cb04c11e4b6f6451df398260.png" alt="image-20220406221552995" /><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/9b2adbd4d133b7ddf951922efd96860b.png" alt="image-20220406221606880" /></p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/ed24629fcb5daa7e658a5e5f5607456b.png" alt="image-20220406221531999"><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/f92d4395cb04c11e4b6f6451df398260.png" alt="image-20220406221552995"><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/9b2adbd4d133b7ddf951922efd96860b.png" alt="image-20220406221606880"></p>
 <p>不过让我们先假定没有打印出第二行</p>
 </blockquote>
 <p>Linux:</p>
@@ -109,19 +107,17 @@
 </blockquote>
 </blockquote>
 <p>两行都能打印出来，但是出现了一个奇怪的字符<code>?</code>,因为<code>cat</code>命令把<code>Control-Z</code>视作普通字符，但是<code>Control-Z</code>不是可打印字符，所以用别的字符替换了它，具体是什么样取决于你的终端，比如译者的就是:</p>
-<figure>
-<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/4c2e29919d5eb6b2eb369fa0bfaaa523.png" alt="" /><figcaption>image-20220406221945054</figcaption>
-</figure>
-<p>这好像暗示 windows 知道<code>Control-Z</code>字符，但是那不重要，本质上是某些软件知道这个字符.如果用记事本打开这个文件:<img src="https://latedev.files.wordpress.com/2012/12/screenshot_myfile-txt-notepad_2012-12-04_12-43-56_thumb.gif?w=199&amp;h=90" alt="img1" /></p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-06/4c2e29919d5eb6b2eb369fa0bfaaa523.png" alt="image-20220406221945054"></p>
+<p>这好像暗示 windows 知道<code>Control-Z</code>字符，但是那不重要，本质上是某些软件知道这个字符.如果用记事本打开这个文件:<img src="https://latedev.files.wordpress.com/2012/12/screenshot_myfile-txt-notepad_2012-12-04_12-43-56_thumb.gif?w=199&h=90" alt="img1"></p>
 <p>两行都被打印出来了，夹着一个<code>Control-Z</code>，显然记事本并未把<code>Control-Z</code>当作<code>end-of-file</code>标志</p>
-<h1 id="text-versus-binary-mode">Text versus binary mode</h1>
-<p>那么，上面用的 type 命令和记事本之间到底有什么区别.很难说.可能 type 命令对输入流中的<code>Control-Z</code>字符有特殊处理.然而，用<code>c++ iostream</code>或<code>C stream</code>库的 win 程序员可以选择以文本模式或二进制模式打开文件，这会在读取文件时产生一些微小的区别</p>
+<h1 id="Text-versus-binary-mode"><a href="#Text-versus-binary-mode" class="headerlink" title="Text versus binary mode"></a>Text versus binary mode</h1><p>那么，上面用的 type 命令和记事本之间到底有什么区别.很难说.可能 type 命令对输入流中的<code>Control-Z</code>字符有特殊处理.然而，用<code>c++ iostream</code>或<code>C stream</code>库的 win 程序员可以选择以文本模式或二进制模式打开文件，这会在读取文件时产生一些微小的区别</p>
 <p>一个经典的读取文本文件的<code>C++</code>范例:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">ifs</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ifs,line))&#123;</span><br><span class="line">        cout&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在 win 上运行这个文件，会看到<code>Control-Z</code>被当作<code>end-of-file</code>字符</p>
 <p>输出是:</p>
 <p><code>第一行 1</code>(经译者测试，确实是这样，看来巨硬这么多年还是没更新<code>MCR</code>)</p>
-<p>但是如果以 2 进制模式打开文件的话:<code>ifstream ifs("a.txt",ios::binary)</code></p>
+<p>但是如果以 2 进制模式打开文件的话:<code>ifstream ifs(&quot;a.txt&quot;,ios::binary)</code></p>
 <p>输出就是:</p>
 <blockquote>
 <p>line 1</p>
@@ -131,37 +127,36 @@
 <p>在 Linux 上两种模式表现基本相同:</p>
 <p><img  style="display:inline-block" src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-07/2f9f03453642bf5a011d11b8334d1221.png" alt="image-20220407122942033"  /><img style="display:inline-block" src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-07/f87fc6f4e4674ea3b402c5a0b1fa4f74.png" alt="image-20220407123119552"  /></p>
 <p>那么究竟该怎么做?记住两件事:</p>
-<ol type="1">
+<ol>
 <li>如果希望文件在文本模式下能被正确读取，不要在文件里插入<code>Control-Z</code>字符</li>
 <li>如果文件中必须包含<code>Control-Z</code>，并且希望文件被正确读取，那么就以二进制模式打开文件</li>
 </ol>
 <p>正确读取表示用任何软件，即使你只在 windows 上编程(是家人就用 linux)</p>
-<h1 id="but-what-about-control-d">But what about Control-D?</h1>
-<p>一些 Linux 用户此刻可能会想,"但是我用来结束 shell 输入的<code>Control-D</code>字符又是怎么回事捏?难道<code>Control-D</code>不是一个<code>end-of-file</code>字符吗?"</p>
+<h1 id="But-what-about-Control-D"><a href="#But-what-about-Control-D" class="headerlink" title="But what about Control-D?"></a>But what about Control-D?</h1><p>一些 Linux 用户此刻可能会想,”但是我用来结束 shell 输入的<code>Control-D</code>字符又是怎么回事捏?难道<code>Control-D</code>不是一个<code>end-of-file</code>字符吗?”</p>
 <p>还真不是，就算输入了<code>Control-D</code>，linux 也绝对不会注意到它.实际上在终端输入的<code>Control-D</code>仅仅是一个信号，用来结束 shell 的标准输入流(<code>注：关于linux信号系统，可以参考</code><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Signal_(IPC)">wiki</a>).在输入中实际上并没有<code>Control-D</code>这个字符.可以用<code>stty</code>命令把结束 shell 标准输入流从<code>Control-D</code>改成任何其他字符，但是控制字符本身不会被当作字符处理，插入到输入流中，并且就算被放入输入中，linux 也不会把它当作<code>end-of-file</code>标志</p>
-<h1 id="the-eof-value-in-c-and-c">The EOF value in C++ and C</h1>
-<p>更让人困惑的是,C++和 C 都定义了一个特殊的<code>EOF</code>变量，在 C 中，被定义在<code>&lt;stdio.h&gt;</code></p>
+<h1 id="The-EOF-value-in-C-and-C"><a href="#The-EOF-value-in-C-and-C" class="headerlink" title="The EOF value in C++ and C"></a>The EOF value in C++ and C</h1><p>更让人困惑的是,C++和 C 都定义了一个特殊的<code>EOF</code>变量，在 C 中，被定义在<code>&lt;stdio.h&gt;</code></p>
 <p><code>#define EOF (-1)</code>，在 C++中也差不多.</p>
 <p>注意这里说的<code>EOF</code>变量和<code>Control-Z</code>没有任何关系.它的值不是<code>0x1A</code>并且它甚至不是一个字符，而是一个整型变量.<code>EOF</code>变量通常被用作函数的返回值，像这样:</p>
 <p><code>int getchar(void);</code></p>
 <p><code>getchar</code>函数的作用是从标准输入中读取单个字符，当输入结束时，返回值为<code>EOF</code>.正如上面所说，文件结尾可能以一个<code>Control-Z</code>字符来表示文件的结束，但是任何情况下都不会有<code>EOF</code>的值和<code>Control-Z</code>的值相等.实际上<code>getchar</code>返回的是整形，而不是一个字符型，整形和字符型的比较不总是正确的(注：char 和 int 是不同类型，在比较时会进行隐式类型转换，通常是把<code>char</code>转换为<code>int</code>然后比较).</p>
 <p>用<code>getchar</code>函数读取标准输入的典型用法是：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> c;</span><br><span class="line">    <span class="keyword">while</span> ((c=<span class="built_in">getchar</span>())!=EOF)</span><br><span class="line">    <span class="built_in">putchar</span>(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>注：输入的是<code>char</code>，返回的是转换为<code>int</code>的字符(高位全部填充为 0)，而<code>putchar</code>又会经过一次类型转换，把<code>getchar</code>的返回值转换为<code>char</code>，缩减型转换或截断高位，但是可打印的<code>ascii</code>最高不会超过一个字节，所以不会造成影响</p>
 <p>至于为什么返回的是<code>int</code>，是因为需要用返回值与<code>EOF</code>比较来判断输入是否结束</p>
 <p>至于为什么-1 打不出来，因为<code>-1=0xFFFF FFFF</code>，从 char 转为 int 的过程是高位填 0,所以输入不会和<code>EOF</code>冲突</p>
 </blockquote>
-<h2 id="the-eof-and-feof-functions">The eof() and feof() functions</h2>
-<p>另一个令人困惑的部分是 C 和 C++提供的用于检查输入流状态的函数.几乎所有初学者都被它们困扰过，所以预先声明它们做了什么以及它们不应该被如何使用是个好主意:</p>
+<h2 id="The-eof-and-feof-functions"><a href="#The-eof-and-feof-functions" class="headerlink" title="The eof() and feof() functions"></a>The eof() and feof() functions</h2><p>另一个令人困惑的部分是 C 和 C++提供的用于检查输入流状态的函数.几乎所有初学者都被它们困扰过，所以预先声明它们做了什么以及它们不应该被如何使用是个好主意:</p>
 <blockquote>
 <p><code>eof() &amp; feof()</code>都会检查输入流是否发生了<code>end-of-file</code>状态.而<code>end-of-file</code>状态只会发生在读取操作后.</p>
 <p>在读取操作前就调用<code>eof</code>函数是错误的做法!不要把<code>eof</code>函数放在循环中.</p>
 </blockquote>
 <p>为了阐明这些，让我们写一个读取文件的函数，像这样:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">f1</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!f1.<span class="built_in">eof</span>())&#123;</span><br><span class="line">        string line;</span><br><span class="line">        <span class="built_in">getline</span>(f1,line);</span><br><span class="line">        cout&lt;&lt;++n&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面这段代码似乎很合理，但是别忘了 - 如果在读取操作之前就调用<code>eof</code>函数，是相当愚蠢的做法!</p>
-<p>在这个例子中我们确实在读取操作之前就调用了<code>eof()</code>.那么，为什么这是错误的，考虑<code>a.txt</code>为空的情况.尽管<code>a.txt</code>是一个空文件，但是第一次判断条件不会失败，因此还没有进行过读取操作.在我们读取之后，<code>end-of-file</code>条件会被出发，但是太晚了，然后我们的输出会是这样<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-07/b776b5f227731d2970b2eaa7857aa828.png" alt="image-20220407173701108" />这一行在文件中实际上是不存在的.通过简单的逻辑推理，程序始终会输出多余的一行.</p>
+<p>在这个例子中我们确实在读取操作之前就调用了<code>eof()</code>.那么，为什么这是错误的，考虑<code>a.txt</code>为空的情况.尽管<code>a.txt</code>是一个空文件，但是第一次判断条件不会失败，因此还没有进行过读取操作.在我们读取之后，<code>end-of-file</code>条件会被出发，但是太晚了，然后我们的输出会是这样<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-07/b776b5f227731d2970b2eaa7857aa828.png" alt="image-20220407173701108">这一行在文件中实际上是不存在的.通过简单的逻辑推理，程序始终会输出多余的一行.</p>
 <blockquote>
 <p>注：首先，要知道<code>eof</code>在什么条件下会发生，通俗的讲，在读完文件的最后一个字节之后，<code>eof</code>的返回值仍为<code>false</code>，只有在<strong>读完之后再试图读取</strong>时，<code>eof</code>才会返回<code>true</code>，因此永远会多输出一行</p>
 <p>不过这是之前的说法了，在 2022 的四月 7 日，译者重现了这段代码，发现如果<code>a.txt</code>不是空文件的话，并不会输出多余的一行</p>
@@ -175,37 +170,40 @@
 </blockquote>
 <p>为了保证程序正确，你应该在读取操作之后调用<code>eof</code>函数，或者干脆不要用.如果你不希望遇到上面的问题，可以像这样写:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(f1,line))&#123;</span><br><span class="line">    cout&lt;&lt;++n&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这里将<code>getline()</code>的返回值转化为了<code>while</code>的条件，当输入流没有发生<code>end-of-file(或者别的错误)</code>条件，就会一直循环下去</p>
 <p>C 语言也类似，不应该写出下面这样的代码:</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    FILE * f1=fopen(<span class="string">&quot;a.txt&quot;</span>,<span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!feof(f1))&#123;</span><br><span class="line">        fgets(line,<span class="number">100</span>,f1);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %s&quot;</span>,++n,line);</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(f1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这会在打开一个空文件时多打印一行，你应该:</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (fgets(line,<span class="number">100</span>,f1)!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(...)</span><br><span class="line">&#125;</span><br><span class="line">fclose(f1);</span><br></pre></td></tr></table></figure>
-<p>因此，显然<code>eof feof</code>都没什么用，那么为什么 C/C++标准库要提供它们?</p>
+
+<p>因此，显然<code>eof feof</code>都没什么用，那么为什么 C&#x2F;C++标准库要提供它们?</p>
 <p>Well,在判断读取操作是产生其他错误还是<code>end-of-file</code>条件的情况下，他们很有用，如果想区分这两种情况的话:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">f1</span><span class="params">(<span class="string">&quot;a.txt&quot;</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(f1,line))&#123;</span><br><span class="line">        cout&lt;&lt;++n&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;line&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (f1.<span class="built_in">eof</span>())&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;ok,file has read over&quot;</span>&lt;&lt;endl;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cout&lt;&lt;<span class="string">&quot;sth wrong happend and read is interrupted&quot;</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="summary">Summary</h1>
-<p>以上的内容好像让<code>EOF</code>问题变得很复杂，但实际上可以归纳为 3 点:</p>
+
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>以上的内容好像让<code>EOF</code>问题变得很复杂，但实际上可以归纳为 3 点:</p>
 <blockquote>
-<ol type="1">
+<ol>
 <li>没有<code>EOF</code>字符，除非在 windows 上以文本模式打开文件，或者你自己造了个(当然，2022 的 windows 也不把<code>control-z</code>当作结束字符了)</li>
-<li>C/C++的<code>EOF</code>符号不是<code>end-of-file</code>字符，它只是库函数在特定条件下的返回值</li>
+<li>C&#x2F;C++的<code>EOF</code>符号不是<code>end-of-file</code>字符，它只是库函数在特定条件下的返回值</li>
 <li>不要在循环中用<code>eof() feof()</code></li>
 </ol>
 </blockquote>
-<p>如果牢记这些规则，你就可以避免被大多数与误解 C++/C 中关于<code>end-of-file</code>条件的错误所困扰</p>
+<p>如果牢记这些规则，你就可以避免被大多数与误解 C++&#x2F;C 中关于<code>end-of-file</code>条件的错误所困扰</p>
 <blockquote>
 <p>译者注:</p>
 <p>总的来说，<code>EOF</code>的起源是因为<code>CP/M</code>的文件系统不知道文件的具体长度，从而需要用户自行用一个特殊字符表示文件结束 - <code>Control-Z</code></p>
-<p>C/C++的<code>EOF</code>宏变量值为<code>-1</code>，之所以为<code>-1</code>，是因为根据经典的<code>Unix</code>规范，程序正确运行后返回 0,而错误一般返回<code>-1</code>，所以对于<code>getline()</code>这样的函数，如果读取完最后一行后再试图读取，显然会产生错误，因此是否读取完文件可以用</p>
+<p>C&#x2F;C++的<code>EOF</code>宏变量值为<code>-1</code>，之所以为<code>-1</code>，是因为根据经典的<code>Unix</code>规范，程序正确运行后返回 0,而错误一般返回<code>-1</code>，所以对于<code>getline()</code>这样的函数，如果读取完最后一行后再试图读取，显然会产生错误，因此是否读取完文件可以用</p>
 <p><code>if (getline(fs,line)!=EOF)</code>,其实就是<code>if (getline(fs,line)!=-1)</code>，用<code>EOF</code>更好记罢</p>
 <p>至于<code>feof() eof()</code>这样的函数，只是判断是否达成了<code>end-of-file</code>条件，就译者目前的试验经历来看(2022)，想达成该条件需要</p>
-<ol type="1">
+<ol>
 <li>输入流至少进行一次读取</li>
 <li>读到最后一个字节(不是读完最后一个字节后再读取)</li>
 </ol>
 <p>而原作者之所以说不要把<code>eof</code>用作循环条件，其实是不要在读取操作之前调用<code>eof</code>，因为<code>eof</code>只有在试图读取不存在的字节后才会触发，当然，这个说法有时代的局限性，可能在 10 年前，就算文件非空，<code>eof</code>也只有在读完最后一个字节之后，再进行一次读取操作才会触发(最后一行的再下一行，实际上并不存在这一行)</p>
 </blockquote>
-<p>-- 2022.4.8 11:49🐟🐟🐟</p>
+<p>– 2022.4.8 11:49🐟🐟🐟</p>
     </div>
   </div>
 </article> 

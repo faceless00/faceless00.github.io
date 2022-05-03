@@ -42,7 +42,7 @@
 
 <div id="post">
   <aside id="navigator">
-    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#experience"><span class="anchor-number">1.</span> <span class="anchor-text">experience</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#api-reference"><span class="anchor-number">2.</span> <span class="anchor-text">api reference</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#archive-page"><span class="anchor-number">2.1.</span> <span class="anchor-text">archive page</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#tagscategories"><span class="anchor-number">2.1.1.</span> <span class="anchor-text">tags&amp;categories</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#path"><span class="anchor-number">2.1.2.</span> <span class="anchor-text">path</span></a></li></ol></li></ol></li></ol>
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#experience"><span class="anchor-number">1.</span> <span class="anchor-text">experience</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#api-reference"><span class="anchor-number">2.</span> <span class="anchor-text">api reference</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#archive-page"><span class="anchor-number">2.1.</span> <span class="anchor-text">archive page</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#tags-amp-categories"><span class="anchor-number">2.1.1.</span> <span class="anchor-text">tags&amp;categories</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#path"><span class="anchor-number">2.1.2.</span> <span class="anchor-text">path</span></a></li></ol></li></ol></li></ol>
   </aside>
   <div id="content">
     <div id="postHead">
@@ -58,28 +58,23 @@
          
     </div>
     <div id="postBody">
-      <h1 id="experience">experience</h1>
-<p>想开发主题的初衷，是因为实在找不到现成的我个人看了还比较满意的主题，妹有办法，我只能自己造轮子了，我仅仅拥有一些薄弱的基础，会点<code>react</code>，后端勉强会用<code>express</code>，可怜的项目经验仅是寒假的时候做了个微信小程序 <code>hexo</code>自身的文档几乎没有给我什么开发的参考，我<code>google</code>了一下开发的流程，大致上算是明白了，总的来说，开发需要用到两个技术，1 是模板，2 是 css,前者用来生成<code>html</code>，后者给网站加点样式，最终我选择了<code>ejs+styl</code> 写主题的过程算不上特别困难，但也不是很容易，是的，我说的就是<code>hexo</code>的<code>api</code>文档，不是我个人素质低所以骂他，而是真的写得有点大便，去看看评论，也有很多吐槽的 但 6 年前的<code>api</code>知道现在也没有改，也是让我有点意想不到的，至于这其中的原因，我暂且蒙在<code>hexo api</code>文档作者的菊花里</p>
-<h1 id="api-reference">api reference</h1>
-<p>hexo 的<code>api</code>文档还是有点用的，虽然我基本靠控制台打印或者 google 得出用法</p>
-<h2 id="archive-page">archive page</h2>
-<p>对于 archive page,<code>post</code>变量是所有文章的集合，按理来说，这应该是一个数组 不好意思，这居然是个对象，通过<code>Object.keys</code>发现这个对象有两个属性，<code>data &amp; length</code> 顾名思义，<code>data</code>应该就是<code>post</code>数组了吧? 不好意思，<code>data</code>依然是个对象 令人匪夷所思的是,<code>data</code>对象的<code>key</code>居然是数组下标<code>0,1,3...</code>，那为什么要多次一举把他转化为对象呢? 我暂且蒙在 hexo 的菊花里...</p>
-<p>获取<code>post</code>变量的最终方式为,<code>page.posts['0']</code> <code>post</code>变量的<code>keys</code>为</p>
-<p><code>[ 'title', 'date', '_content', 'source', 'raw', 'slug', 'published', 'updated', 'comments', 'layout', 'photos', 'link', '_id', 'content', 'site', 'excerpt', 'more', 'path', 'permalink', 'full_source', 'asset_dir', 'tags', 'categories', 'prev', 'next', '__post' ]</code></p>
-<p>而<code>tags &amp; categories</code>的<code>keys</code>为<code>data,length</code>，熟悉的感觉又回来了,hexo,....</p>
-<h3 id="tagscategories">tags&amp;categories</h3>
-<p>绕到最后，想要获取具体的<code>tags</code>或<code>categories</code>需要<code>page.posts['1'].categories.data['0'].name</code>. 所以遍历<code>tags</code>的方式就是</p>
+      <h1 id="experience"><a href="#experience" class="headerlink" title="experience"></a>experience</h1><p>想开发主题的初衷，是因为实在找不到现成的我个人看了还比较满意的主题，妹有办法，我只能自己造轮子了，我仅仅拥有一些薄弱的基础，会点<code>react</code>，后端勉强会用<code>express</code>，可怜的项目经验仅是寒假的时候做了个微信小程序<br><code>hexo</code>自身的文档几乎没有给我什么开发的参考，我<code>google</code>了一下开发的流程，大致上算是明白了，总的来说，开发需要用到两个技术，1 是模板，2 是 css,前者用来生成<code>html</code>，后者给网站加点样式，最终我选择了<code>ejs+styl</code><br>写主题的过程算不上特别困难，但也不是很容易，是的，我说的就是<code>hexo</code>的<code>api</code>文档，不是我个人素质低所以骂他，而是真的写得有点大便，去看看评论，也有很多吐槽的<br>但 6 年前的<code>api</code>知道现在也没有改，也是让我有点意想不到的，至于这其中的原因，我暂且蒙在<code>hexo api</code>文档作者的菊花里</p>
+<h1 id="api-reference"><a href="#api-reference" class="headerlink" title="api reference"></a>api reference</h1><p>hexo 的<code>api</code>文档还是有点用的，虽然我基本靠控制台打印或者 google 得出用法</p>
+<h2 id="archive-page"><a href="#archive-page" class="headerlink" title="archive page"></a>archive page</h2><p>对于 archive page,<code>post</code>变量是所有文章的集合，按理来说，这应该是一个数组<br>不好意思，这居然是个对象，通过<code>Object.keys</code>发现这个对象有两个属性，<code>data &amp; length</code><br>顾名思义，<code>data</code>应该就是<code>post</code>数组了吧?<br>不好意思，<code>data</code>依然是个对象<br>令人匪夷所思的是,<code>data</code>对象的<code>key</code>居然是数组下标<code>0,1,3...</code>，那为什么要多次一举把他转化为对象呢?<br>我暂且蒙在 hexo 的菊花里…</p>
+<p>获取<code>post</code>变量的最终方式为,<code>page.posts[&#39;0&#39;]</code><br><code>post</code>变量的<code>keys</code>为</p>
+<p><code>[ &#39;title&#39;, &#39;date&#39;, &#39;_content&#39;, &#39;source&#39;, &#39;raw&#39;, &#39;slug&#39;, &#39;published&#39;, &#39;updated&#39;, &#39;comments&#39;, &#39;layout&#39;, &#39;photos&#39;, &#39;link&#39;, &#39;_id&#39;, &#39;content&#39;, &#39;site&#39;, &#39;excerpt&#39;, &#39;more&#39;, &#39;path&#39;, &#39;permalink&#39;, &#39;full_source&#39;, &#39;asset_dir&#39;, &#39;tags&#39;, &#39;categories&#39;, &#39;prev&#39;, &#39;next&#39;, &#39;__post&#39; ]</code></p>
+<p>而<code>tags &amp; categories</code>的<code>keys</code>为<code>data,length</code>，熟悉的感觉又回来了,hexo,….</p>
+<h3 id="tags-amp-categories"><a href="#tags-amp-categories" class="headerlink" title="tags&amp;categories"></a>tags&amp;categories</h3><p>绕到最后，想要获取具体的<code>tags</code>或<code>categories</code>需要<code>page.posts[&#39;1&#39;].categories.data[&#39;0&#39;].name</code>.<br>所以遍历<code>tags</code>的方式就是</p>
 <blockquote>
-<p>for (let i in Object.keys(post.tags.data)){ console.log(post.tags.data[i].name) }</p>
+<p>for (let i in Object.keys(post.tags.data)){<br>console.log(post.tags.data[i].name)<br>}</p>
 </blockquote>
 <p>或者</p>
 <blockquote>
-<p>post.tags.data.forEach(tag=&gt;{ console.log(tag.name) })</p>
+<p>post.tags.data.forEach(tag&#x3D;&gt;{<br>console.log(tag.name)<br>})</p>
 </blockquote>
-<h3 id="path">path</h3>
-<p>生成<code>post</code>的<code>url</code></p>
+<h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><p>生成<code>post</code>的<code>url</code></p>
 <blockquote>
-<p>page.posts.data.forEach(post=&gt;{ console.log(url_for(post.path)) })</p>
+<p>page.posts.data.forEach(post&#x3D;&gt;{<br>console.log(url_for(post.path))<br>})</p>
 </blockquote>
     </div>
   </div>
