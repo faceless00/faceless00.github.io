@@ -6,6 +6,7 @@
 <title>almostSalted</title>
 <meta name="referrer" content="no-referrer" />
 <meta name="google-site-verification" content="_CsSd0yrTQQrdEyoybq1kZNTZbIVulPo3zdQnaqAR0Y" />
+<link rel="stylesheet" href="/css/highlight/styles/monokai.min.css" />
   
 <link rel="stylesheet" href="/css/layout.css">
 
@@ -566,8 +567,15 @@
 </ol>
 <h3 id="checksum"><a href="#checksum" class="headerlink" title="checksum"></a>checksum</h3><p>checksum-校验和,可以校验一些简单的数据包传输错误.</p>
 <p>校验和计算设计TCP头部和数据段,还有伪头部(96位),伪头部是一个虚拟的数据结构,实际上TCP并不包含这一部分,伪头部包括源IP,目标IP,协议和TCP长度,要包含伪头部的原因是校验的时候可以检查数据包是否被正确路由</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PsuedoHeader</span>&#123;</span><br><span class="line">    <span class="type">uint32_t</span> source;</span><br><span class="line">    <span class="type">uint32_t</span> dest;</span><br><span class="line">    <span class="type">uint8_t</span> reserved;	<span class="comment">//保留字节,全部置0</span></span><br><span class="line">    <span class="type">uint8_t</span> protocol;</span><br><span class="line">    <span class="type">uint16_t</span> length;</span><br><span class="line">    </span><br><span class="line">&#125;;	<span class="comment">//一共12字节</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="cpp">typedef struct PsuedoHeader&#123;
+    uint32_t source;
+    uint32_t dest;
+    uint8_t reserved;	//保留字节,全部置0
+    uint8_t protocol;
+    uint16_t length;
+    
+&#125;;	//一共12字节
+</code></pre>
 <p>校验和计算:将伪头部,TCP头部和数据部分求和,然后求<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E7%A0%81">反码</a>(1的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%B8%80%E8%A3%9C%E6%95%B8">补码</a>)</p>
 <p>校验和会被装入TCP头部,接收方接收到数据报文后会进行校验,校验不需要再重复求一边校验和了,只需要计算<code>PsuedoHeader+TCP_Header+data+checksum</code>,如果所有位都为1,说明数据没问题.</p>
 <h3 id="Sweetie"><a href="#Sweetie" class="headerlink" title="Sweetie"></a>Sweetie</h3><p>对于一些需要可靠传输的应用来说,TCP很有用,但是TCP并不适用与所有场合.</p>
@@ -760,6 +768,11 @@
   
 <link rel="stylesheet" href="/css/footer.css">
 
+
+
+<script src="/js/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 <div id="footer"></div>
  

