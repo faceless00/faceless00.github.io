@@ -62,7 +62,7 @@
       <h1 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h1><h2 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><code>Adelson-Velsky &amp; Landis</code>树，也叫平衡二叉树，简略的说就是<code>BST</code>和高度平衡的二叉树的融合</p>
 <blockquote>
 <p><code>BST</code>，二叉搜索树，可以看作是以树结构存储的升序数组</p>
-<p>高度平衡的二叉树，任意节点的左右子树高度差<code>&lt;=1</code>，比如这棵就是<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/01a11ac9dc0c3bc1f67c7403cb1523d3.png" alt="image-20220410171609821"></p>
+<p>高度平衡的二叉树，任意节点的左右子树高度差<code>&lt;=1</code>，比如这棵就是<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-10/01a11ac9dc0c3bc1f67c7403cb1523d3.png" alt="image-20220410171609821"></p>
 </blockquote>
 <p><code>AVL</code>的递归定义为:</p>
 <ol>
@@ -77,8 +77,8 @@
 <blockquote>
 <p>从根节点到叶子节点的路径包含的节点数的最大值(包括根节点)</p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">leetcode</a>，虽然求得是最大深度，不过深度和高度其实差不多</p>
-<p>后序遍历:<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/2ce9c3e7010ec20c30d927cd2d5e5975.png" alt="image-20220410173756581"></p>
-<p>先序遍历:<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-10/c853a40ef29f606d41b721cd861de3f6.png" alt="image-20220410174114294"></p>
+<p>后序遍历:<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-10/2ce9c3e7010ec20c30d927cd2d5e5975.png" alt="image-20220410173756581"></p>
+<p>先序遍历:<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-10/c853a40ef29f606d41b721cd861de3f6.png" alt="image-20220410174114294"></p>
 </blockquote>
 </blockquote>
 <p>插入和删除节点之后，要更新高度，要更新高度的节点为操作节点的所有祖先节点</p>
@@ -117,15 +117,15 @@ node* LeftRotate(node* cur) &#123;	//左旋cur
 &#125;
 </code></pre>
 <p>举个简单的例子：</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-11/9a705d5ca9bc82655603ccbe19cbc402.png" alt="image-20220411224513434"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-11/9a705d5ca9bc82655603ccbe19cbc402.png" alt="image-20220411224513434"></p>
 <p><code>x</code>是新插入的节点，此时 R 的平衡因子为<code>&gt; 1</code>，这种情况可以叫做<code>LL</code>型，R 的<strong>左子树</strong>RL 的<strong>左子树</strong>新插入了节点，平衡操作为节点 R 右旋</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-11/13bd3c2daacc4cacd35af2f113b079c5.png" alt="image-20220411224902843">然后就平衡了 🤠</p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-11/13bd3c2daacc4cacd35af2f113b079c5.png" alt="image-20220411224902843">然后就平衡了 🤠</p>
 <p>再举一个例子：</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-11/9a57fd7e0fff43b08f3b2b3061e5b160.png" alt="image-20220411225349437"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-11/9a57fd7e0fff43b08f3b2b3061e5b160.png" alt="image-20220411225349437"></p>
 <p>R 的平衡因子仍然是 2,但是插入的节点在 RL 的右子树，这种情况可以叫做 LR 型，需要进行两次旋转操作然后平衡</p>
 <p>首先给 RL 左旋:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-11/65c9aca259f50d0751f6b59d9492db2f.png" alt="image-20220411225739881">聪明的你一定发现了，左旋之后变成了 LL 型，所以接下来再给 R 进行一次右旋操作:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-11/be1b88cbb344601ef3faee1320fafe5a.png" alt="image-20220411225944026">于是又平衡了</p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-11/65c9aca259f50d0751f6b59d9492db2f.png" alt="image-20220411225739881">聪明的你一定发现了，左旋之后变成了 LL 型，所以接下来再给 R 进行一次右旋操作:</p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-11/be1b88cbb344601ef3faee1320fafe5a.png" alt="image-20220411225944026">于是又平衡了</p>
 <p>当然，LR 型包含了三种情况，这里是<code>RRR</code>节点的平衡因子为<code>-1</code>，还有<code>0 1</code>这两种，但是本质上都是通过左旋<code>RL</code>节点，变成<code>LL</code>型，然后右旋<code>R</code>最终平衡</p>
 <p>至于<code>RR,RL</code>型，和<code>LL,LR</code>是<strong>对称</strong>操作，这里不再赘述</p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>懒得写…以后补</p>
@@ -512,7 +512,7 @@ typedef struct &#123;
 <li>支持单个，硬编码的表</li>
 </ul>
 <p>我们的硬编码表将会存储用户，看起来像这样:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/4c36e008a593cad02a5f4052452488ab.png" alt="image-20220421000123610"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-21/4c36e008a593cad02a5f4052452488ab.png" alt="image-20220421000123610"></p>
 <p>这是一个简单的模板，但是支持多种数据类型和长度可变的字符串.</p>
 <p><code>insert</code>语句看起来像这样:</p>
 <p><code>insert 1 cstack foo@bar.com</code></p>
@@ -573,7 +573,7 @@ typedef struct &#123;
 <p>这个操作不会创建结构体实体，因为没有用<code>malloc</code>开辟空间，所以0实际上是一个野指针，但是<code>sizeof</code>不在乎是否野指针，它只需要<strong>指针指向的变量类型</strong>就可以判断出大小.(sizeof在编译时运行)</p>
 </blockquote>
 <p>这意味着一个序列化的行的布局看起来像这样:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/a918324620a1ce8041b3e17ef971f96e.png" alt="image-20220421235558542"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-21/a918324620a1ce8041b3e17ef971f96e.png" alt="image-20220421235558542"></p>
 <p>We also need code to convert to and from the compact representation.</p>
 <pre><code class="cpp">+void serialize_row(Row* source, void* destination) &#123;
 +  memcpy(destination + ID_OFFSET, &amp;(source-&gt;id), ID_SIZE);
@@ -1666,8 +1666,8 @@ db &gt; .exit
 </code></pre>
 <blockquote>
 <p>注: 我想你们应该懒得查cpp ref,我帮你们查吧</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-25/fa4eebcdd18b319009753543f40ddc66.png" alt="image-20220425213839123"></p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-25/24f372655fb1925fefb8d72ff920b7d0.png" alt="image-20220425213633941"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-25/fa4eebcdd18b319009753543f40ddc66.png" alt="image-20220425213839123"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-25/24f372655fb1925fefb8d72ff920b7d0.png" alt="image-20220425213633941"></p>
 <p>大致意思就是，如果src(包括null字符)全都拷贝进了dest,还是没能达到<code>count</code>个字节，那么dest剩余的部分都填充null字符,直到达到count.</p>
 </blockquote>
 <h3 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>好!我们已经完成了持久保存，但还有些地方可以改善.例如如果不用<code>.exit</code>而是直接终止程序，修改的数据就会丢失.此外，我们把所有的page都写回了磁盘，即使是从磁盘读取到内存后一直没改变的那些page,这些问题我们之后都可以解决.</p>

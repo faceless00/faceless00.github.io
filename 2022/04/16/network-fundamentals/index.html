@@ -83,7 +83,7 @@
 <h1 id="OSI-Model"><a href="#OSI-Model" class="headerlink" title="OSI Model"></a>OSI Model</h1><p>cloudflare这篇文章写的还行,<a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/">link</a></p>
 <p><img src="https://www.cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg" alt="img"></p>
 <p>不过其实没必要分那么细,通常来说分为4层就够了:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-16/c778b922229a4ab74029c487883dd4f5.png" alt="image-20220416200112258"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-16/c778b922229a4ab74029c487883dd4f5.png" alt="image-20220416200112258"></p>
 <p>自下而上的看,首先是<code>DATALINK Layer</code></p>
 <blockquote>
 <p>简要来讲,作用有2:</p>
@@ -97,7 +97,7 @@
 <blockquote>
 <p>网络层主机的标识符为IP,至于为什么不用MAC地址,是因为MAC地址只是一个唯一的序列,但是IP地址是根据区域划分的</p>
 <p>IP地址的格式:<code>123.123.234.234</code>,4段,每段的范围 <code>0-255</code>,因为每段只能占一个字节</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-16/12125dc6ef80cb229b0708ba29f622f2.png" alt="image-20220416203247277"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-16/12125dc6ef80cb229b0708ba29f622f2.png" alt="image-20220416203247277"></p>
 <p>一个IP地址分为这两部分,网络号用来标识主机位于的子网,主机号是局域网内设备的标识</p>
 <p>而数据传输,也叫路由,是将数据从一个区域传输到另一个区域,也就是从一个子网传输到另一个子网</p>
 <p>至于为什么要分两部分,举个相似的例子:身份证,身份证前6位是地区编号,网络号也起着相似的作用</p>
@@ -121,7 +121,7 @@
 <h1 id="Ethernet"><a href="#Ethernet" class="headerlink" title="Ethernet"></a>Ethernet</h1><p>以太网主要用于局域网内传输数据,设备的唯一标识是MAC地址(48bit)</p>
 <p>在以太网协议中,数据的格式为帧(frame).</p>
 <p><code>Ethernet 2 Frame</code>(以太 II 帧,也称作DIX以太网):</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/0a8e062d03d5f4878f8071210b2b8b6b.png" alt="image-20220421212539089"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-21/0a8e062d03d5f4878f8071210b2b8b6b.png" alt="image-20220421212539089"></p>
 <p>type段占俩字节,实际上就只有两种:</p>
 <ul>
 <li><code>0x0080</code>,表示IPV4</li>
@@ -202,7 +202,7 @@
 <p>Domain Name System,域名解析系统.</p>
 <p>因为IP不太好记,就用域名比如<code>www.google.com</code>代替google服务器的IP地址.</p>
 <p>实际访问时域名会从DNS服务器查询对应的IP地址.</p>
-<p>使用<code>whois</code>命令可以查询域名的一些信息.<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/bf8fd2ef0818d128650b2f9e6645147a.png" alt="image-20220419004642397"></p>
+<p>使用<code>whois</code>命令可以查询域名的一些信息.<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/bf8fd2ef0818d128650b2f9e6645147a.png" alt="image-20220419004642397"></p>
 </blockquote>
 <p>IP数据包结构体:</p>
 <table class="wikitable" style="text-align:center"><table class="wikitable" style="text-align:center">
@@ -546,7 +546,7 @@
 <p>超时重传</p>
 <blockquote>
 <p>wiki:</p>
-<p>发送方使用一个保守估计的时间作为收到数据包的确认的超时上限.如果超过这个上限仍未收到确认包,发送方将重传这个数据包.每当发送方收到确认包后,会重置这个重传定时器.典型地,定时器的值设定为<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-17/72463a1f9a6b296417943ea10e8c0439.png" alt="image-20220417140717151"></p>
+<p>发送方使用一个保守估计的时间作为收到数据包的确认的超时上限.如果超过这个上限仍未收到确认包,发送方将重传这个数据包.每当发送方收到确认包后,会重置这个重传定时器.典型地,定时器的值设定为<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-17/72463a1f9a6b296417943ea10e8c0439.png" alt="image-20220417140717151"></p>
 <p>进一步,如果重传定时器被触发,仍然没有收到确认包,定时器的值将被设为前次值的二倍(直到特定阈值).</p>
 <blockquote>
 <p>细心的你一定发现了,之前说过三次握手过程中一直没有接收到cli的ACK包,ser重新发送SYN&#x2F;ACK的时间间隔将每次翻倍</p>
@@ -623,20 +623,20 @@
 <p>数据包的封装顺序是从上而下的(上层协议的数据包传递给下层,作为下一层协议的<strong>数据部分</strong>,然后在<strong>头部</strong>写入该层协议的信息,再传递给下一层…),处理是自上而下的,下层的数据被解包,数据部分传递给上一层.</p>
 </blockquote>
 <p>假设访问google,使用<code>post</code>请求(通常,<code>get</code>请求不会携带数据),首先要获得google.com的IP地址,查询IP使用的是DNS协议,这里不再赘述,通过dig查看IP:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/beeec0bc5cd15c7eccf8bacf670b9756.png" alt="image-20220419132510285"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/beeec0bc5cd15c7eccf8bacf670b9756.png" alt="image-20220419132510285"></p>
 <p>好辣,现在已经知道目标IP,那么开始传输数据包吧!</p>
 <p>数据包将从应用层开始封装,这里使用了HTTP协议.封装而成的数据包长这样:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/abe490a1938576b7c68e842e1178489b.png" alt="image-20220419130918711"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/abe490a1938576b7c68e842e1178489b.png" alt="image-20220419130918711"></p>
 <p>通常,<code>Head</code>包含一些有关请求的信息,而body是数据.</p>
 <p>请求头信息:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/cb3e4d2906173702d9e2906d521264ab.png" alt="image-20220419131049354"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/cb3e4d2906173702d9e2906d521264ab.png" alt="image-20220419131049354"></p>
 <p>然后,数据包被传输到传输层,使用TCP&#x2F;UDP协议,这里使用TCP.</p>
 <p>如果未与目标主机建立连接,会首先建立连接,这里假设连接已经建立了,本机端口为10086,目标端口为80.在传输层数据包被封装成TCP包.</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/7d0707aa76372c80b4593de1ab178bf9.png" alt="image-20220419132934866"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/7d0707aa76372c80b4593de1ab178bf9.png" alt="image-20220419132934866"></p>
 <p>然后把数据包传递到IP层,前面说已经建立过tcp连接,所以肯定知道MAC了,那么通过查询ARP表是可以获取<code>google.com</code>的某台服务器的<code>MAC</code>地址的,辣么,封装成IP包:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-19/4c7e00019d39e7e0a613a674d7443bb8.png" alt="image-20220419133341045"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-19/4c7e00019d39e7e0a613a674d7443bb8.png" alt="image-20220419133341045"></p>
 <p>接下来就到数据链路层辣,数据链路层会将数据包封装成两个部分,定长为<code>14b</code>的头部和<code>44-1500b</code>的数据和<code>4b</code>的CRC校验码(校验码就是一种hash,用来检验数据包是否完好无损).因为这是个IP包而不是arp包,所以头部的<code>type=0x0080</code>,值得一提的是,http协议的默认端口就是80🐁🐁</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-21/7038e344471be3938b4ffca62165b957.png" alt="image-20220421212637694"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-21/7038e344471be3938b4ffca62165b957.png" alt="image-20220421212637694"></p>
 <p>好,自此数据封装结束,进入物理层,我们假定你有一个路由器并且已经连上网,那么,数据包会通过网卡发送给网关(也就是路由器的IP,不过这里其实是路由器的MAC).</p>
 <p>为什么要发送给网关捏?蒽,你的电脑没有路由功能,路由器有.</p>
 <p>路由器会检查该数据包是否属于该子网,如果不属于,就要路由,所谓路由,就是计算从一个子网到另一个子网的最佳路径,这里不做赘述,总之,路由器会将数据包转发到下一个路由器,直到到达目的IP的子网内.</p>
@@ -700,7 +700,7 @@
 <h2 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h2><p>以上为TLS的基础知识,现在来具体了解TLS(SSL).</p>
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Protocol_details">wiki</a></p>
 <p>TLS架构:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-20/d2d732bfb7e9f59642af3bb227a08809.png" alt="image-20220420173110378"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-20/d2d732bfb7e9f59642af3bb227a08809.png" alt="image-20220420173110378"></p>
 <p>重要的是握手协议和记录协议:</p>
 <p>握手协议用来交换密钥,记录协议用来加密&#x2F;解密数据.</p>
 <h3 id="Handshake"><a href="#Handshake" class="headerlink" title="Handshake"></a>Handshake</h3><p>SSL:</p>
@@ -744,7 +744,7 @@
 </ol>
 </blockquote>
 <h3 id="Data-Transfer-1"><a href="#Data-Transfer-1" class="headerlink" title="Data Transfer"></a>Data Transfer</h3><p>简要介绍一下建立TLS连接后的数据传输过程.</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-20/e89023214c52ce734768bd022dbf9b01.png" alt="image-20220420190421577"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-20/e89023214c52ce734768bd022dbf9b01.png" alt="image-20220420190421577"></p>
 <p>现在有两个密钥,对称密钥和MAC密钥.</p>
 <p>ser首先生成数字签名(MAC),使用MAC key计算出数据的MAC(或者说HMAC,hash mac,本质上是数据的hash值),然后用对称密钥加密数据.然后把数据发送给cli.</p>
 <p>cli使用对称密钥解密数据,然后也使用MAC key计算出明文的MAC,然后和发送过来的MAC比较,如果相同则说明数据没问题.</p>

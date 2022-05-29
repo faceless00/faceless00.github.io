@@ -1497,7 +1497,7 @@ Need to implement searching an internal node
 </code></pre>
 <blockquote>
 <p>译者注: 还有一个地方需要修改-<code>execute_insert</code></p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-04-30/dedd9d12883cad9c4047e8b84fead216.png" alt="image-20220430155156393"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-04-30/dedd9d12883cad9c4047e8b84fead216.png" alt="image-20220430155156393"></p>
 <p>因为现在搜索后的<code>cursor</code>不一定指向根节点，所以node应该是cursor指向的节点</p>
 </blockquote>
 <h3 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a>Tests</h3><p>现在向多节点btree中插入键不再会导致错误了.然后我们可以更新下我们的测试:</p>
@@ -2022,14 +2022,14 @@ db &gt;
 <h1 id="狗尾续貂"><a href="#狗尾续貂" class="headerlink" title="狗尾续貂"></a>狗尾续貂</h1></br>
 
 <h2 id="Part-14-Splitting-a-Internal-Node"><a href="#Part-14-Splitting-a-Internal-Node" class="headerlink" title="Part 14 - Splitting a Internal Node"></a>Part 14 - Splitting a Internal Node</h2><p>基于目前的btree架构,我们的内部节点一共可以存储3个key,4个子节点.</p>
-<p>在上一章的<code>internal_node_insert()</code>函数中,留了一个占坑<code>if</code>块.<img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-02/c91af8b382055446b404e5577a18f4f4.png" alt="image-20220502152912307"></p>
+<p>在上一章的<code>internal_node_insert()</code>函数中,留了一个占坑<code>if</code>块.<img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-02/c91af8b382055446b404e5577a18f4f4.png" alt="image-20220502152912307"></p>
 <p>然后稍作修改:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-03/e0e62256d54e2cae72f174d25cac3bb3.png" alt="img" title="cnm"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-03/e0e62256d54e2cae72f174d25cac3bb3.png" alt="img" title="cnm"></p>
 <p>本章将主要实现分裂内部节点的操作.</p>
 </br>
 
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>这是一棵有4个叶子节点的树:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-02/594788697d9ed0c836e182abb1f0c6e5.png" alt="img">(*指孩子,K指该子节点的最大的key)</p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-02/594788697d9ed0c836e182abb1f0c6e5.png" alt="img">(*指孩子,K指该子节点的最大的key)</p>
 <p>现在叶子节点3需要进行分裂,分裂后一共有5个叶子节点，超出了内部节点的容量,所以需要分裂内部节点.</p>
 <p>而我们新创建的函数<code>internal_node_split_and_insert()</code>将完成分裂操作.</p>
 <p>在继续之前，我们先梳理一下插入操作:</p>
@@ -2067,9 +2067,9 @@ db &gt;
 <li>创建一个新的root节点成为这两个内部节点的父节点</li>
 </ul>
 <p>延续上文分裂节点3,假设节点3被分裂成了2个节点 - 3&amp;5</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-02/01a1e3f623ab04556f13f2ae3c97ac74.png"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-02/01a1e3f623ab04556f13f2ae3c97ac74.png"></p>
 <p>那么分裂后的树应该长这样:</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-02/c716416be22f9a379322d433cdcb4c6a.png"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-02/c716416be22f9a379322d433cdcb4c6a.png"></p>
 <p>在part 10分裂叶子节点的时候我们将左边的节点多分配了一个cell,同样,在分裂内部节点的时候,如果不能均分,那么左边的节点多一个cell.</p>
 <p>先在宏文件中定义分裂后的子节点指针数量:</p>
 <pre><code class="cpp">cuint32 INTERNAL_NODE_MAX_CHILD=INTERNAL_NODE_MAX_CELLS+1;
@@ -2080,9 +2080,9 @@ cuint32 INTERNAL_NODE_SPLIT_LEFT_CHILD_COUNT=INTERNAL_NODE_MAX_CHILD+1-INTERNAL_
 </br>
 
 <h3 id="Cell-or-Child"><a href="#Cell-or-Child" class="headerlink" title="Cell or Child?"></a>Cell or Child?</h3><p>在上一版本的<code>internal_node_insert</code>函数中,调用分裂内部节点的函数之前,就已经把key的数量加上了.</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-03/fedf9993cdcf1504e9e2e9edca077f8b.png" alt="image-20220503172201776"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-03/fedf9993cdcf1504e9e2e9edca077f8b.png" alt="image-20220503172201776"></p>
 <p>我们要把它移动到<code>if</code>判断之后.</p>
-<p><img src="https://gitee.com/salt3dfish/images/raw/master/hexo/22-05-03/0e39a6357996b5851444f9e62f2b55df.png" alt="image-20220503172246587"></p>
+<p><img src="https://github.com/faceless00/forimg/raw/main/hexo/22-05-03/0e39a6357996b5851444f9e62f2b55df.png" alt="image-20220503172246587"></p>
 <p>因为调用<code>internal_node_insert</code>的时候还未将新的child ptr &amp; key插入到内部节点中,如果先增加key的数量,会产生一些比较讨厌的问题.</p>
 <blockquote>
 <p>例如原本<code>right child</code>的下标为2,<code>num(keys)=2</code></p>
