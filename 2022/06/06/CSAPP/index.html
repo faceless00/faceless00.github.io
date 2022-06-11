@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang=" ">
+<head>
+  <meta charset="utf-8" />
+<link rel="icon" href="/images/rev_sheep.png " />
+<title>almostSalted</title>
+<meta name="referrer" content="no-referrer" />
+<meta name="google-site-verification" content="_CsSd0yrTQQrdEyoybq1kZNTZbIVulPo3zdQnaqAR0Y" />
+<link rel="stylesheet" href="/css/highlight/styles/monokai.min.css" />
+  
+<link rel="stylesheet" href="/css/layout.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+<div class="topBar">
+  <img class="icon" src="/images/rev_sheep.png " />
+  <div class="menu">
+     
+    <a href="/ ">home</a>
+     
+    <a href="/archives ">archives</a>
+     
+    <a href="/categories ">categories</a>
+     
+    <a href="/aboutme ">aboutme</a>
+     
+    <a href="/diary ">diary</a>
+    
+  </div>
+</div>
+<div class="blank"></div>
+  <div class="wrapper">
+    
+<link rel="stylesheet" href="/css/post.css">
+
+
+<script src="/js/post.js"></script>
+
+
+<div id="post">
+  <aside id="navigator">
+    <ol class="anchor"><li class="anchor-item anchor-level-1"><a class="anchor-link" href="#Chapter-2-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86"><span class="anchor-number">1.</span> <span class="anchor-text">Chapter 2 信息的表示和处理</span></a><ol class="anchor-child"><li class="anchor-item anchor-level-2"><a class="anchor-link" href="#2-58-is-little-endian"><span class="anchor-number">1.1.</span> <span class="anchor-text">2.58 is_little_endian</span></a></li></ol></li></ol>
+  </aside>
+  <div id="content">
+    <div id="postHead">
+      <h1>CSAPP</h1>
+      <div class="postDate">
+        <img class="dateIcon" src="/images/clockicon.svg" />
+        --2022.6.6
+      </div>
+        
+        <div class="postCategory">
+            <a href="/categories/original/">original</a>
+        </div>
+         
+    </div>
+    <div id="postBody">
+      <h1 id="Chapter-2-信息的表示和处理"><a href="#Chapter-2-信息的表示和处理" class="headerlink" title="Chapter 2 信息的表示和处理"></a>Chapter 2 信息的表示和处理</h1><h2 id="2-58-is-little-endian"><a href="#2-58-is-little-endian" class="headerlink" title="2.58 is_little_endian"></a>2.58 is_little_endian</h2><p>小端返回1,大端返回0，不论机器字长</p>
+<p>我想现在应该不会有人还在用8位处理器，以兄弟们的家境至少都应该是16位的吧</p>
+<pre><code class="cpp">bool is_little_endian()&#123;
+    uint16_t x=0x1234;
+    return (*(char *)(&amp;x))==0x34;
+&#125;
+</code></pre>
+    </div>
+  </div>
+</article> 
+  </div>
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+
+
+<script src="/js/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div id="footer"></div>
+ 
+</body>
