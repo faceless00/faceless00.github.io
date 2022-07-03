@@ -20,23 +20,20 @@
   max-width: 10%;
   padding: 10px;
   border-radius: 10px;
-  color: rgba(255,241,163,0.722);
-  background: #527475;
+  color: rgba(193,193,193,0.72);
 }
 #content h2 {
   max-width: 6%;
   padding: 10px;
   border-radius: 10px;
-  color: #b0c648;
-  background: #526875;
+  color: #a0d2e6;
   margin-left: 5px;
 }
 #content h3 {
   max-width: 5%;
   padding: 10px;
   border-radius: 10px;
-  color: rgba(41,168,244,0.92);
-  background: rgba(59,108,78,0.851);
+  color: #8facbd;
   margin-left: 10px;
 }
 #content blockquote {
