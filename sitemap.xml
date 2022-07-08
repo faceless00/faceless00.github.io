@@ -101,7 +101,7 @@
 
   
   <url>
-    <loc>https://faceless00.github.io/tags/translation/</loc>
+    <loc>https://faceless00.github.io/tags/original/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -115,13 +115,6 @@
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/tags/original/</loc>
-    <lastmod>2022-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://faceless00.github.io/tags/fuck/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -129,7 +122,7 @@
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/tags/anonymity/</loc>
+    <loc>https://faceless00.github.io/tags/translation/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -149,17 +142,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://faceless00.github.io/tags/anonymity/</loc>
+    <lastmod>2022-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://faceless00.github.io/categories/translation/</loc>
+    <loc>https://faceless00.github.io/categories/original/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/categories/original/</loc>
+    <loc>https://faceless00.github.io/categories/translation/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
