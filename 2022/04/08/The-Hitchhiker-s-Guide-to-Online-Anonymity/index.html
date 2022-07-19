@@ -153,8 +153,8 @@
 <li><a href="#Your-Cloud-backups-x2F-sync-services">云备份&#x2F;同步服务</a></li>
 <li><a href="#Your-Browser-and-Device-Fingerprints">浏览器和设备指纹</a></li>
 <li><a href="#Local-Data-Leaks-and-Forensics">本地数据泄露和取证分析</a></li>
-<li><a href="#Bad-Cryptography">不太行的密码学</a></li>
-<li><a href="#Bad-Cryptography">不要登陆但是登陆策略</a></li>
+<li><a href="#Bad-Cryptography">劣质加密算法</a></li>
+<li><a href="#Bad-Cryptography">无需登陆但反正还是会登陆政策</a></li>
 <li><a href="#Some-Advanced-targeted-techniques">一些高级且针对性的技术</a></li>
 <li><a href="#Some-bonus-resources">一些奖励资源</a></li>
 <li><a href="#Notes">笔记</a></li>
@@ -829,8 +829,105 @@
 <p>针对电脑，有许多且普遍的分析技术.不过大部分问题都可以通过加密整个硬盘，虚拟化(请看<a href="#Appendix-W-Virtualization">附录W: 虚拟化</a>)，以及分割来缓解.本指南之后会详细介绍如何防范此类威胁和技术.</p>
 </br>
 
-<h2 id="Bad-Cryptography"><a href="#Bad-Cryptography" class="headerlink" title="Bad Cryptography"></a>Bad Cryptography</h2><p>在信息安全领域有一个非常流行的谚语:”不要搞自己的加密算法!”</p>
-<h2 id="No-logging-but-logging-anyway-polices"><a href="#No-logging-but-logging-anyway-polices" class="headerlink" title="No logging but logging anyway polices"></a>No logging but logging anyway polices</h2><h2 id="Some-Advanced-targeted-techniques"><a href="#Some-Advanced-targeted-techniques" class="headerlink" title="Some Advanced targeted techniques"></a>Some Advanced targeted techniques</h2><h2 id="Some-bonus-resources"><a href="#Some-bonus-resources" class="headerlink" title="Some bonus resources"></a>Some bonus resources</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><h1 id="General-Preparations"><a href="#General-Preparations" class="headerlink" title="General Preparations"></a>General Preparations</h1><h2 id="…"><a href="#…" class="headerlink" title="…"></a>…</h2><h1 id="Creating-your-anonymous-online-identities"><a href="#Creating-your-anonymous-online-identities" class="headerlink" title="Creating your anonymous online identities"></a>Creating your anonymous online identities</h1><h2 id="Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity"><a href="#Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity" class="headerlink" title="Understanding the methos used to prevent anonymity and verify identity"></a>Understanding the methos used to prevent anonymity and verify identity</h2><h3 id="…-1"><a href="#…-1" class="headerlink" title="…"></a>…</h3><h2 id="Getting-Online"><a href="#Getting-Online" class="headerlink" title="Getting Online"></a>Getting Online</h2><h3 id="Creating-new-identities"><a href="#Creating-new-identities" class="headerlink" title="Creating new identities"></a>Creating new identities</h3><h3 id="…-2"><a href="#…-2" class="headerlink" title="…"></a>…</h3><h1 id="Backing-up-your-work-securely"><a href="#Backing-up-your-work-securely" class="headerlink" title="Backing up your work securely"></a>Backing up your work securely</h1><h2 id="…-3"><a href="#…-3" class="headerlink" title="…"></a>…</h2><h1 id="Covering-your-tracks"><a href="#Covering-your-tracks" class="headerlink" title="Covering your tracks"></a>Covering your tracks</h1><h2 id="…-4"><a href="#…-4" class="headerlink" title="…"></a>…</h2><h1 id="Some-low-tech-old-school-tricks"><a href="#Some-low-tech-old-school-tricks" class="headerlink" title="Some low-tech old-school tricks"></a>Some low-tech old-school tricks</h1><h2 id="…-5"><a href="#…-5" class="headerlink" title="…"></a>…</h2><h1 id="Some-last-OPSEC-thoughts"><a href="#Some-last-OPSEC-thoughts" class="headerlink" title="Some last OPSEC thoughts"></a>Some last OPSEC thoughts</h1><h1 id="If-you-think-you-gout-burned"><a href="#If-you-think-you-gout-burned" class="headerlink" title="If you think you gout burned"></a>If you think you gout burned</h1><h2 id="…-6"><a href="#…-6" class="headerlink" title="…"></a>…</h2><h1 id="…-7"><a href="#…-7" class="headerlink" title="…"></a>…</h1><h1 id="Acknowledgments"><a href="#Acknowledgments" class="headerlink" title="Acknowledgments"></a>Acknowledgments</h1><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Appendix-N-Warning-about-smartphones-and-smart-devices"><a href="#Appendix-N-Warning-about-smartphones-and-smart-devices" class="headerlink" title="Appendix N: Warning about smartphones and smart devices"></a>Appendix N: Warning about smartphones and smart devices</h2><p>在进行敏感活动时，切记:</p>
+<h2 id="Bad-Cryptography"><a href="#Bad-Cryptography" class="headerlink" title="Bad Cryptography"></a>Bad Cryptography</h2><p>在信息安全领域有一个非常流行的说法:”不要搞自己的加密算法!”</p>
+<p>原因是<sup id="fnref:258" role="doc-noteref"><a href="#fn:258" class="footnote" rel="footnote">258</a></sup><sup id="fnref:259" role="doc-noteref"><a href="#fn:259" class="footnote" rel="footnote">259</a></sup><sup id="fnref:260" role="doc-noteref"><a href="#fn:260" class="footnote" rel="footnote">260</a></sup><sup id="fnref:261" role="doc-noteref"><a href="#fn:261" class="footnote" rel="footnote">261</a></sup>:</p>
+<p>我们不希望大家因为这句话而放弃在密码学领域的研究和创新，所以，建议大家谨慎”搞自己的加密算法”,因为搞出来的一定不会是好的加密算法:</p>
+<ul>
+<li>搞出优秀的加密算法并不容易，通常需要多年的研究来开发和完善.</li>
+<li>优秀的加密算法是透明的，而且不会是私有&#x2F;闭源的，因此它可以被同行评审.</li>
+<li>优秀的加密算法会经过仔细、缓慢的开发过程，并且很少由一个人单独完成.</li>
+<li>优秀的加密算法通常在学术会议上展示和讨论，然后发表在各种期刊上.</li>
+<li>优秀的加密算法在发行前，会经过大规模的同行评审.</li>
+<li>正确使用和实施现有的优秀加密算法就已经是一个挑战了.</li>
+</ul>
+<p>不过，还是有些人硬要这么干，并且发布各种使用他们自己发明的加密算法或者专有的闭源方法的生产应用&#x2F;服务:</p>
+<ul>
+<li>对于使用闭源或专有加密方法的软件&#x2F;服务一定要小心.所有优秀的密码学标准都是公开的并且通过了同行评审，披露你使用的标准不应该有问题.</li>
+<li>警惕那些使用”修改版”或者专有加密方法的软件&#x2F;服务<sup id="fnref:262" role="doc-noteref"><a href="#fn:262" class="footnote" rel="footnote">262</a></sup></li>
+<li>默认情况下，不要信任任何”自己搞的加密算法”，除非该算法通过了审核，同行评审，审查，以及得到了密码学社区的认可<sup id="fnref:263" role="doc-noteref"><a href="#fn:263" class="footnote" rel="footnote">263</a></sup><sup id="fnref:264" role="doc-noteref"><a href="#fn:264" class="footnote" rel="footnote">264</a></sup>.</li>
+<li>没有”军用级加密算法”这一说法<sup id="fnref:265" role="doc-noteref"><a href="#fn:265" class="footnote" rel="footnote">265</a></sup><sup id="fnref:266" role="doc-noteref"><a href="#fn:266" class="footnote" rel="footnote">266</a></sup><sup id="fnref:267" role="doc-noteref"><a href="#fn:267" class="footnote" rel="footnote">267</a></sup></li>
+</ul>
+<p>密码学是一个非常复杂的领域，劣质的加密算法容易导致你被去匿名化.</p>
+<p>在本指南的范围内，我们建议坚持使用具有完善，已公开，以及通过同行评审的密码学方法的软件&#x2F;服务.</p>
+<p>那么，在2021年应该做啥呢?你应该获取自己使用的每一个软件的技术细节然后检查它们使用的是”劣质加密算法”还是”优秀的加密算法”.一旦你获取了技术细节，你可以查看这个页面来判断: <a target="_blank" rel="noopener" href="https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html">https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html">[Archive.org]</a></sup></p>
+<p>这里有一些例子:</p>
+<ul>
+<li>哈希:<ul>
+<li>最好: SHA-3或者BLAKE2<sup id="fnref:268" role="doc-noteref"><a href="#fn:268" class="footnote" rel="footnote">268</a></sup></li>
+<li>相对还行:SHA-2(SHA-256,SHA-512)</li>
+<li>别用: SHA-1,MD5(不幸的是仍然被广泛使用),CRC,MD6(几乎没人用)</li>
+</ul>
+</li>
+<li>文件&#x2F;硬盘 加密:<ul>
+<li>最好:<ul>
+<li>有硬件加速的<sup id="fnref:269" role="doc-noteref"><a href="#fn:269" class="footnote" rel="footnote">269</a></sup>:AES(Rijndael)-256结合HMAC-SHA-2或者HMAC-SHA-3(这也是Veracrypt,Bitlocker,Filevault 2,KeepassXC,以及LUKS默认使用的).最好是SHA-3.</li>
+<li>非硬件加速的:和上面有硬件加速的一样，或者也可以考虑:<ul>
+<li>ChaCha20<sup id="fnref:270" role="doc-noteref"><a href="#fn:270" class="footnote" rel="footnote">270</a></sup>或者XChaCha20(你可以在Kryptor上使用ChaCha20 <a target="_blank" rel="noopener" href="https://www.kryptor.co.uk">https://www.kryptor.co.uk</a>，不幸的是，在Veracrypt上不可以).</li>
+<li>Serpent<sup id="fnref:271" role="doc-noteref"><a href="#fn:271" class="footnote" rel="footnote">271</a></sup></li>
+<li>TwoFish<sup id="fnref:272" role="doc-noteref"><a href="#fn:272" class="footnote" rel="footnote">272</a></sup></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>别用: 任何其他算法</li>
+</ul>
+</li>
+<li>密码存储:<ul>
+<li>最好: Argon2,scrypt</li>
+<li>如果上面的用不了,使用bcrypt,如果这个也不能用那么PBKDF2(仅当作最后的手段)</li>
+<li>对Argon2d持有怀疑态度，因为可以被一些边信道攻击破解.最好用Argon2i或者Argon2id</li>
+<li>别用: SHA-3,SHA-2,SHA-1,MD5</li>
+</ul>
+</li>
+<li>浏览器安全(HTTPS):<ul>
+<li>最好: TLS 1.3(最好是支持ECH&#x2F;eSNI的TLS1.3)或者至少是TLS 1.2(广泛使用的)</li>
+<li>别用: 其他任何东西(TLS &lt;&#x3D;1.1,SSL&lt;&#x3D;3)</li>
+</ul>
+</li>
+<li>使用PGP&#x2F;GPG签名消息&#x2F;文件:<ul>
+<li>最好用ECDSA(ed25519)+ECDH(ec25519)或者RSA 4096位<ul>
+<li>可以考虑用比PGP&#x2F;GPG更现代化的 Minisign: <strong><a target="_blank" rel="noopener" href="https://jedisct1.github.io/minisign/">https://jedisct1.github.io/minisign/</a></strong><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://jedisct1.github.io/minisign/">[Archive.org]</a></sup></li>
+</ul>
+</li>
+<li>别用: RSA 2048位</li>
+</ul>
+</li>
+<li>SSH 密钥:<ul>
+<li>ED25519(最好)或者RSA 4096位</li>
+<li>不要用 RSA 2048位</li>
+</ul>
+</li>
+<li><strong>警告: RSA和ED25519不具有”抗量子性”<sup id="fnref:274" role="doc-noteref"><a href="#fn:274" class="footnote" rel="footnote">274</a></sup>,尽管它们目前还没有被破解，但也很可能在未来的某一天被破解.这只是个时间问题，而不在于RSA是否会被破解.因此,在没有更好选择的时候才会使用这些.</strong></li>
+</ul>
+<p>这有一些关于使用劣质加密算法的真实案例:</p>
+<ul>
+<li>Telegram: <a target="_blank" rel="noopener" href="https://democratic-europe.eu/2021/07/20/cryptographers-uncover-four-vulnerabilities-in-telegram/">https://democratic-europe.eu/2021/07/20/cryptographers-uncover-four-vulnerabilities-in-telegram/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://democratic-europe.eu/2021/07/20/cryptographers-uncover-four-vulnerabilities-in-telegram/">[Archive.org]</a></sup></li>
+<li>Telegram: <a target="_blank" rel="noopener" href="https://buttondown.email/cryptography-dispatches/archive/cryptography-dispatches-the-most-backdoor-looking/">https://buttondown.email/cryptography-dispatches/archive/cryptography-dispatches-the-most-backdoor-looking/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://buttondown.email/cryptography-dispatches/archive/cryptography-dispatches-the-most-backdoor-looking/">[Archive.org]</a></sup></li>
+<li>Cryptocat:<a target="_blank" rel="noopener" href="https://web.archive.org/web/20130705051050/https://blog.crypto.cat/2013/07/new-critical-vulnerability-in-cryptocat-details/">https://web.archive.org/web/20130705051050/https://blog.crypto.cat/2013/07/new-critical-vulnerability-in-cryptocat-details/</a></li>
+<li>这里还有些例子: <a target="_blank" rel="noopener" href="https://www.cryptofails.com/">https://www.cryptofails.com/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://www.cryptofails.com/">[Archive.org]</a></sup></li>
+</ul>
+<p>Later this guide will not recommend “bad cryptography” and that should hopefully be enough to protect you?(没懂这句话啥意思…)</p>
+<h2 id="No-logging-but-logging-anyway-polices"><a href="#No-logging-but-logging-anyway-polices" class="headerlink" title="No logging but logging anyway polices"></a>No logging but logging anyway polices</h2><p>许多人认为面向隐私的服务，例如VPN或者e-mail供应商是安全的，鉴于他们的不登陆政策或者加密方案.不幸的是，许多人忘了这些提供商毕竟是合法的商业实体，会受到运营地所在国家的法律约束.</p>
+<p>任意供应商都可能会被强制偷偷(而且不会让你知道(例如使用带有禁言令<sup id="fnref:275" role="doc-noteref"><a href="#fn:275" class="footnote" rel="footnote">275</a></sup>的法庭命令或者国家安全令<sup id="fnref:276" role="doc-noteref"><a href="#fn:276" class="footnote" rel="footnote">276</a></sup>))记录你的活动，然后将你去匿名化.这里有一些最近的例子:</p>
+<ul>
+<li>2021,Proton,在瑞士当局命令下，Proton记录法国活动家的ip地址(源链接已不可用).</li>
+<li>2021,WindScribe,服务器并未加密，因为服务器要允许政府机构进行中间人攻击<sup id="fnref:277" role="doc-noteref"><a href="#fn:277" class="footnote" rel="footnote">277</a></sup>.</li>
+<li>2021,DoubleVPN服务器，记录和账户信息被执法机构扣押<sup id="fnref:278" role="doc-noteref"><a href="#fn:278" class="footnote" rel="footnote">278</a></sup>.</li>
+<li>2021,总部位于德国的电邮供应商Tutanota被强制要求监视指定的账户长达3个月<sup id="fnref:279" role="doc-noteref"><a href="#fn:279" class="footnote" rel="footnote">279</a></sup></li>
+<li>2020,Tutanota被强制要求植入后门以监听并且保存一位用户的未加密邮件的拷贝<sup id="fnref:280" role="doc-noteref"><a href="#fn:280" class="footnote" rel="footnote">280</a></sup>(他们没有解密已保存的邮件).</li>
+<li>2017,PureVPN被迫泄露一位用户的信息给FBI<sup id="fnref:281" role="doc-noteref"><a href="#fn:281" class="footnote" rel="footnote">281</a></sup>.</li>
+<li>2014,一位EarthVPN用户因为提供给荷兰警方的记录而被逮捕<sup id="fnref:282" role="doc-noteref"><a href="#fn:282" class="footnote" rel="footnote">282</a></sup></li>
+<li>2013,安全电邮供应商Lavabit因为反抗一个秘密禁言令而停止营业<sup id="fnref:283" role="doc-noteref"><a href="#fn:283" class="footnote" rel="footnote">283</a></sup>.</li>
+<li>2011,HideMyAss用户被去匿名化,并且记录被提供给FBI<sup id="fnref:284" role="doc-noteref"><a href="#fn:284" class="footnote" rel="footnote">284</a></sup></li>
+</ul>
+<p>一些供应商实施应用了权证金丝雀<sup id="fnref:285" role="doc-noteref"><a href="#fn:285" class="footnote" rel="footnote">285</a></sup>，这允许用户知道供应商是否受此类命令约束,但据我们所知这玩意目前还没有被测试过.</p>
+<p>最后，一些公司可能是某些国家的赞助前端，这是众所周知的(请看 the Crypto AG story<sup id="fnref:286" role="doc-noteref"><a href="#fn:286" class="footnote" rel="footnote">286</a></sup> 和 Omnisec story<sup id="fnref:287" role="doc-noteref"><a href="#fn:287" class="footnote" rel="footnote">287</a></sup>).</p>
+<p>因为这些原因，无论供应商的声明是什么样的,为了你的隐私请一定不要相信他们.在大多数情况下，如果你的任一账户被此类命令针对，你都会是最后知道的人，甚至你可能一直被蒙在鼓里.</p>
+<p>为了防范此类问题，在你需要使用VPN的时候，我们建议用现金支付，或者接入Tor然后使用门罗币支付，防止VPN服务商获取你的任何可识别信息.</p>
+<p>如果VPN供应商对你一无所知，那么鉴于他们的”不登陆但反正会登陆”，就可以避免任何问题.</p>
+</br>
+
+<h2 id="Some-Advanced-targeted-techniques"><a href="#Some-Advanced-targeted-techniques" class="headerlink" title="Some Advanced targeted techniques"></a>Some Advanced targeted techniques</h2><h2 id="Some-bonus-resources"><a href="#Some-bonus-resources" class="headerlink" title="Some bonus resources"></a>Some bonus resources</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><h1 id="General-Preparations"><a href="#General-Preparations" class="headerlink" title="General Preparations"></a>General Preparations</h1><h2 id="…"><a href="#…" class="headerlink" title="…"></a>…</h2><h1 id="Creating-your-anonymous-online-identities"><a href="#Creating-your-anonymous-online-identities" class="headerlink" title="Creating your anonymous online identities"></a>Creating your anonymous online identities</h1><h2 id="Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity"><a href="#Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity" class="headerlink" title="Understanding the methos used to prevent anonymity and verify identity"></a>Understanding the methos used to prevent anonymity and verify identity</h2><h3 id="…-1"><a href="#…-1" class="headerlink" title="…"></a>…</h3><h2 id="Getting-Online"><a href="#Getting-Online" class="headerlink" title="Getting Online"></a>Getting Online</h2><h3 id="Creating-new-identities"><a href="#Creating-new-identities" class="headerlink" title="Creating new identities"></a>Creating new identities</h3><h3 id="…-2"><a href="#…-2" class="headerlink" title="…"></a>…</h3><h1 id="Backing-up-your-work-securely"><a href="#Backing-up-your-work-securely" class="headerlink" title="Backing up your work securely"></a>Backing up your work securely</h1><h2 id="…-3"><a href="#…-3" class="headerlink" title="…"></a>…</h2><h1 id="Covering-your-tracks"><a href="#Covering-your-tracks" class="headerlink" title="Covering your tracks"></a>Covering your tracks</h1><h2 id="…-4"><a href="#…-4" class="headerlink" title="…"></a>…</h2><h1 id="Some-low-tech-old-school-tricks"><a href="#Some-low-tech-old-school-tricks" class="headerlink" title="Some low-tech old-school tricks"></a>Some low-tech old-school tricks</h1><h2 id="…-5"><a href="#…-5" class="headerlink" title="…"></a>…</h2><h1 id="Some-last-OPSEC-thoughts"><a href="#Some-last-OPSEC-thoughts" class="headerlink" title="Some last OPSEC thoughts"></a>Some last OPSEC thoughts</h1><h1 id="If-you-think-you-gout-burned"><a href="#If-you-think-you-gout-burned" class="headerlink" title="If you think you gout burned"></a>If you think you gout burned</h1><h2 id="…-6"><a href="#…-6" class="headerlink" title="…"></a>…</h2><h1 id="…-7"><a href="#…-7" class="headerlink" title="…"></a>…</h1><h1 id="Acknowledgments"><a href="#Acknowledgments" class="headerlink" title="Acknowledgments"></a>Acknowledgments</h1><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Appendix-N-Warning-about-smartphones-and-smart-devices"><a href="#Appendix-N-Warning-about-smartphones-and-smart-devices" class="headerlink" title="Appendix N: Warning about smartphones and smart devices"></a>Appendix N: Warning about smartphones and smart devices</h2><p>在进行敏感活动时，切记:</p>
 <ul>
 <li><strong>不要携带真正的智能手机或只能设备(就算是关机的)</strong>.关联式攻击出现在你的一次性手机”开机”之前就找到已经”关机”其他手机，虽然第一次这样做攻击不会奏效，但在几次之后，网络会收紧而你会被追踪.最好是把你的主力手机留在家中并且保持在线(请看这篇文章: <a target="_blank" rel="noopener" href="https://biboroda.livejournal.com/4894724.html">https://biboroda.livejournal.com/4894724.html</a><sup><a target="_blank" rel="noopener" href="https://translate.google.com/translate?hl=&amp;sl=ru&amp;tl=en&amp;u=https%3A%2F%2Fbiboroda.livejournal.com%2F4894724.html&amp;anno=2">[Google Translate]</a></sup><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://biboroda.livejournal.com/4894724.html">[Archive.org]</a></sup>)</li>
 <li><strong>再次重申，不要带着它们除非它们是必要的.如果你必须这样做的话</strong>,你可以考虑关机然后移出电池，或者，如果不可以的话，把设备放在法拉第笼<sup id="fnref:466" role="doc-noteref"><a href="#fn:466" class="footnote" rel="footnote">466</a></sup>里.有很多这样的法拉第”信号屏蔽”盒在售，并且其中一些的效用被研究过<sup id="fnref:467" role="doc-noteref"><a href="#fn:467" class="footnote" rel="footnote">467</a></sup>.如果你买不起，you can probably achieve a “decent result” with one or several sheets of aluminum foil (as shown in the previously linked study).<ul>
