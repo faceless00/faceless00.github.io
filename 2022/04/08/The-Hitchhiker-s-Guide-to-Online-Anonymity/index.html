@@ -107,14 +107,14 @@
 </ul>
 </li>
 <li><a href="#Introduction">介绍</a></li>
-<li><a href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some">了解一些基础知识:信息如何能导向你,以及如何防范</a><ul>
+<li><a href="#Understanding-some-basics-of-how-some-information-can-lead-back-to-you-and-how-to-mitigate-some">一些基础知识:信息是如何追溯到你的,以及如何防范</a><ul>
 <li><a href="#Your-Network">网络</a><ul>
 <li><a href="#Your-IP-address">IP地址</a></li>
 <li><a href="#Your-DNS-and-IP-requests">DNS和IP请求</a></li>
 <li><a href="#Your-RFID-enabled-devices">允许RFID的设备</a></li>
 <li><a href="#The-Wi-Fi-and-Bluetooth-devices-around-you">身边的Wi-Fi和蓝牙设备</a></li>
 <li><a href="#Malicious-x2F-Rouge-Wi-Fi-Access-Points">恶意的&#x2F;钓鱼 Wi-Fi</a></li>
-<li><a href="#Your-Anonymized-Tor-x2F-VPN-traffic">匿名的Tor&#x2F;VPN流量</a></li>
+<li><a href="#Your-Anonymized-Tor-x2F-VPN-traffic">匿名Tor&#x2F;VPN流量</a></li>
 <li><a href="#Some-Devices-can-be-tracked-even-when-offline">一些设备甚至在离线时也能被追踪</a></li>
 </ul>
 </li>
@@ -303,6 +303,7 @@
 <li><a href="#Appendix-Z-Paying-anonymously-online-with-BTC-or-any-other-cryptocurrency">附录Z:使用比特币在线匿名支付(或者其他任何加密货币)</a></li>
 <li><a href="#Appendix-A2-Guidelines-for-passwords-and-passphrases">附录A2: 密码和密码短语的指导方针</a></li>
 <li><a href="#Appendix-A4-Counteracting-Forensic-Lingusitics">附录A4: 对抗取证分析语言学</a></li>
+<li><a href="#Appendix-A5-Additional-browser-precautions-with-JavaScript-enabled">附录A5: 启用javascript的浏览器的额外预防措施</a></li>
 <li><a href="#Appendix-B2-Monero-Disclaimer">附录B2: 门罗币免责声明</a></li>
 <li><a href="#Appendix-B3-Threat-modeling-resources">附录B3: 威胁模型</a></li>
 </ul>
@@ -1319,7 +1320,131 @@
 <p>洋葱不同于其他浏览器的地方在于它会通过Tor网络使用洋葱路由连接到网络.推荐你先看一下洋葱项目官方的介绍视频: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=JWII85UlzKw">https://www.youtube.com/watch?v=JWII85UlzKw</a><sup><a target="_blank" rel="noopener" href="https://yewtu.be/watch?v=JWII85UlzKw">[Invidious]</a></sup>.之后，你应该去他们的主页看一下他们的概览:<a target="_blank" rel="noopener" href="https://2019.www.torproject.org/about/overview.html.en">https://2019.www.torproject.org/about/overview.html.en</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://2019.www.torproject.org/about/overview.html.en">[Archive.org]</a></sup>.不需要深入太多技术细节，洋葱浏览器是一种一劳永逸地用各种设备匿名浏览互联网的方案.对大多数人来说够用了，电脑和手机端都可以使用.</p>
 <p>这里有几种为所有主流操作系统设置洋葱浏览器的方法.</p>
 <h3 id="Windows-Linux-and-macOS"><a href="#Windows-Linux-and-macOS" class="headerlink" title="Windows, Linux, and macOS"></a>Windows, Linux, and macOS</h3><p>请看<a href="#Appendix-Y-Installing-and-using-desktop-Tor-Browser">附录Y: 安装并使用洋葱浏览器</a></p>
-<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><h3 id="Important-Warning"><a href="#Important-Warning" class="headerlink" title="Important Warning"></a>Important Warning</h3><h2 id="The-Tails-route"><a href="#The-Tails-route" class="headerlink" title="The Tails route"></a>The Tails route</h2><h3 id="Tor-Browser-settings-on-Tails"><a href="#Tor-Browser-settings-on-Tails" class="headerlink" title="Tor Browser settings on Tails"></a>Tor Browser settings on Tails</h3><h3 id="Persistent-Plausible-Deniability-using-Whonix-within-Tails"><a href="#Persistent-Plausible-Deniability-using-Whonix-within-Tails" class="headerlink" title="Persistent Plausible Deniability using Whonix within Tails"></a>Persistent Plausible Deniability using Whonix within Tails</h3><h2 id="Steps-for-all-other-routes"><a href="#Steps-for-all-other-routes" class="headerlink" title="Steps for all other routes"></a>Steps for all other routes</h2><h2 id="The-Whonix-route"><a href="#The-Whonix-route" class="headerlink" title="The Whonix route"></a>The Whonix route</h2><h2 id="The-Qubes-route"><a href="#The-Qubes-route" class="headerlink" title="The Qubes route"></a>The Qubes route</h2><h1 id="Creating-your-anonymous-online-identities"><a href="#Creating-your-anonymous-online-identities" class="headerlink" title="Creating your anonymous online identities"></a>Creating your anonymous online identities</h1><h2 id="Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity"><a href="#Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity" class="headerlink" title="Understanding the methos used to prevent anonymity and verify identity"></a>Understanding the methos used to prevent anonymity and verify identity</h2><h3 id="…"><a href="#…" class="headerlink" title="…"></a>…</h3><h2 id="Getting-Online"><a href="#Getting-Online" class="headerlink" title="Getting Online"></a>Getting Online</h2><h3 id="Creating-new-identities"><a href="#Creating-new-identities" class="headerlink" title="Creating new identities"></a>Creating new identities</h3><h3 id="…-1"><a href="#…-1" class="headerlink" title="…"></a>…</h3><h1 id="Backing-up-your-work-securely"><a href="#Backing-up-your-work-securely" class="headerlink" title="Backing up your work securely"></a>Backing up your work securely</h1><h2 id="…-2"><a href="#…-2" class="headerlink" title="…"></a>…</h2><h1 id="Covering-your-tracks"><a href="#Covering-your-tracks" class="headerlink" title="Covering your tracks"></a>Covering your tracks</h1><h2 id="…-3"><a href="#…-3" class="headerlink" title="…"></a>…</h2><h1 id="Some-low-tech-old-school-tricks"><a href="#Some-low-tech-old-school-tricks" class="headerlink" title="Some low-tech old-school tricks"></a>Some low-tech old-school tricks</h1><h2 id="…-4"><a href="#…-4" class="headerlink" title="…"></a>…</h2><h1 id="Some-last-OPSEC-thoughts"><a href="#Some-last-OPSEC-thoughts" class="headerlink" title="Some last OPSEC thoughts"></a>Some last OPSEC thoughts</h1><h1 id="If-you-think-you-gout-burned"><a href="#If-you-think-you-gout-burned" class="headerlink" title="If you think you gout burned"></a>If you think you gout burned</h1><h2 id="…-5"><a href="#…-5" class="headerlink" title="…"></a>…</h2><h1 id="…-6"><a href="#…-6" class="headerlink" title="…"></a>…</h1><h1 id="Acknowledgments"><a href="#Acknowledgments" class="headerlink" title="Acknowledgments"></a>Acknowledgments</h1><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Appendix-N-Warning-about-smartphones-and-smart-devices"><a href="#Appendix-N-Warning-about-smartphones-and-smart-devices" class="headerlink" title="Appendix N: Warning about smartphones and smart devices"></a>Appendix N: Warning about smartphones and smart devices</h2><p>在进行敏感活动时，切记:</p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ul>
+<li>前往:<ul>
+<li>Play商店: <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=org.torproject.torbrowser">https://play.google.com/store/apps/details?id=org.torproject.torbrowser</a></li>
+<li>F-Droid商店: 虽然商店里还没有，不过你可以依照指示手动添加 <a target="_blank" rel="noopener" href="https://support.torproject.org/tormobile/tormobile-7/">https://support.torproject.org/tormobile/tormobile-7/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://support.torproject.org/tormobile/tormobile-7/">[Archive.org]</a></sup></li>
+</ul>
+</li>
+<li>安装</li>
+<li>打开洋葱浏览器</li>
+<li>启动之后，点击右上方的设置图标</li>
+<li>选择”Config Bridge”然后阅读<a href="#Appendix-X-Using-Tor-bridges-in-hostile-environments">附录X: 在恶劣的环境里使用Tor网桥</a></li>
+<li><strong>如有必要(在阅读上面的附录之后)</strong>,启用网桥并且选择你想用的类型:<ul>
+<li>Obfs4</li>
+<li>Meek-Azure</li>
+<li>Snowflake</li>
+</ul>
+</li>
+</ul>
+<p>个人而言，如果你需要使用网桥(对于非敌对性的环境是没必要的),最好选择Meek-Azure.即使你在中国然后想”翻墙”,meek-azure网桥应该也能奏效.这应该是混淆Tor活动的最佳选择，微软的服务器一般不会被锁定.</p>
+<ul>
+<li>快完成了</li>
+</ul>
+<p>和电脑版一样，你需要知道在Tor浏览器里有安全级别.在安卓，你可以通过下列步骤来设置:</p>
+<ul>
+<li>点击menu(右下角)</li>
+<li>点击设置</li>
+<li>前往隐私和安全性部分</li>
+<li>点击安全设置</li>
+</ul>
+<p>你可以在这里找到每个级别的详细信息:  <a target="_blank" rel="noopener" href="https://tb-manual.torproject.org/security-settings/">https://tb-manual.torproject.org/security-settings/</a><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://tb-manual.torproject.org/security-settings/">[Archive.org]</a></sup>，不过这有个总结:</p>
+<ul>
+<li>标准(默认):<ul>
+<li>启用所有功能(包括javascript)</li>
+</ul>
+</li>
+<li>进阶:<ul>
+<li>在非HTTPS网站上禁用js</li>
+<li>一些字体和符号被禁用</li>
+<li>所有视频的重播都是”点击播放”(默认禁用)</li>
+</ul>
+</li>
+<li>最高:<ul>
+<li>禁用js</li>
+<li>一些字体和符号被禁用</li>
+<li>所有视频的重播都是”点击播放”(默认禁用)</li>
+</ul>
+</li>
+</ul>
+<p>我们建议在大多数情况下选择进阶级别.在你认为你在浏览可疑或者危险的网站时，又或者你是个偏执狂，你可以启用最高级别.</p>
+<p>如果你极度偏执，默认使用”最高”级别，如果网站因为禁用了js而不可用，可以考虑降级到”进阶”级别.</p>
+<p>不过在使用一些网站的时候，进阶级别应该和一些额外防范措施一起使用,请看<a href="#Appendix-A5-Additional-browser-precautions-with-JavaScript-enabled">附录A5: 启用javascript的浏览器的额外预防措施</a></p>
+<p>好了，现在可以用安卓设备匿名上网冲浪咯~</p>
+<h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><p><strong>免责声明:Onion浏览器，继2018发行的一个版本之后，因为WebRTC而有一个IP泄露漏洞.它仍是IOS版唯一受官方认可的用于Tor网络的浏览器.用户在使用它时应多加小心，并检查是否有DNS泄露.</strong></p>
+<p>尽管官方的Tor浏览器还没有IOS版的，但有一个被Tor项目认可的叫做洋葱浏览器的替代品<sup id="fnref:304" role="doc-noteref"><a href="#fn:304" class="footnote" rel="footnote">304</a></sup>.</p>
+<ul>
+<li>前往 <a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/onion-browser/id519296448">https://apps.apple.com/us/app/onion-browser/id519296448</a></li>
+<li>安装</li>
+<li>禁用wifi和蜂窝数据</li>
+<li>启动洋葱浏览器</li>
+<li>启动之后，点击右上角的设置按钮(之前禁用wifi和蜂窝数据是防止浏览器自动连接，以及允许访问这些选项).</li>
+<li>选择”网桥设置”然后阅读<a href="#Appendix-X-Using-Tor-bridges-in-hostile-environments">附录X: 在恶劣的环境里使用Tor网桥</a></li>
+<li><strong>如有必要(在阅读上面的附录之后)</strong>,启用网桥并且选择你想用的类型:<ul>
+<li>Obfs4</li>
+<li>Meek-Azure</li>
+<li>Snowflake</li>
+</ul>
+</li>
+</ul>
+<p>个人而言，如果你需要使用网桥(对于非敌对性的环境是没必要的),最好选择Meek-Azure.即使你在中国然后想”翻墙”,meek-azure网桥应该也能奏效.这应该是混淆Tor活动的最佳选择，微软的服务器一般不会被锁定.</p>
+<ul>
+<li>快完成了</li>
+</ul>
+<p>和电脑版一样，你需要知道在Tor浏览器里有安全级别.在ios，你可以通过下列步骤来设置:</p>
+<ul>
+<li><p>点击盾牌按钮(左上角)</p>
+</li>
+<li><p>你有三个级别可以选择</p>
+<ul>
+<li><p>Gold: 如果你比较多疑，偏执，或者在浏览你认为危险的网站时可以使用.</p>
+<ul>
+<li><p>禁用js</p>
+</li>
+<li><p>禁用网络套接字，定位，XHR</p>
+</li>
+<li><p>没有视频或音频</p>
+</li>
+<li><p>超链接不可以打开应用</p>
+</li>
+<li><p>WebRTC被锁定</p>
+</li>
+<li><p>HTTP&#x2F;HTTPS混合被锁定</p>
+</li>
+<li><p>广告和弹窗被锁定</p>
+</li>
+</ul>
+</li>
+<li><p>Silver:</p>
+<ul>
+<li>允许一部分javascript</li>
+<li>禁用网络套接字，定位，XHR</li>
+<li>没有视频或音频</li>
+<li>超链接不可以打开应用</li>
+<li>WebRTC被锁定</li>
+<li>HTTP&#x2F;HTTPS混合被锁定</li>
+<li>广告和弹窗被锁定</li>
+</ul>
+</li>
+<li><p>Bronze(不推荐):</p>
+<ul>
+<li>允许js</li>
+<li>允许视频和音频</li>
+<li>超链接不可以打开应用</li>
+<li>WebRTC未被锁定</li>
+<li>HTTP&#x2F;HTTPS混合未被锁定</li>
+<li>广告和弹窗被锁定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>推荐在大多数情况下使用”Silver”级别.在你认为你在浏览可疑或者危险的网站时，又或者你是个偏执狂，你可以使用”Gold”级别.Gold模式很可能会破坏大多数依赖javascript的网页.</p>
+<p>因为在Silver模式下js被启用，请看<a href="#Appendix-A5-Additional-browser-precautions-with-JavaScript-enabled">附录A5: 启用javascript的浏览器的额外预防措施</a>.</p>
+<p>好了，现在可以用水果手机匿名上网冲浪咯~</p>
+<h3 id="Important-Warning"><a href="#Important-Warning" class="headerlink" title="Important Warning"></a>Important Warning</h3><p><strong>这一条路线最简单，但不是为了对抗技术高超的攻击者而设计的.不过它可以在任何设备上使用，无论配置如何.这一路线还很容易受到关联性攻击(请看<a href="#Your-Anonymized-Tor-x2F-VPN-traffic">匿名Tor&#x2F;VPN流量</a>),并且对你设备上的任何东西都不可见(可能是恶意软件，漏洞，病毒，远程管理软件，家长控制…).额，如果你的威胁模型相当低，那么这条路线应该够用了.</strong></p>
+<p>如果你有时间，想学习一点新东西，我们推荐前往其他路线，因为它们能提供更好的安全性，防范更多风险，同时大大降低你的攻击面.</p>
+<h2 id="The-Tails-route"><a href="#The-Tails-route" class="headerlink" title="The Tails route"></a>The Tails route</h2><h3 id="Tor-Browser-settings-on-Tails"><a href="#Tor-Browser-settings-on-Tails" class="headerlink" title="Tor Browser settings on Tails"></a>Tor Browser settings on Tails</h3><h3 id="Persistent-Plausible-Deniability-using-Whonix-within-Tails"><a href="#Persistent-Plausible-Deniability-using-Whonix-within-Tails" class="headerlink" title="Persistent Plausible Deniability using Whonix within Tails"></a>Persistent Plausible Deniability using Whonix within Tails</h3><h2 id="Steps-for-all-other-routes"><a href="#Steps-for-all-other-routes" class="headerlink" title="Steps for all other routes"></a>Steps for all other routes</h2><h2 id="The-Whonix-route"><a href="#The-Whonix-route" class="headerlink" title="The Whonix route"></a>The Whonix route</h2><h2 id="The-Qubes-route"><a href="#The-Qubes-route" class="headerlink" title="The Qubes route"></a>The Qubes route</h2><h1 id="Creating-your-anonymous-online-identities"><a href="#Creating-your-anonymous-online-identities" class="headerlink" title="Creating your anonymous online identities"></a>Creating your anonymous online identities</h1><h2 id="Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity"><a href="#Understanding-the-methos-used-to-prevent-anonymity-and-verify-identity" class="headerlink" title="Understanding the methos used to prevent anonymity and verify identity"></a>Understanding the methos used to prevent anonymity and verify identity</h2><h3 id="…"><a href="#…" class="headerlink" title="…"></a>…</h3><h2 id="Getting-Online"><a href="#Getting-Online" class="headerlink" title="Getting Online"></a>Getting Online</h2><h3 id="Creating-new-identities"><a href="#Creating-new-identities" class="headerlink" title="Creating new identities"></a>Creating new identities</h3><h3 id="…-1"><a href="#…-1" class="headerlink" title="…"></a>…</h3><h1 id="Backing-up-your-work-securely"><a href="#Backing-up-your-work-securely" class="headerlink" title="Backing up your work securely"></a>Backing up your work securely</h1><h2 id="…-2"><a href="#…-2" class="headerlink" title="…"></a>…</h2><h1 id="Covering-your-tracks"><a href="#Covering-your-tracks" class="headerlink" title="Covering your tracks"></a>Covering your tracks</h1><h2 id="…-3"><a href="#…-3" class="headerlink" title="…"></a>…</h2><h1 id="Some-low-tech-old-school-tricks"><a href="#Some-low-tech-old-school-tricks" class="headerlink" title="Some low-tech old-school tricks"></a>Some low-tech old-school tricks</h1><h2 id="…-4"><a href="#…-4" class="headerlink" title="…"></a>…</h2><h1 id="Some-last-OPSEC-thoughts"><a href="#Some-last-OPSEC-thoughts" class="headerlink" title="Some last OPSEC thoughts"></a>Some last OPSEC thoughts</h1><h1 id="If-you-think-you-gout-burned"><a href="#If-you-think-you-gout-burned" class="headerlink" title="If you think you gout burned"></a>If you think you gout burned</h1><h2 id="…-5"><a href="#…-5" class="headerlink" title="…"></a>…</h2><h1 id="…-6"><a href="#…-6" class="headerlink" title="…"></a>…</h1><h1 id="Acknowledgments"><a href="#Acknowledgments" class="headerlink" title="Acknowledgments"></a>Acknowledgments</h1><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Appendix-N-Warning-about-smartphones-and-smart-devices"><a href="#Appendix-N-Warning-about-smartphones-and-smart-devices" class="headerlink" title="Appendix N: Warning about smartphones and smart devices"></a>Appendix N: Warning about smartphones and smart devices</h2><p>在进行敏感活动时，切记:</p>
 <ul>
 <li><strong>不要携带真正的智能手机或只能设备(就算是关机的)</strong>.关联式攻击出现在你的一次性手机”开机”之前就找到已经”关机”其他手机，虽然第一次这样做攻击不会奏效，但在几次之后，网络会收紧而你会被追踪.最好是把你的主力手机留在家中并且保持在线(请看这篇文章: <a target="_blank" rel="noopener" href="https://biboroda.livejournal.com/4894724.html">https://biboroda.livejournal.com/4894724.html</a><sup><a target="_blank" rel="noopener" href="https://translate.google.com/translate?hl=&amp;sl=ru&amp;tl=en&amp;u=https%3A%2F%2Fbiboroda.livejournal.com%2F4894724.html&amp;anno=2">[Google Translate]</a></sup><sup><a target="_blank" rel="noopener" href="https://web.archive.org/web/https://biboroda.livejournal.com/4894724.html">[Archive.org]</a></sup>)</li>
 <li><strong>再次重申，不要带着它们除非它们是必要的.如果你必须这样做的话</strong>,你可以考虑关机然后移出电池，或者，如果不可以的话，把设备放在法拉第笼<sup id="fnref:466" role="doc-noteref"><a href="#fn:466" class="footnote" rel="footnote">466</a></sup>里.有很多这样的法拉第”信号屏蔽”盒在售，并且其中一些的效用被研究过<sup id="fnref:467" role="doc-noteref"><a href="#fn:467" class="footnote" rel="footnote">467</a></sup>.如果你买不起，you can probably achieve a “decent result” with one or several sheets of aluminum foil (as shown in the previously linked study).<ul>
