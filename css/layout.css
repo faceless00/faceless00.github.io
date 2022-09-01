@@ -14,7 +14,7 @@ a {
   color: var(--main-color);
   text-decoration: underline solid #fff 2px;
 }
-p > code {
+code {
   background: var(--main-code-background-color);
   padding: 1px 10px 1px 10px;
   margin: 0 0.5rem 0 0.5rem;
