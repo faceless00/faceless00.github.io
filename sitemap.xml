@@ -101,21 +101,7 @@
 
   
   <url>
-    <loc>https://faceless00.github.io/tags/original/</loc>
-    <lastmod>2022-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://faceless00.github.io/tags/farm/</loc>
-    <lastmod>2022-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://faceless00.github.io/tags/fuck/</loc>
     <lastmod>2022-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -129,14 +115,21 @@
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/tags/draft/</loc>
+    <loc>https://faceless00.github.io/tags/original/</loc>
     <lastmod>2022-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/tags/essay/</loc>
+    <loc>https://faceless00.github.io/tags/fuck/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://faceless00.github.io/tags/draft/</loc>
     <lastmod>2022-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -149,17 +142,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://faceless00.github.io/tags/essay/</loc>
+    <lastmod>2022-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://faceless00.github.io/categories/original/</loc>
+    <loc>https://faceless00.github.io/categories/translation/</loc>
     <lastmod>2022-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://faceless00.github.io/categories/translation/</loc>
+    <loc>https://faceless00.github.io/categories/original/</loc>
     <lastmod>2022-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
